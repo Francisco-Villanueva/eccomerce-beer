@@ -1,4 +1,4 @@
-//USERS MODELS
+//CART_BUY MODELS
 const S = require("sequelize");
 // const db = require("../config/database");
 
@@ -7,7 +7,7 @@ class Cart_buy extends S.Model {
 
 Cart_buy.init(
   {
-    count: {
+    amount: {
       type: S.INTEGER,
       allowNull: false,
     }

@@ -1,4 +1,4 @@
-//USERS MODELS
+//CART MODELS
 const S = require("sequelize");
 // const db = require("../config/database");
 
