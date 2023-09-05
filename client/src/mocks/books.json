@@ -1,212 +1,764 @@
 {
-  "library": [
+  "kind": "books#volumes",
+  "totalItems": 2526,
+  "items": [
     {
-      "book": {
-        "title": "El Señor de los Anillos",
-        "pages": 1200,
-        "genre": "Fantasía",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg",
-        "synopsis": "Una aventura épica en un mundo de fantasía llamado la Tierra Media.",
-        "year": 1954,
-        "ISBN": "978-0618640157",
-        "author": {
-          "name": "J.R.R. Tolkien",
-          "otherBooks": ["El Hobbit", "El Silmarillion"]
-        }
+      "kind": "books#volume",
+      "id": "3mWtpcDPYAYC",
+      "etag": "9JjL3mUUBT8",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/3mWtpcDPYAYC",
+      "volumeInfo": {
+        "title": "Cuerpo de Maestros. Programación Didáctica. Educacion Fisica.e-book.",
+        "publisher": "MAD-Eduforma",
+        "publishedDate": "2006-09-27",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9788466562485"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "8466562486"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 350,
+        "printType": "BOOK",
+        "categories": ["Education"],
+        "averageRating": 3.5,
+        "ratingsCount": 2,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "2.2.1.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=3mWtpcDPYAYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=3mWtpcDPYAYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.ar/books?id=3mWtpcDPYAYC&pg=PA281&dq=programacion&hl=&cd=1&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=3mWtpcDPYAYC&dq=programacion&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Cuerpo_de_Maestros_Programaci%C3%B3n_Did%C3%A1ct.html?hl=&id=3mWtpcDPYAYC"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/Cuerpo_de_Maestros_Programaci%C3%B3n_Did%C3%A1ct-sample-pdf.acsm?id=3mWtpcDPYAYC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=3mWtpcDPYAYC&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Podemos hacer esta <b>programación</b> anual para cualquier ciclo y curso de la Educación Primaria. En función de la elección del ciclo y curso a programar, básicamente aunque los contenidos sean los mismos, debemos tener presente el bagaje&nbsp;..."
       }
     },
     {
-      "book": {
-        "title": "Juego de Tronos",
-        "pages": 694,
-        "genre": "Fantasía",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1273763400i/8189620.jpg",
-        "synopsis": "En un reino donde las estaciones duran años, una batalla épica por el trono se desarrolla.",
-        "year": 1996,
-        "ISBN": "978-0553103540",
-        "author": {
-          "name": "George R. R. Martin",
-          "otherBooks": [
-            "Choque de Reyes",
-            "Tormenta de Espadas",
-            "Festín de Cuervos"
-          ]
-        }
+      "kind": "books#volume",
+      "id": "gbejZ3PNSBgC",
+      "etag": "/FFvvagv5LY",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/gbejZ3PNSBgC",
+      "volumeInfo": {
+        "title": "Cuerpo de Profesores de Enseñanza Secundaria. Informatica. Programacion Didactica Ebook",
+        "authors": [
+          "Esteban Leyva Cortés",
+          "José Manuel Piñeiro Gómez",
+          "Víctor López Fenoy"
+        ],
+        "publisher": "MAD-Eduforma",
+        "publishedDate": "2005-02-16",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9788466543224"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "8466543228"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 389,
+        "printType": "BOOK",
+        "categories": ["Education"],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "1.3.2.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=gbejZ3PNSBgC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=gbejZ3PNSBgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.ar/books?id=gbejZ3PNSBgC&pg=PA79&dq=programacion&hl=&cd=2&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=gbejZ3PNSBgC&dq=programacion&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Cuerpo_de_Profesores_de_Ense%C3%B1anza_Secun.html?hl=&id=gbejZ3PNSBgC"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/Cuerpo_de_Profesores_de_Ense%C3%B1anza_Secun-sample-pdf.acsm?id=gbejZ3PNSBgC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=gbejZ3PNSBgC&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "El lenguaje de <b>programación</b> C. Prentice- Hall. 2.a edición. * Ceballos,: Curso de <b>programación</b> con C. Editorial RAMA. 1993. * Cordero Valle, Juan Manuel: Introducción a la <b>Programación</b>. Un enfoque práctico. Editorial Algaida. 1996."
       }
     },
     {
-      "book": {
-        "title": "Harry Potter y la piedra filosofal",
-        "pages": 223,
-        "genre": "Fantasía",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550337333i/15868.jpg",
-        "synopsis": "Un niño descubre que es un mago y comienza una aventura en una escuela de magia.",
-        "year": 1997,
-        "ISBN": "978-0747532699",
-        "author": {
-          "name": "J.K. Rowling",
-          "otherBooks": [
-            "Harry Potter y la cámara secreta",
-            "Harry Potter y el prisionero de Azkaban",
-            "Harry Potter y el cáliz de fuego"
-          ]
-        }
+      "kind": "books#volume",
+      "id": "KUl9OqsCYOQC",
+      "etag": "wa4Z8ktE9Ms",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/KUl9OqsCYOQC",
+      "volumeInfo": {
+        "title": "Programación en C++ para ingenieros",
+        "authors": [
+          "MARCO GOMEZ, JORDI",
+          "MARTIN PRAT, ANGELA",
+          "MOLINERO ALBAREDA, XAVIER",
+          "VAZQUEZ ALCOCER, PERE PAU",
+          "XHAFA, FATOS"
+        ],
+        "publisher": "Ediciones Paraninfo, S.A.",
+        "publishedDate": "2006-01-01",
+        "description": "Este libro trata de proporcionar conocimientos basicos de la programacion que permitan al lector sentar una base solida. Prueba de ello es que el libro explica las tecnicas fundamentales de la programacion que se pueden aplicar con independencia del lenguaje de programacion. Asi, se ha evitado el enfoque basado en explicar las caracteristicas de un lenguaje de programacion concreto y se ha optado por un enfoque basado en conceptos y tecnicas. Se ha escogido como lenguaje de programacion el C++ debido a su amplia utilizacion en las ingenierias y en la industria.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9788497324854"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "8497324854"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 488,
+        "printType": "BOOK",
+        "categories": ["Computers"],
+        "averageRating": 3,
+        "ratingsCount": 1,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "0.1.2.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=KUl9OqsCYOQC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=KUl9OqsCYOQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.ar/books?id=KUl9OqsCYOQC&pg=PR7&dq=programacion&hl=&cd=3&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=KUl9OqsCYOQC&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=KUl9OqsCYOQC"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 5021.25,
+          "currencyCode": "ARS"
+        },
+        "retailPrice": {
+          "amount": 5021.25,
+          "currencyCode": "ARS"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=KUl9OqsCYOQC&rdid=book-KUl9OqsCYOQC&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 5021250000,
+              "currencyCode": "ARS"
+            },
+            "retailPrice": {
+              "amountInMicros": 5021250000,
+              "currencyCode": "ARS"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/Programaci%C3%B3n_en_C++_para_ingenieros-sample-pdf.acsm?id=KUl9OqsCYOQC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=KUl9OqsCYOQC&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "El libro <b>Programación</b> en C++ para ingenieros explica los fundamentos de la <b>programación</b> estructurada en C++, haciendo especial énfasis en técnicas de <b>programación</b>. Aunque el libro ha sido concebido como herramienta de soporte a las&nbsp;..."
       }
     },
     {
-      "book": {
-        "title": "1984",
-        "pages": 328,
-        "genre": "Ciencia ficción",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1657781256i/61439040.jpg",
-        "synopsis": "Una inquietante visión de un futuro distópico y totalitario.",
-        "year": 1949,
-        "ISBN": "978-0451524935",
-        "author": {
-          "name": "George Orwell",
-          "otherBooks": ["Rebelión en la granja"]
-        }
+      "kind": "books#volume",
+      "id": "sPxXd5cDQD0C",
+      "etag": "SXb1xyCKkHg",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/sPxXd5cDQD0C",
+      "volumeInfo": {
+        "title": "Cuerpo de Profesores de Enseñanza Secundaria. Formacion Y Orientacion Laboral. Programacion Didactica Ebook",
+        "authors": ["José Enrique Peña Alcaraz", "Víctor López Fenoy"],
+        "publisher": "MAD-Eduforma",
+        "publishedDate": "2005-04-15",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9788466544597"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "8466544593"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 229,
+        "printType": "BOOK",
+        "categories": ["Education"],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.1.1.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=sPxXd5cDQD0C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=sPxXd5cDQD0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.ar/books?id=sPxXd5cDQD0C&pg=PA16&dq=programacion&hl=&cd=4&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=sPxXd5cDQD0C&dq=programacion&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Cuerpo_de_Profesores_de_Ense%C3%B1anza_Secun.html?hl=&id=sPxXd5cDQD0C"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/Cuerpo_de_Profesores_de_Ense%C3%B1anza_Secun-sample-pdf.acsm?id=sPxXd5cDQD0C&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=sPxXd5cDQD0C&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "<b>PROGRAMACIÓN</b> DIDÁCTICA Y <b>PROGRAMACIÓN</b> DE AULA Programar supone tomar en consideración los distintos elementos que intervienen en la acción enseñanza-aprendizaje, elementos que no constituyen entes aislados sino que, entre ellos,&nbsp;..."
       }
     },
     {
-      "book": {
-        "title": "Apocalipsis Zombie",
-        "pages": 444,
-        "genre": "Zombies",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1422626176i/24762432.jpg",
-        "synopsis": "Un gallego se queda en casa en pleno apocalipsis zombie y acaba casi salvando el mundo",
-        "year": 2001,
-        "ISBN": "978-4444532611",
-        "author": {
-          "name": "Manel Loreiro",
-          "otherBooks": []
-        }
+      "kind": "books#volume",
+      "id": "KZI-DwAAQBAJ",
+      "etag": "C0xg6puSx0M",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/KZI-DwAAQBAJ",
+      "volumeInfo": {
+        "title": "100 Problemas resueltos de programación en lenguaje C para ingeniería",
+        "authors": [
+          "MAESTRE TORREBLANCA, JOSE Mª",
+          "ALVARADO ALDEA, IGNACIO",
+          "VIVAS VENEGAS, CARLOS",
+          "ZAFRA CABEZA, ASCENSIÓN"
+        ],
+        "publisher": "Ediciones Paraninfo, S.A.",
+        "publishedDate": "2017-01-01",
+        "description": "Las (mal llamadas) clases de problemas constituyen una herramienta fundamental en cualquier disciplina científica. Tradicionalmente, estas clases cumplen el objetivo de complementar aspectos más o menos difíciles de la disciplina en cuestión. Sin embargo, deberían entenderse más como un entrenamiento que capacite al estudiante para resolver cualquier problema (en sentido amplio) que se le pueda plantear en su vida profesional. Con este espíritu se concibe esta colección de “Problemas resueltos” que Ediciones Paraninfo pone a disposición de profesores y estudiantes de una gran variedad de disciplinas académicas. Este libro contiene ejercicios de programación resueltos en lenguaje C. El principal objetivo de esta obra es conseguir que el lector adquiera y afiance sus conocimientos sobre la metodología de la programación estructurada mediante ejercicios guiados de complejidad variable. Además, los primeros capítulos presentan también los algoritmos expresados en diagrama de flujo, para hacer más accesible el procedimiento adoptado. Se hace un recorrido de contenidos de complejidad creciente; se comienza con las estructuras de control básicas (secuencial, iterativa y bifurcaciones), para continuar con las estructuras básicas de datos estáticas, como son los vectores y matrices. Seguidamente se presentan los bloques funcionales de programación, funciones en C, registros, gestión de memoria dinámica, listas enlazadas y ficheros. Esta obra proporciona a los lectores material adicional de estudio, así como un enfoque práctico de la programación, ilustrando los distintos conceptos y recursos con ejercicios resueltos.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9788428339698"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "8428339694"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 268,
+        "printType": "BOOK",
+        "categories": ["Technology & Engineering"],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=KZI-DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=KZI-DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.ar/books?id=KZI-DwAAQBAJ&printsec=frontcover&dq=programacion&hl=&cd=5&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=KZI-DwAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=KZI-DwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 5018.39,
+          "currencyCode": "ARS"
+        },
+        "retailPrice": {
+          "amount": 5018.39,
+          "currencyCode": "ARS"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=KZI-DwAAQBAJ&rdid=book-KZI-DwAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 5018390000,
+              "currencyCode": "ARS"
+            },
+            "retailPrice": {
+              "amountInMicros": 5018390000,
+              "currencyCode": "ARS"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/100_Problemas_resueltos_de_programaci%C3%B3n-sample-pdf.acsm?id=KZI-DwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=KZI-DwAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Las (mal llamadas) clases de problemas constituyen una herramienta fundamental en cualquier disciplina científica."
       }
     },
     {
-      "book": {
-        "title": "Dune",
-        "pages": 412,
-        "genre": "Ciencia ficción",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1555447414i/44767458.jpg",
-        "synopsis": "En el inhóspito planeta desértico de Arrakis, una gran intriga política y familiar se desarrolla.",
-        "year": 1965,
-        "ISBN": "978-0441172719",
-        "author": {
-          "name": "Frank Herbert",
-          "otherBooks": ["El mesías de Dune", "Hijos de Dune"]
-        }
+      "kind": "books#volume",
+      "id": "NWHRciSLmuoC",
+      "etag": "ZChZB3xSoOo",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/NWHRciSLmuoC",
+      "volumeInfo": {
+        "title": "Programación Gráfica para Ingenieros",
+        "authors": ["José Miguel Molina Martínez", "Manuel Jiménez Buendía"],
+        "publisher": "Marcombo",
+        "publishedDate": "2010-06",
+        "description": "El presente libro surge para que los alumnos que cursan estudios de Ingeniería, en sus diferentes especialidades, puedan comprender y aplicar la programación gráfica a la resolución de problemas reales en el ámbito ingenieril. Además de los fundamentos teóricos para comprender en qué consiste la Programación Gráfica, se ha dotado de un fuerte contenido práctico donde se muestra como, empleado este lenguaje de programación, el Ingeniero puede abordar y solucionar problemas muy tan diversos como el desarrollo de aplicaciones para realizar cálculos complejos de ingeniería o la automatización y control de procesos industriales, agrarios y alimentarios, etc. Además, se explica la forma de comunicar e interactuar con Controladores de Automatización Programables (PAC) y tarjetas y dispositivos de adquisición de datos (DAQ), etc. Asimismo se muestra cómo programar PLCs mediante OPC y su integración con otros equipos empleados en automatización y control. La evolución de los dispositivos móviles, el empleo de cámaras web para la supervisión de procesos, y las comunicaciones a través de Internet, son conjugadas en diversas aplicaciones donde se muestra la forma de resolver problemas específicos del ámbito de la ingeniería. Para el desarrollo de aplicaciones SCADA se trata, de una forma práctica, como cómo utilizar el módulo DSC. José Miguel Molina Martínez (Dr. Ingeniero Agrónomo) y Manuel Jiménez Buendía (Dr. Ingeniero en Automática), disponen de una trayectoria de más de 10 años como profesores e investigadores en la Universidad Politécnica de Cartagena. Además han dirigido y coordinado cursos y másteres de especialización sobre Programación Gráfica y desarrollo de aplicaciones SCADA. En la actualidad sus actividades de I+D+I se centran en el desarrollo tecnológico de equipos y software para la gestión de los recursos hídricos y energéticos.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9788426716767"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "8426716768"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 262,
+        "printType": "BOOK",
+        "categories": ["Technology & Engineering"],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.1.0.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=NWHRciSLmuoC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=NWHRciSLmuoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.ar/books?id=NWHRciSLmuoC&printsec=frontcover&dq=programacion&hl=&cd=6&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=NWHRciSLmuoC&dq=programacion&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Programaci%C3%B3n_Gr%C3%A1fica_para_Ingenieros.html?hl=&id=NWHRciSLmuoC"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/Programaci%C3%B3n_Gr%C3%A1fica_para_Ingenieros-sample-pdf.acsm?id=NWHRciSLmuoC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=NWHRciSLmuoC&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Para el desarrollo de aplicaciones SCADA se trata, de una forma práctica, como cómo utilizar el módulo DSC. José Miguel Molina Martínez (Dr. Ingeniero Agrónomo) y Manuel Jiménez Buendía (Dr."
       }
     },
     {
-      "book": {
-        "title": "La Guía del Autoestopista Galáctico",
-        "pages": 216,
-        "genre": "Ciencia ficción",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1653311117i/6691227.jpg",
-        "synopsis": "Un viaje absurdo y cómico por el espacio, con toallas.",
-        "year": 1979,
-        "ISBN": "978-0345391803",
-        "author": {
-          "name": "Douglas Adams",
-          "otherBooks": [
-            "El restaurante del fin del mundo",
-            "La vida, el universo y todo lo demás"
-          ]
-        }
+      "kind": "books#volume",
+      "id": "5XSUDAAAQBAJ",
+      "etag": "xBma+bGdTEA",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/5XSUDAAAQBAJ",
+      "volumeInfo": {
+        "title": "Fundamentos de programación",
+        "authors": [
+          "José Antonio Cerrada Somolinos",
+          "Manuel E. Collado Machuca"
+        ],
+        "publisher": "Editorial Universitaria Ramon Areces",
+        "publishedDate": "2010-07-14",
+        "description": "El objetivo fundamental de este libro es introducir de manera progresiva y sistemática una correcta metodología para la programación, independientemente del lenguaje utilizado. Se utiliza como vehículo para la enseñanza de la programación el lenguaje C±. El texto esta diseñado para poder seguir una asignatura de Fundamentos de Programación de primer curso de Grado en Informática, pero es un texto introductorio que puede seguir cualquier lector que tenga conocimientos generales de matemáticas, capacidad de razonamiento lógico y organización y aptitud para expresarse formalmente.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9788480049566"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "8480049561"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 481,
+        "printType": "BOOK",
+        "categories": ["Computers"],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.4.2.0.preview.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=5XSUDAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=5XSUDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.ar/books?id=5XSUDAAAQBAJ&printsec=frontcover&dq=programacion&hl=&cd=7&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=5XSUDAAAQBAJ&dq=programacion&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Fundamentos_de_programaci%C3%B3n.html?hl=&id=5XSUDAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=5XSUDAAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "El texto esta diseñado para poder seguir una asignatura de Fundamentos de Programación de primer curso de Grado en Informática, pero es un texto introductorio que puede seguir cualquier lector que tenga conocimientos generales de ..."
       }
     },
     {
-      "book": {
-        "title": "Neuromante",
-        "pages": 271,
-        "genre": "Ciencia ficción",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1554437249i/6088007.jpg",
-        "synopsis": "Una visión profética de la ciber-realidad y la inteligencia artificial.",
-        "year": 1984,
-        "ISBN": "978-0441569595",
-        "author": {
-          "name": "William Gibson",
-          "otherBooks": ["Conde Cero", "Mona Lisa Acelerada"]
-        }
+      "kind": "books#volume",
+      "id": "0JNZ0G7gv5IC",
+      "etag": "WVMolwSmqAk",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/0JNZ0G7gv5IC",
+      "volumeInfo": {
+        "title": "Introducción a la programación en C",
+        "authors": ["Marco A. Peña Basurto", "José M. Cela Espín"],
+        "publisher": "Univ. Politèc. de Catalunya",
+        "publishedDate": "2010-06",
+        "description": "Texto de introduccion a la programacion usando el lenguaje C, centrado en la exposicion de los aspectos fundamentales del estandar ANSI C actual. Si bien en la actualidad existen otros lenguajes de programacion muy populares, como el C++ o el JAVA, su comprension exige unos solidos conocimientos de las bases de programacion en C. Este libro contiene la materia de un curso completo de un semestre de duracion y no presupone ningun conocimiento previo sobre ordenadores ni programacion. En cada capitulo se proponen un conjunto de ejercicios que facilitan la asimilacion y el seguimiento de los contenidos. Dichos ejercicios son lo suficientemente simples como para no requerir conocimientos adicionales de otras materias (matematicas, fisica, contabilidad, etc.) e ilustran los conceptos fundamentales. El resultado de todo ello es una obra concisa pero autocontenida, cuyo objetivo es servir de guia de aprendizaje para quien da sus primeros pasos en la programacion de ordenadores usando el lenguaje C",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9788483014295"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "8483014297"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 153,
+        "printType": "BOOK",
+        "categories": ["Computers"],
+        "averageRating": 4,
+        "ratingsCount": 4,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "1.2.2.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=0JNZ0G7gv5IC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=0JNZ0G7gv5IC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.ar/books?id=0JNZ0G7gv5IC&printsec=frontcover&dq=programacion&hl=&cd=8&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=0JNZ0G7gv5IC&dq=programacion&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Introducci%C3%B3n_a_la_programaci%C3%B3n_en_C.html?hl=&id=0JNZ0G7gv5IC"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/Introducci%C3%B3n_a_la_programaci%C3%B3n_en_C-sample-pdf.acsm?id=0JNZ0G7gv5IC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=0JNZ0G7gv5IC&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Texto de introduccion a la programacion usando el lenguaje C, centrado en la exposicion de los aspectos fundamentales del estandar ANSI C actual."
       }
     },
     {
-      "book": {
-        "title": "Fahrenheit 451",
-        "pages": 249,
-        "genre": "Ciencia ficción",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1383718290i/13079982.jpg",
-        "synopsis": "Una sociedad futura donde los libros están prohibidos y 'bomberos' queman cualquier libro que encuentren.",
-        "year": 1953,
-        "ISBN": "978-1451673319",
-        "author": {
-          "name": "Ray Bradbury",
-          "otherBooks": ["Crónicas marcianas", "El hombre ilustrado"]
-        }
+      "kind": "books#volume",
+      "id": "eHL-DAAAQBAJ",
+      "etag": "rNA02jNtvFk",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/eHL-DAAAQBAJ",
+      "volumeInfo": {
+        "title": "Lenguajes de programación y procesadores",
+        "authors": [
+          "Francisco Gortázar Bellas",
+          "Raquel Martínez Unanue",
+          "Víctor Diego Fresno Fernández"
+        ],
+        "publisher": "Editorial Centro de Estudios Ramon Areces SA",
+        "publishedDate": "2016-09-06",
+        "description": "Este libro ofrece una respuesta a un nuevo enfoque de unificación de las asignaturas de Lenguajes de Programación y Procesadores de Lenguajes, que han adoptado algunos grados relacionados con las Tecnologías de la Información, combinando contenidos de teoría de los lenguajes de programación, procesadores de lenguajes, paradigmas de los lenguajes de programación, aspectos pragmáticos de los lenguajes de programación y lenguajes de marcado.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9788499612492"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "8499612490"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 361,
+        "printType": "BOOK",
+        "categories": ["Computers"],
+        "averageRating": 5,
+        "ratingsCount": 1,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=eHL-DAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=eHL-DAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.ar/books?id=eHL-DAAAQBAJ&printsec=frontcover&dq=programacion&hl=&cd=9&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=eHL-DAAAQBAJ&dq=programacion&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Lenguajes_de_programaci%C3%B3n_y_procesadore.html?hl=&id=eHL-DAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.ar/books/download/Lenguajes_de_programaci%C3%B3n_y_procesadore-sample-pdf.acsm?id=eHL-DAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=eHL-DAAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Este libro ofrece una respuesta a un nuevo enfoque de unificación de las asignaturas de Lenguajes de Programación y Procesadores de Lenguajes, que han adoptado algunos grados relacionados con las Tecnologías de la Información, ..."
       }
     },
     {
-      "book": {
-        "title": "El resplandor",
-        "pages": 688,
-        "genre": "Terror",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1641398308i/60038757.jpg",
-        "synopsis": "Una familia se muda a un hotel aislado para el invierno donde una presencia siniestra influye en el padre hacia la violencia.",
-        "year": 1977,
-        "ISBN": "978-0307743657",
-        "author": {
-          "name": "Stephen King",
-          "otherBooks": ["Carrie", "It"]
-        }
-      }
-    },
-    {
-      "book": {
-        "title": "Drácula",
-        "pages": 418,
-        "genre": "Terror",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1387151694i/17245.jpg",
-        "synopsis": "La historia del infame conde Drácula y su intento de mudarse de Transilvania a Inglaterra.",
-        "year": 1897,
-        "ISBN": "978-0486411095",
-        "author": {
-          "name": "Bram Stoker",
-          "otherBooks": [
-            "La joya de las siete estrellas",
-            "La madriguera del gusano blanco"
-          ]
-        }
-      }
-    },
-    {
-      "book": {
-        "title": "Frankenstein",
-        "pages": 280,
-        "genre": "Terror",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1669159060i/63631742.jpg",
-        "synopsis": "Un científico obsesionado crea una criatura viva a partir de partes de cuerpos robadas, con consecuencias desastrosas.",
-        "year": 1818,
-        "ISBN": "978-0486282114",
-        "author": {
-          "name": "Mary Shelley",
-          "otherBooks": ["El último hombre", "Valperga"]
-        }
-      }
-    },
-    {
-      "book": {
-        "title": "La llamada de Cthulhu",
-        "pages": 43,
-        "genre": "Terror",
-        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1485924654i/34094154.jpg",
-        "synopsis": "La historia de un monstruo ancestral que amenaza con revivir y dominar el mundo.",
-        "year": 1928,
-        "ISBN": "978-1542461690",
-        "author": {
-          "name": "H.P. Lovecraft",
-          "otherBooks": ["El horror de Dunwich", "En las montañas de la locura"]
-        }
+      "kind": "books#volume",
+      "id": "wkXyzQEACAAJ",
+      "etag": "43saT7+7JA4",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/wkXyzQEACAAJ",
+      "volumeInfo": {
+        "title": "Fundamentos de programación",
+        "subtitle": "algoritmos, estructura de datos y objetos",
+        "authors": ["Luis Joyanes Aguilar"],
+        "publishedDate": "2020",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "6071514681"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9786071514684"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 713,
+        "printType": "BOOK",
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.ar/books?id=wkXyzQEACAAJ&dq=programacion&hl=&cd=10&source=gbs_api",
+        "infoLink": "http://books.google.com.ar/books?id=wkXyzQEACAAJ&dq=programacion&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Fundamentos_de_programaci%C3%B3n.html?hl=&id=wkXyzQEACAAJ"
+      },
+      "saleInfo": {
+        "country": "AR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "AR",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=wkXyzQEACAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
       }
     }
   ]
