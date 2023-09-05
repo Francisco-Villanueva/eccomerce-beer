@@ -1,6 +1,6 @@
 //USERS MODELS
 const S = require("sequelize");
-// const db = require("../config/database");
+const db = require("../db");
 
 class User extends S.Model {
 }
@@ -23,7 +23,7 @@ User.init(
       type: S.BOOLEAN,
     }
   },
-  { /*sequelize: db,*/ modelName: "user" }
+  { sequelize: db, modelName: "user" }
 );
 
 module.exports = User;

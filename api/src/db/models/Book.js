@@ -1,9 +1,8 @@
 //BOOKS MODELS
 const S = require("sequelize");
-// const db = require("../config/database");
+const db = require("../db");
 
-class Book extends S.Model {
-}
+class Book extends S.Model {}
 
 Book.init(
   {
@@ -51,7 +50,7 @@ Book.init(
       allowNull: true,
     },
   },
-  { /*sequelize: db,*/ modelName: "book" }
+  { sequelize: db, modelName: "book" }
 );
 
 module.exports = Book;
