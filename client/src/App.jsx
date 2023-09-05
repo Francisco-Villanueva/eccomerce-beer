@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <h1>Beer</h1>
-      <h2>Victoria</h2>
+      <h2>victoria</h2>
     </>
   );
 }
