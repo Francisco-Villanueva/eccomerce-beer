@@ -1,6 +1,6 @@
 //CART_BUY MODELS
 const S = require("sequelize");
-// const db = require("../config/database");
+const db = require("../db");
 
 class Cart_buy extends S.Model {
 }
@@ -12,7 +12,7 @@ Cart_buy.init(
       allowNull: false,
     }
   },
-  { /*sequelize: db,*/ modelName: "cart_buy" }
+  { sequelize: db, modelName: "cart_buy" }
 );
 
 module.exports = Cart_buy;
