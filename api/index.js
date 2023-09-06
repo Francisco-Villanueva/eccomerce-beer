@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use("/api", authAPI);
 // app.get("/api/secret", validateUser);
 
-db.sync().then(() => {
+db.sync({force: false}).then(() => {
   app.listen(ENV_PORT, () => {
     console.log(`Server listening at port ${ENV_PORT}`);
   });
