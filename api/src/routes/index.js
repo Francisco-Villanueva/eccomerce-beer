@@ -3,6 +3,8 @@ const express = require("express");
 const router = express.Router();
 const cartRouter = require("./Cart/cart.Routes");
 const userRoutes = require("./user/userRotes");
+const adminRoutes = require("./admin/adminRoutes");
+
 const userProductsRoutes = require("./products/user/productsRoutes");
 
 router.get("/test", (req, res) => {
@@ -11,7 +13,8 @@ router.get("/test", (req, res) => {
 
 router.use("/cart", cartRouter);
 router.use("/user", userRoutes);
-router.use("/user/products", userProductsRoutes);
+router.use("/admin", adminRoutes);
 
+router.use("/user/products", userProductsRoutes);
 
 module.exports = router;

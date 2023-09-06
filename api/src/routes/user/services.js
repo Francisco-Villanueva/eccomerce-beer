@@ -43,8 +43,6 @@ const login = async (req, res) => {
 
       const token = generateToken(payload);
 
-      console.log({ token });
-
       res.cookie("token", token);
 
       res.send(payload);
