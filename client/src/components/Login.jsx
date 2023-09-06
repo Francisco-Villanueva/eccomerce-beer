@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [emailData, setEmailData] = useState("");
   const [passwordData, setPasswordData] = useState("");
   const { toggleAuth } = useContext(AuthContext);
@@ -22,14 +24,14 @@ const Login = () => {
     e.preventDefault();
     axios
       .post("http://localhost:4000/user/login", {
-        // ver la ruta del back
         email: emailData,
         password: passwordData,
       })
-      // .then((res) => res.data)
+      .then((res) => res.data)
       .then((user) => {
         toggleAuth(user);
-        //navigate(`/login/${user.name}`);
+        console.log(user);
+        navigate(`/login/${user.username}`);
         console.log("Login exitoso:", user);
       })
       .catch((error) => {
@@ -38,10 +40,10 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h3>Login</h3>
+    <div className="layout m-5">
+      <h3 className="title is-3">Login</h3>
       <form onSubmit={handleSubmit}>
-        <label>Email</label>
+        <label className="label my-3">Email</label>
         <input
           className="input"
           type="email"
@@ -50,7 +52,7 @@ const Login = () => {
           onChange={handleEmailChange}
         ></input>
 
-        <label>Password</label>
+        <label className="label my-3">Password</label>
         <input
           className="input"
           type="password"
@@ -58,7 +60,9 @@ const Login = () => {
           value={passwordData.password}
           onChange={handlePasswordChange}
         ></input>
-        <button type="submit">Login</button>
+        <button type="submit" className="button is-link my-5">
+          Login
+        </button>
       </form>
     </div>
   );

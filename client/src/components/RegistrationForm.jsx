@@ -41,10 +41,10 @@ function RegistrationForm() {
       });
   };
   return (
-    <div>
-      <h3>Register</h3>
+    <div className="layout m-5">
+      <h3 className="title is-3">Register</h3>
       <form onSubmit={handleSubmit}>
-        <label>Name</label>
+        <label className="label my-3">Name</label>
         <input
           className="input"
           type="text"
@@ -52,7 +52,8 @@ function RegistrationForm() {
           value={nameData.name}
           onChange={handleNameChange}
         />
-        <label>Email</label>
+
+        <label className="label my-3">Email</label>
         <input
           className="input"
           type="email"
@@ -60,7 +61,8 @@ function RegistrationForm() {
           value={emailData.email}
           onChange={handleEmailChange}
         ></input>
-        <label>Password</label>
+
+        <label className="label my-3">Password</label>
         <input
           className="input"
           type="password"
@@ -68,12 +70,16 @@ function RegistrationForm() {
           value={passwordData.password}
           onChange={handlePasswordChange}
         ></input>
-        <button type="submit">Submit</button>
+        <button type="submit" className="button is-link my-5">
+          Submit
+        </button>
       </form>
       {isRegistered ? (
-        <p>Registration successful! Go to Login!</p>
+        <p className="has-text-success">
+          Registration successful! Go to Login!
+        </p>
       ) : (
-        <p>Registration failed!</p>
+        <p className="has-text-danger">Registration failed!</p>
       )}
     </div>
   );
