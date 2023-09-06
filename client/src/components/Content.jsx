@@ -13,7 +13,7 @@ function Content() {
   useEffect(() => {
     if (token) {
       axios
-        .get("/me") // ver la ruta del back
+        .get("http://localhost:4000/user/me") // ver la ruta del back
         .then((response) => {
           const user = response.data;
           toggleAuth(user);

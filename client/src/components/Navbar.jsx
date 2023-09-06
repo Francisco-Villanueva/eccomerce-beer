@@ -59,17 +59,26 @@ function Navbar() {
             </div>
           </div>
         </div>
-
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="buttons">
-              <a className="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a className="button is-light">Log in</a>
-            </div>
-          </div>
+        <div>
+          <p>
+            {isAuthenticated
+              ? `Welcome ${user.name}!!!`
+              : "You are logged out!"}
+          </p>
+          <button
+            onClick={() => (isAuthenticated ? logoutUser() : loginUser())}
+          >
+            {isAuthenticated ? "Logout" : "Login"}
+          </button>
         </div>
+        {!isAuthenticated && (
+          <div>
+            <p>Not a User?</p>
+            <Link to="/register">
+              <button>REGISTER</button>
+            </Link>
+          </div>
+        )}
       </div>
     </nav>
   );

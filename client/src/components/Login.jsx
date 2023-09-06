@@ -21,7 +21,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/login", {
+      .post("http://localhost:4000/user/login", {
         // ver la ruta del back
         email: emailData,
         password: passwordData,
