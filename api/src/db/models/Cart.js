@@ -2,8 +2,7 @@
 const S = require("sequelize");
 const db = require("../db");
 
-class Cart extends S.Model {
-}
+class Cart extends S.Model {}
 
 Cart.init(
   {
@@ -14,7 +13,11 @@ Cart.init(
     amount: {
       type: S.INTEGER,
       allowNull: false,
-    }
+    },
+    cartBuyId: {
+      type: S.INTEGER,
+      allowNull: true,
+    },
   },
   { sequelize: db, modelName: "cart" }
 );
