@@ -1,11 +1,17 @@
-const User = require("../../db/models/User");
+const { Cart, User } = require("../../db/models");
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await User.findAll();
+    const users = await User.findAll({
+      include: {
+        model: Cart,
+        as: "user_cart",
+      },
+    });
 
     res.status(200).json(users);
   } catch (error) {
+    console.log({ error });
     res.status(401).send(error);
   }
 };

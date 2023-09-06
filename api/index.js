@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use("/", routes);
 // app.get("/api/secret", validateUser);
 
-db.sync({ force: false }).then(() => {
+db.sync({ alter: true }).then(() => {
   app.listen(ENV_PORT, () => {
     console.log(`Server listening at port ${ENV_PORT}`);
   });
