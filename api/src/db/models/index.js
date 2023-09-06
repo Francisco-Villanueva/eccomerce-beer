@@ -18,5 +18,4 @@ Esta relacion la sacamos porque al momento de crear un libro te
 // User.hasOne(Cart, { foreignKey: "cartId" });
 // Cart_buy.belongsTo(Cart, { foreignKey: "cartId" });
 // Cart_buy.belongsTo(Book, { foreignKey: "bookId" });
-
 module.exports = { User, Book, Cart, Cart_buy };
