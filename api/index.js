@@ -3,8 +3,15 @@ const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
 const { validateUser } = require("./src/middleware/auth");
+const db = require("./src/db/db");
+const cors = require("cors");
+const corsOptions = {
+  origin: "http://localhost:5173",
+  // Agrega otras opciones de configuración si es necesario.
+};
+app.use(cors(corsOptions));
 // Express Route File Requires
-const authAPI = require("./src/routes");
+const routes = require("./src/routes");
 require("dotenv").config();
 const { ENV_PORT } = process.env;
 
@@ -12,9 +19,11 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Express Routing
-app.use("/api", authAPI);
+app.use("/", routes);
 // app.get("/api/secret", validateUser);
 
-app.listen(ENV_PORT, () => {
-  console.log(`Server listening at port ${ENV_PORT}`);
+db.sync({ force: false }).then(() => {
+  app.listen(ENV_PORT, () => {
+    console.log(`Server listening at port ${ENV_PORT}`);
+  });
 });
