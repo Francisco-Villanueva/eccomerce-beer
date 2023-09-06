@@ -26,12 +26,11 @@ function RegistrationForm() {
     e.preventDefault();
     axios
       .post("/register", {
-        // ver la ruta del back
         name: nameData,
         email: emailData,
         password: passwordData,
       })
-      // .then((res) => res.data)
+      .then((res) => res.data)
       .then((user) => {
         console.log("Registro exitoso:", user);
         setIsRegistered(true);
