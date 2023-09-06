@@ -19,7 +19,7 @@ Book.init(
       allowNull: false,
     },
     price: {
-      type: S.BOOLEAN,
+      type: S.INTEGER,
     },
     img: {
       type: S.STRING,
@@ -41,7 +41,7 @@ Book.init(
       type: S.STRING,
       allowNull: true,
     },
-    avergaRating: {
+    averageRating: {
       type: S.FLOAT,
       allowNull: true,
     },
