@@ -26,6 +26,7 @@ function RegistrationForm() {
     e.preventDefault();
     axios
       .post("/register", {
+        // ver la ruta del back
         name: nameData,
         email: emailData,
         password: passwordData,
@@ -68,16 +69,12 @@ function RegistrationForm() {
           value={passwordData.password}
           onChange={handlePasswordChange}
         ></input>
-        <button type="submit" className="button is-link my-5">
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
       {isRegistered ? (
-        <p className="has-text-success">
-          Registration successful! Go to Login!
-        </p>
+        <p>Registration successful! Go to Login!</p>
       ) : (
-        <p className="has-text-danger">Registration failed!</p>
+        <p>Registration failed!</p>
       )}
     </div>
   );

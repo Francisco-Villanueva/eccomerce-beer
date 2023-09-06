@@ -22,6 +22,7 @@ const Login = () => {
     e.preventDefault();
     axios
       .post("/login", {
+        // ver la ruta del back
         email: emailData,
         password: passwordData,
       })
@@ -57,9 +58,7 @@ const Login = () => {
           value={passwordData.password}
           onChange={handlePasswordChange}
         ></input>
-        <button type="submit" className="button is-link my-5">
-          Login
-        </button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
