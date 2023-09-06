@@ -3,11 +3,11 @@ const User = require("../../db/models/User");
 
 const register = async (req, res) => {
   try {
-    const { email, password, username } = req.body;
+    const { email, password, name } = req.body;
 
     const newUser = await User.create({
       email,
-      username,
+      username: name,
       password,
     });
 
