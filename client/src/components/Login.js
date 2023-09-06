@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Login = () => {
   const [emailData, setEmailData] = useState("");
   const [passwordData, setPasswordData] = useState("");
+  const { toggleAuth } = useContext(AuthContext);
 
   const handleEmailChange = (e) => {
     const value = e.target.value;
@@ -22,9 +25,9 @@ const Login = () => {
         email: emailData,
         password: passwordData,
       })
-      .then((res) => res.data)
+      // .then((res) => res.data)
       .then((user) => {
-        //toggleAuth(user);
+        toggleAuth(user);
         //navigate(`/login/${user.name}`);
         console.log("Login exitoso:", user);
       })

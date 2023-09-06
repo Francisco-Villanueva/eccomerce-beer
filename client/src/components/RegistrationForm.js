@@ -30,7 +30,7 @@ function RegistrationForm() {
         email: emailData,
         password: passwordData,
       })
-      .then((res) => res.data)
+      // .then((res) => res.data)
       .then((user) => {
         console.log("Registro exitoso:", user);
         setIsRegistered(true);

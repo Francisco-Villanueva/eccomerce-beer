@@ -1,17 +1,12 @@
-import { useState } from "react";
+import React from "react";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import AuthContextProvider from "./contexts/AuthContext";
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <>
-      <h1>Beer</h1>
-      <h2>Nico</h2>
-    </>
-  );
-}
+const App = () => (
+  <AuthContextProvider>
+    <Navbar />
+  </AuthContextProvider>
+);
 
 export default App;
-
-
