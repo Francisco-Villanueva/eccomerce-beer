@@ -1,9 +1,8 @@
 // cree el router el que une todas las rutas
 const express = require("express");
 const router = express.Router();
+const userRoutes = require("./user/userRotes");
 
-router.get("/test", (req, res) => {
-  res.send("anda el server");
-});
+router.use("/user", userRoutes);
 
 module.exports = router;

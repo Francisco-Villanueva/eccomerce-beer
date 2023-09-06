@@ -3,13 +3,12 @@ const User = require("../../db/models/User");
 
 const register = async (req, res) => {
   try {
-    const { email, password, name, lastname } = req.body;
+    const { email, password, username } = req.body;
 
     const newUser = await User.create({
-      email: email,
-      lastname: lastname,
-      name: name,
-      password: password,
+      email,
+      username,
+      password,
     });
 
     res.status(201).json(newUser);
@@ -39,8 +38,7 @@ const login = async (req, res) => {
     } else {
       const payload = {
         email: userToCheck.email,
-        name: userToCheck.name,
-        lastname: userToCheck.lastname,
+        username: userToCheck.username,
       };
 
       const token = generateToken(payload);
