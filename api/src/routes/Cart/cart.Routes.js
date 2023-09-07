@@ -5,6 +5,6 @@ const cartServices = require("./services");
 
 router.post("/add/:bookId/:userId", cartServices.add);
 router.delete("/remove/:bookId/:userId", cartServices.remove);
-router.put("/edit/:bookId/:userId", cartServices.editAmount);
+router.put("/edit/:bookId/:userId/:cartId", cartServices.editAmount);
 
 module.exports = router;

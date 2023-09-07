@@ -14,6 +14,10 @@ class User extends S.Model {
       return console.log("se rompe el validate: ", err);
     }
   }
+
+  // async createCart(id){
+
+  // }
 }
 
 User.init(

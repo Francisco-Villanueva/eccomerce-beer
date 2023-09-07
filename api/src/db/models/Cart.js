@@ -6,13 +6,9 @@ class Cart extends S.Model {}
 
 Cart.init(
   {
-    count: {
+    price: {
       type: S.INTEGER,
-      allowNull: false,
-    },
-    amount: {
-      type: S.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
   },
   { sequelize: db, modelName: "cart" }
