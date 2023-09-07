@@ -4,14 +4,11 @@ const router = express.Router();
 const cartRouter = require("./Cart/cart.Routes");
 const userRoutes = require("./user/userRotes.js");
 const userProductsRoutes = require("./products/user/productsRoutes");
+const adminRoutes = require("./admin/adminRoutes");
 
-router.get("/test", (req, res) => {
-  res.send("anda el server");
-});
-
+router.use("/admin", adminRoutes);
 router.use("/cart", cartRouter);
 router.use("/user", userRoutes);
 router.use("/user/products", userProductsRoutes);
-
 
 module.exports = router;
