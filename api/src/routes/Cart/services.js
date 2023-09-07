@@ -57,67 +57,78 @@ const remove = async (req, res) => {
   try {
     if (!userId) res.status(400).json({ message: "User ID not provided." });
 
+    const user = await User.findOne({
+      where: { id: userId },
+      include: {
+        model: Cart_buy,
+        as: "user_cartBuy",
+      },
+    });
+    if (!user) res.status(400).json({ message: "User not found." });
+
     let actualCartBuy = await Cart_buy.findOne({
-      where: { cartId: userId, bookId },
+      where: { userId, bookId },
     });
 
     if (!actualCartBuy)
       res.status(404).json({ message: "error trying to remove book" });
 
-    if (actualCartBuy.amount > 1) {
-      actualCartBuy.amount -= 1;
+    if (actualCartBuy.count > 1) {
+      actualCartBuy.count -= 1;
       await actualCartBuy.save();
     } else {
       await actualCartBuy.destroy();
     }
 
-    const cart = await Cart.findOne({ where: { userId } });
+    // const cart = await Cart.findOne({ where: { userId } });
 
-    if (cart) {
-      cart.cart_buys = await Cart_buy.findAll({ where: { cartId: userId } });
-      await cart.save();
-    }
+    // if (cart) {
+    //   cart.cart_buys = await Cart_buy.findAll({ where: { cartId: userId } });
+    //   await cart.save();
+    // }
 
-    return res
-      .status(200)
-      .json({ message: "Product removed from the cart successfully." });
+    return res.status(200).json({ message: "Product removed from the cart successfully." });
   } catch (error) {
     console.log("error trying to remove the product from the cart", error);
   }
 };
 
 //EDIT AMOUNT OF PRODUCTS
-const editAmount = async (req, res) => {
+const editCount = async (req, res) => {
   const { bookId, userId } = req.params;
-  const { newAmount } = req.body;
+  const { newCount } = req.body;
 
   try {
     if (!userId) res.status(400).json({ message: "User ID not provided." });
 
-    let actualCartBuy = await Cart_buy.findOne({
-      where: { cartId: userId, bookId },
+    const user = await User.findOne({
+      where: { id: userId },
+      include: {
+        model: Cart_buy,
+        as: "user_cartBuy",
+      },
     });
-    if (!actualCartBuy || newAmount <= 0)
-      res
-        .status(404)
-        .json({ message: "error trying to change the product's amount" });
+    if (!user) res.status(400).json({ message: "User not found." });
+    
+    let actualCartBuy = await Cart_buy.findOne({
+      where: { userId, bookId },
+    });
+    if (!actualCartBuy || newCount <= 0) res.status(404).json({ message: "error trying to change the product's amount" });
 
-    actualCartBuy.amount = newAmount;
+    actualCartBuy.count = newCount;
     actualCartBuy.save();
 
-    const cart = await Cart.findOne({ where: { userId }, include: [Cart_buy] });
+    // const cart = await Cart.findOne({ where: { userId }, include: [Cart_buy] });
 
-    if (cart) {
-      cart.cart_buys = await Cart_buy.findAll({ where: { cartId: userId } });
-      await cart.save();
-    }
+    // if (cart) {
+    //   cart.cart_buys = await Cart_buy.findAll({ where: { cartId: userId } });
+    //   await cart.save();
+    // }
 
-    return res
-      .status(200)
-      .json({ message: "Product'amount changed successfully." });
+    return res.status(200).json({ message: "Product'amount changed successfully." });
   } catch (error) {
     console.log("error trying to change the product's amount", error);
   }
 };
 
-module.exports = { add, remove, editAmount };
+module.exports = { add, remove, editCount };
