@@ -37,13 +37,12 @@ const login = async (req, res) => {
       return res.sendStatus(401);
     } else {
       const payload = {
+        id: userToCheck.id,
         email: userToCheck.email,
         username: userToCheck.username,
       };
 
       const token = generateToken(payload);
-
-      console.log({ token });
 
       res.cookie("token", token);
 
