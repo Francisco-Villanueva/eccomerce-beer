@@ -1,34 +1,51 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "bulma/css/bulma.min.css";
 import "./App.css";
-<<<<<<< HEAD
 import Navbar from "./components/Navbar";
-import AuthContextProvider from "./contexts/AuthContext";
+import AuthContextProvider, { AuthContext } from "./contexts/AuthContext";
 import Content from "./components/Content";
-
-const App = () => (
-  <AuthContextProvider>
-    <Navbar />
-    <Content />
-  </AuthContextProvider>
-);
-=======
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom";
 import { AllProducts } from "./components/AllProducts";
 import { OneProduct } from "./components/OneProduct";
+import RegistrationForm from "./components/RegistrationForm";
+import Login from "./components/Login";
+import axios from "axios";
 
 function App() {
   const [count, setCount] = useState(0);
+  const { toggleAuth } = useContext(AuthContext);
+  const userId = localStorage.getItem("userId");
+
+  useEffect(() => {
+    console.log(userId);
+    if (userId) {
+      axios
+        .get(`http://localhost:4000/admin/users/${userId}`)
+        .then((response) => {
+          const user = response;
+          console.log(response);
+          // toggleAuth(user);
+        })
+        .catch((error) => {
+          console.error("Error al verificar el token:", error);
+        });
+    }
+  }, [userId]);
 
   return (
     <>
-      <Routes>
-        <Route path="/" element= {<AllProducts/>} />
-        <Route path="/user/products/:id" element= {<OneProduct/>} />
-      </Routes>
+      <AuthContextProvider>
+        <Navbar />
+        <Content />
+        <Routes>
+          <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<AllProducts />} />
+          <Route path="/user/products/:id" element={<OneProduct />} />
+        </Routes>
+      </AuthContextProvider>
     </>
   );
 }
->>>>>>> develop
 
 export default App;
