@@ -8,7 +8,7 @@ Cart_buy.init(
   {
     bookId: {
       type: S.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     amount: {
       type: S.INTEGER,
