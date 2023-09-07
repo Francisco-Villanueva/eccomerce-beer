@@ -4,13 +4,15 @@ import RegistrationForm from "./RegistrationForm";
 import Login from "./Login";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 function Content() {
   const { toggleAuth } = useContext(AuthContext);
-  const token = Cookies.get("token");
+  // const token = Cookies.get("token");
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
+    console.log(token);
     if (token) {
       axios
         .get("http://localhost:4000/user/me")

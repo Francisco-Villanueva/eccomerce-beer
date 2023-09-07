@@ -51,6 +51,7 @@ function RegistrationForm() {
           placeholder="name"
           value={nameData.name}
           onChange={handleNameChange}
+          required
         />
 
         <label className="label my-3">Email</label>
@@ -60,6 +61,7 @@ function RegistrationForm() {
           placeholder="email"
           value={emailData.email}
           onChange={handleEmailChange}
+          required
         ></input>
 
         <label className="label my-3">Password</label>
@@ -69,6 +71,7 @@ function RegistrationForm() {
           placeholder="password"
           value={passwordData.password}
           onChange={handlePasswordChange}
+          required
         ></input>
         <button type="submit" className="button is-link my-5">
           Submit

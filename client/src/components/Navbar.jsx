@@ -4,11 +4,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-import { useLocation } from "react-router-dom";
 
 function Navbar() {
-  const location = useLocation();
-  const { isAuthenticated, toggleAuth } = useContext(AuthContext);
+  const { isAuthenticated, toggleAuth, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const loginUser = () => {
     navigate("/login");
@@ -19,7 +17,7 @@ function Navbar() {
       .post("http://localhost:4000/user/logout")
       .then(() => {
         toggleAuth(null);
-        // navigate("/");
+        navigate("/home");
       })
       .catch((error) => {
         console.error("Error en el logout:", error);
@@ -43,9 +41,14 @@ function Navbar() {
         </Link>
       </div>
       <div className="navbar-item navbar-end">
-        <Link to="/home">
-          <button className="button is-ghost has-text-white">BOOKS</button>
-        </Link>
+        {isAuthenticated ? (
+          <Link to="/books">
+            <button className="button is-ghost has-text-white">BOOKS</button>
+          </Link>
+        ) : (
+          <div />
+        )}
+
         {isAuthenticated ? (
           <Link to="/cart">
             <button className="button is-ghost has-text-white">CART</button>
@@ -69,6 +72,9 @@ function Navbar() {
                   <button className="button is-light">REGISTER</button>
                 </Link>
               </div>
+            )}
+            {isAuthenticated && (
+              <div className="notification">Welcome, {user.username}!!!</div>
             )}
           </div>
         </div>

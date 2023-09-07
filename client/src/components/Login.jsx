@@ -50,6 +50,7 @@ const Login = () => {
           placeholder="email"
           value={emailData.email}
           onChange={handleEmailChange}
+          required
         ></input>
 
         <label className="label my-3">Password</label>
@@ -59,6 +60,7 @@ const Login = () => {
           placeholder="password"
           value={passwordData.password}
           onChange={handlePasswordChange}
+          required
         ></input>
         <button type="submit" className="button is-link my-5">
           Login
