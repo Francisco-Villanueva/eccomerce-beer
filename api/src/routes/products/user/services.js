@@ -1,5 +1,4 @@
 const axios = require("axios");
-const { prices } = require("./prices.json");
 require("dotenv").config();
 const { API_KEY } = process.env;
 const getAllProducts = async (req, res) => {
@@ -10,20 +9,12 @@ const getAllProducts = async (req, res) => {
     const products2 = await axios.get(
       `https://www.googleapis.com/books/v1/volumes?q=programacion&key=${API_KEY}&startIndex=40&maxResults=40`
     );
-
     const allBooks = products1.data.items.concat(products2.data.items);
     console.log({ products: allBooks.length });
-    for (let i = 0; i < allBooks.length; i++) {
-      const prices_index = prices.findIndex((e) => e.idBook === allBooks[i].id);
-      if (i < 1) {
-        console.log({ index: prices_index, prices: prices[prices_index] });
-      }
-      if (prices[prices_index]) {
-        allBooks[i].price = prices[prices_index].price;
-      }
-    }
-
-    res.status(200).json({ ej: prices[0], allBooks });
+    allBooks.forEach(
+      (m) => ((m.volumeInfo.price = Math.trunc(Math.random() * 1000)), 1)
+    );
+    res.status(200).json(allBooks);
   } catch (error) {
     console.log(error);
     res.status(401).json({ error });
@@ -37,15 +28,6 @@ const getProductById = async (req, res) => {
     const book = await axios.get(
       `https://www.googleapis.com/books/v1/volumes/${product_id}`
     );
-    const prices_index = prices.findIndex((e) => e.idBook === book.data.id);
-    // console.log({
-    //   index: prices_index,
-    //   prices: prices[prices_index],
-    //   BOOK_ID: book.data.id,
-    // });
-    if (prices[prices_index]) {
-      book.data.price = prices[prices_index].price;
-    }
 
     res.status(200).json(book.data);
   } catch (error) {
