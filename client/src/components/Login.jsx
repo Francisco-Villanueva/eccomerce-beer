@@ -8,7 +8,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [emailData, setEmailData] = useState("");
   const [passwordData, setPasswordData] = useState("");
-  const { toggleAuth } = useContext(AuthContext);
+  const { toggleAuth, loginUser } = useContext(AuthContext);
 
   const handleEmailChange = (e) => {
     const value = e.target.value;
@@ -22,22 +22,23 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:4000/user/login", {
-        email: emailData,
-        password: passwordData,
-      })
-      .then((res) => res.data)
-      .then((user) => {
-        localStorage.setItem("userId", user.id);
-        toggleAuth(user);
-        console.log(user);
-        navigate(`/login/${user.username}`);
-        console.log("Login exitoso:", user);
-      })
-      .catch((error) => {
-        console.error("Error en el login:", error);
-      });
+    loginUser(emailData, passwordData);
+    // axios
+    //   .post("http://localhost:4000/user/login", {
+    //     email: emailData,
+    //     password: passwordData,
+    //   })
+    //   .then((res) => res.data)
+    //   .then((user) => {
+    //     localStorage.setItem("userId", user.id);
+    //     toggleAuth(user);
+    //     console.log(user);
+    //     navigate(`/login/${user.username}`);
+    //     console.log("Login exitoso:", user);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error en el login:", error);
+    //   });
   };
 
   return (

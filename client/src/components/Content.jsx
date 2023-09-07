@@ -19,7 +19,8 @@ function Content() {
         .get(`http://localhost:4000/admin/users/${userId}`)
         .then((response) => {
           const user = response;
-          toggleAuth(user);
+          console.log(response);
+          // toggleAuth(user);
         })
         .catch((error) => {
           console.error("Error al verificar el token:", error);
