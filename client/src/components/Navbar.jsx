@@ -18,6 +18,7 @@ function Navbar() {
       .then(() => {
         toggleAuth(null);
         navigate("/home");
+        localStorage.clear();
       })
       .catch((error) => {
         console.error("Error en el logout:", error);

@@ -13,7 +13,7 @@ import axios from "axios";
 
 function App() {
   const [count, setCount] = useState(0);
-  const { toggleAuth } = useContext(AuthContext);
+  const { toggleAuth, setUser } = useContext(AuthContext);
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
@@ -22,7 +22,8 @@ function App() {
       axios
         .get(`http://localhost:4000/admin/users/${userId}`)
         .then((response) => {
-          const user = response;
+          const user = response.data;
+          setUser(user);
           console.log(response);
           // toggleAuth(user);
         })
@@ -34,16 +35,14 @@ function App() {
 
   return (
     <>
-      <AuthContextProvider>
-        <Navbar />
-        <Content />
-        <Routes>
-          <Route path="/register" element={<RegistrationForm />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<AllProducts />} />
-          <Route path="/user/products/:id" element={<OneProduct />} />
-        </Routes>
-      </AuthContextProvider>
+      <Navbar />
+      <Content />
+      <Routes>
+        <Route path="/register" element={<RegistrationForm />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<AllProducts />} />
+        <Route path="/user/products/:id" element={<OneProduct />} />
+      </Routes>
     </>
   );
 }

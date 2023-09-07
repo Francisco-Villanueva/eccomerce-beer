@@ -41,7 +41,10 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const setUser = (user) => {
-    setIsLoggedIn((state) => ({ ...state, user }));
+    setIsLoggedIn({
+      user: user,
+      isAuthenticated: true,
+    });
   };
 
   return (
