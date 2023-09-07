@@ -13,7 +13,9 @@ const getAllProducts = async (req, res) => {
 
     const allBooks = products1.data.items.concat(products2.data.items);
     console.log({ products: allBooks.length });
-
+    allBooks.forEach(
+      (m) => ((m.volumeInfo.price = Math.trunc(Math.random() * 1000)), 1)
+    );
     res.status(200).json(allBooks);
   } catch (error) {
     console.log(error);
