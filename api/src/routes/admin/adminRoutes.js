@@ -7,6 +7,7 @@ const {
   deleteUser,
   getUserById,
 } = require("./services");
+
 router.get("/users", getAllUsers);
 router.get("/users/:userId", getUserById);
 router.put("/users/:userId", makeAdmin);
