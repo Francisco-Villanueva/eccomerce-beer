@@ -76,10 +76,7 @@ export const OneProduct = () => {
                 {book.volumeInfo.language || "Unknown"}
               </p>
 
-              <button
-                className="button is-primary"
-                style={{ margin: "10px 0px" }}
-              >
+              <button className="button" style={{ margin: "10px 0px" }}>
                 <i
                   className="ti ti-garden-cart"
                   style={{ marginRight: "5px" }}
