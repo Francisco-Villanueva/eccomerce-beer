@@ -37,6 +37,7 @@ const login = async (req, res) => {
       return res.sendStatus(401);
     } else {
       const payload = {
+        id: userToCheck.id,
         email: userToCheck.email,
         username: userToCheck.username,
       };
