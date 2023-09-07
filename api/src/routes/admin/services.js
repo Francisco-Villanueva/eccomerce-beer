@@ -53,8 +53,21 @@ const deleteUser = async (req, res) => {
     res.status(401).send(error);
   }
 };
+
+const getUserById = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const user = await User.findByPk(userId);
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(401).send(error);
+  }
+};
 module.exports = {
   getAllUsers,
   makeAdmin,
   deleteUser,
+  getUserById,
 };
