@@ -12,7 +12,8 @@ Cart_buy.init(
     },
     count: {
       type: S.INTEGER,
-      allowNull: false,
+      defaultValue: 1,
+      allowNull: true,
     },
   },
   { sequelize: db, modelName: "cart_buy" }
