@@ -4,11 +4,13 @@ import RegistrationForm from "./RegistrationForm";
 import Login from "./Login";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import axios from "axios";
 // import Cookies from "js-cookie";
 
 function Content() {
   const { toggleAuth } = useContext(AuthContext);
   // const token = Cookies.get("token");
+  localStorage.setItem("token", "vic");
   const token = localStorage.getItem("token");
 
   useEffect(() => {
