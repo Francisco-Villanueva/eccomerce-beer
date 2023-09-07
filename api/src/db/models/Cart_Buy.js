@@ -10,7 +10,7 @@ Cart_buy.init(
       type: S.INTEGER,
       allowNull: true,
     },
-    amount: {
+    count: {
       type: S.INTEGER,
       allowNull: false,
     },
