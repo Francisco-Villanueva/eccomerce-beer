@@ -4,8 +4,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
+import { useLocation } from "react-router-dom";
 
 function Navbar() {
+  const location = useLocation();
+  const { isAuthenticated, toggleAuth } = useContext(AuthContext);
   const navigate = useNavigate();
   const loginUser = () => {
     navigate("/login");
@@ -23,64 +26,52 @@ function Navbar() {
       });
   };
 
-  const { isAuthenticated } = useContext(AuthContext);
-
   useEffect(() => {
     console.log("isAuthenticated: " + isAuthenticated);
   }, [isAuthenticated]);
 
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
-        <a
-          role="button"
-          className="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
+    <nav className="navbar has-background-black-ter mb-4">
+      <div className="buttons">
+        <Link to="/">
+          <h1
+            className="navbar-item"
+            style={{ fontWeight: "bold", color: "white" }}
+          >
+            HOME
+          </h1>
+        </Link>
       </div>
-
-      <div id="navbarBasicExample" className="navbar-menu">
-        <div className="navbar-start">
-          <a className="navbar-item">Home</a>
-          <a className="navbar-item">Documentation</a>
-          <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link">More</a>
-
-            <div className="navbar-dropdown">
-              <a className="navbar-item"></a>
-              <a className="navbar-item"></a>
-              <a className="navbar-item"></a>
-              <a className="navbar-item"></a>
-            </div>
+      <div className="navbar-item navbar-end">
+        <Link to="/">
+          <button className="button is-ghost has-text-white">BOOKS</button>
+        </Link>
+        {isAuthenticated ? (
+          <Link to="/favorites">
+            <button className="button is-ghost has-text-white">CART</button>
+          </Link>
+        ) : (
+          <div />
+        )}
+      </div>
+      <div className="navbar-item navbar-end">
+        <div className="navbar-item">
+          <div className="buttons">
+            <button
+              className="button is-light"
+              onClick={() => (isAuthenticated ? logoutUser() : loginUser())}
+            >
+              {isAuthenticated ? "Logout" : "Login"}
+            </button>
           </div>
         </div>
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="buttons">
-              {!isAuthenticated ? (
-                <a class="button is-primary">
-                  <div>
-                    <Link to="/register">
-                      <strong>Sign up</strong>
-                    </Link>
-                  </div>
-                </a>
-              ) : null}
-              <a
-                className="button is-light"
-                onClick={() => (isAuthenticated ? logoutUser() : loginUser())}
-              >
-                {isAuthenticated ? "Logout" : "Login"}
-              </a>
-            </div>
+        {!isAuthenticated && (
+          <div>
+            <Link to="/register">
+              <button className="button is-light">REGISTER</button>
+            </Link>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );
