@@ -33,7 +33,7 @@ function Navbar() {
   return (
     <nav className="navbar has-background-black-ter mb-4">
       <div className="buttons">
-        <Link to="/">
+        <Link to="/home">
           <h1
             className="navbar-item"
             style={{ fontWeight: "bold", color: "white" }}
@@ -43,11 +43,11 @@ function Navbar() {
         </Link>
       </div>
       <div className="navbar-item navbar-end">
-        <Link to="/">
+        <Link to="/home">
           <button className="button is-ghost has-text-white">BOOKS</button>
         </Link>
         {isAuthenticated ? (
-          <Link to="/favorites">
+          <Link to="/cart">
             <button className="button is-ghost has-text-white">CART</button>
           </Link>
         ) : (
@@ -63,15 +63,15 @@ function Navbar() {
             >
               {isAuthenticated ? "Logout" : "Login"}
             </button>
+            {!isAuthenticated && (
+              <div>
+                <Link to="/register">
+                  <button className="button is-light">REGISTER</button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
-        {!isAuthenticated && (
-          <div>
-            <Link to="/register">
-              <button className="button is-light">REGISTER</button>
-            </Link>
-          </div>
-        )}
       </div>
     </nav>
   );
