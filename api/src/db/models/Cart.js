@@ -14,10 +14,6 @@ Cart.init(
       type: S.INTEGER,
       allowNull: false,
     },
-    cartBuyId: {
-      type: S.INTEGER,
-      allowNull: true,
-    },
   },
   { sequelize: db, modelName: "cart" }
 );
