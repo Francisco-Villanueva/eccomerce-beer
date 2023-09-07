@@ -10,23 +10,22 @@ import axios from "axios";
 function Content() {
   const { toggleAuth } = useContext(AuthContext);
   // const token = Cookies.get("token");
-  localStorage.setItem("token", "vic");
-  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    console.log(token);
-    if (token) {
+    console.log(userId);
+    if (userId) {
       axios
-        .get("http://localhost:4000/user/me")
+        .get(`http://localhost:4000/admin/users/${userId}`)
         .then((response) => {
-          const user = response.data;
+          const user = response;
           toggleAuth(user);
         })
         .catch((error) => {
           console.error("Error al verificar el token:", error);
         });
     }
-  }, [token]);
+  }, [userId]);
 
   return (
     <div>

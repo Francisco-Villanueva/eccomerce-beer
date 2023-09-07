@@ -29,6 +29,7 @@ const Login = () => {
       })
       .then((res) => res.data)
       .then((user) => {
+        localStorage.setItem("userId", user.id);
         toggleAuth(user);
         console.log(user);
         navigate(`/login/${user.username}`);
