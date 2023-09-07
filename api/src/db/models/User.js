@@ -14,6 +14,10 @@ class User extends S.Model {
       return console.log("se rompe el validate: ", err);
     }
   }
+
+  // async createCart(id){
+
+  // }
 }
 
 User.init(
@@ -32,6 +36,7 @@ User.init(
     },
     isAdmin: {
       type: S.BOOLEAN,
+      defaultValue: false,
     },
     salt: {
       type: S.STRING,
