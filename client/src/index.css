@@ -95,3 +95,9 @@ button:focus-visible {
 .card-content {
   margin-top: 100px;
 }
+
+.carrito {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  max-width: 90%;
+}

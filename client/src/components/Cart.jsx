@@ -7,7 +7,7 @@ export const Cart = () => {
   const { cartBooks } = useContext(CartBooksContext);
 
   return (
-    <div>
+    <div className="carrito">
       {cartBooks[0]?.map((book, index) => (
         <div key={index}>
           <div className="individual" style={{ width: "820px" }}>
@@ -40,7 +40,6 @@ export const Cart = () => {
                     <span className="title is-6">Authors:</span>{" "}
                     {book.volumeInfo.authors?.join(", ") || "Not Authors"}
                   </p>
-                  {/* <p>{book.volumeInfo.price}</p> */}
                   <p>
                     <span className="title is-6">Release Date:</span>{" "}
                     {book.volumeInfo.publishedDate || "Unknown"}
@@ -63,7 +62,7 @@ export const Cart = () => {
                   </p>
                   <p>
                     <span className="title is-6">Price:</span>{" "}
-                    {`$${book.price}` || "Unknown"}
+                    {book.price ? `$${book.price}` : "$200"}
                   </p>
                   {/* <input /> */}
                 </div>
