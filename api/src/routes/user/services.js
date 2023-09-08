@@ -5,6 +5,17 @@ const register = async (req, res) => {
   try {
     const { email, password, name } = req.body;
 
+    const userToCheck = await User.findOne({
+      where: {
+        email,
+      },
+    });
+
+    // console.log(userToCheck);
+    if (userToCheck) {
+      return res.status(400).send("This mail has been already registered!");
+    }
+
     const newUser = await User.create({
       email,
       username: name,
@@ -73,7 +84,7 @@ const me = async (req, res) => {
   res.send(req.user);
 };
 
-const editProfile = async (req, res)=>{
+const editProfile = async (req, res) => {
   const { email, password, username } = req.body;
   const { userId } = req.params;
   try {
@@ -90,7 +101,7 @@ const editProfile = async (req, res)=>{
   } catch (error) {
     console.log("error trying to update profile", error);
   }
-}
+};
 
 module.exports = {
   register,
