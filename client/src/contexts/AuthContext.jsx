@@ -15,6 +15,8 @@ const AuthContextProvider = ({ children }) => {
     isAuthenticated: initialState.isAuthenticated,
   });
 
+  const [carrito, setCarrito] = useState([]);
+
   const toggleAuth = (user) =>
     setIsLoggedIn({
       user: user,
@@ -45,11 +47,12 @@ const AuthContextProvider = ({ children }) => {
       user: user,
       isAuthenticated: true,
     });
+    setCarrito(user.user_cartBuy);
   };
 
   return (
     <AuthContext.Provider
-      value={{ ...isLoggedIn, toggleAuth, loginUser, setUser }}
+      value={{ ...isLoggedIn, toggleAuth, loginUser, setUser, carrito }}
     >
       {children}
     </AuthContext.Provider>
