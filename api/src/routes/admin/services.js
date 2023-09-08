@@ -58,7 +58,15 @@ const getUserById = async (req, res) => {
   try {
     const { userId } = req.params;
 
-    const user = await User.findByPk(userId);
+    const user = await User.findOne({
+      where: {
+        id: userId,
+      },
+      include: {
+        model: Cart_buy,
+        as: "user_cartBuy",
+      },
+    });
 
     res.status(200).json(user);
   } catch (error) {

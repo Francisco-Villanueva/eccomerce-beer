@@ -38,11 +38,11 @@ const add = async (req, res) => {
 
     // return res.status(200).json(actualCartBuy);
 
-    if (!actualCartBuy[1]) {
-      await actualCartBuy[0].update({
-        count: cantdad,
-      });
-    }
+    // if (!actualCartBuy[1]) {
+    //   await actualCartBuy[0].update({
+    //     count: cantdad,
+    //   });
+    // }
     //ver por que hay delay en la devolucuion del user con los datos "actualizados" de sus libros.
     return res.status(200).json(user);
   } catch (error) {
@@ -87,7 +87,9 @@ const remove = async (req, res) => {
     //   await cart.save();
     // }
 
-    return res.status(200).json({ message: "Product removed from the cart successfully." });
+    return res
+      .status(200)
+      .json({ message: "Product removed from the cart successfully." });
   } catch (error) {
     console.log("error trying to remove the product from the cart", error);
   }
@@ -109,11 +111,14 @@ const editCount = async (req, res) => {
       },
     });
     if (!user) res.status(400).json({ message: "User not found." });
-    
+
     let actualCartBuy = await Cart_buy.findOne({
       where: { userId, bookId },
     });
-    if (!actualCartBuy || newCount <= 0) res.status(404).json({ message: "error trying to change the product's amount" });
+    if (!actualCartBuy || newCount <= 0)
+      res
+        .status(404)
+        .json({ message: "error trying to change the product's amount" });
 
     actualCartBuy.count = newCount;
     actualCartBuy.save();
@@ -125,7 +130,9 @@ const editCount = async (req, res) => {
     //   await cart.save();
     // }
 
-    return res.status(200).json({ message: "Product'amount changed successfully." });
+    return res
+      .status(200)
+      .json({ message: "Product'amount changed successfully." });
   } catch (error) {
     console.log("error trying to change the product's amount", error);
   }
