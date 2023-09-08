@@ -43,7 +43,7 @@ function Navbar() {
       </div>
       <div className="navbar-item navbar-end">
         {isAuthenticated ? (
-          <Link to="/books">
+          <Link to="/home">
             <button className="button is-ghost has-text-white">BOOKS</button>
           </Link>
         ) : (
