@@ -1,5 +1,6 @@
-import React from 'react'
-import { useContext, useEffect } from "react";
+import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 import { CartBooksContext } from "../contexts/CartBookContext";
 
 export const Cart = () => {
@@ -9,9 +10,10 @@ export const Cart = () => {
 
   return (
     <div>
-      {cartBooks.map((book) => {
-        <p key={book.id}>{book.volumeInfo.title}</p>
-      })}
+      {cartBooks[0]?.map((m, index) => (
+        <p key={index}>{m.volumeInfo?.title}</p>
+      ))}
     </div>
-  )
-}
+  );
+};
+
