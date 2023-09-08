@@ -50,6 +50,7 @@ const add = async (req, res) => {
     return res.status(200).json(user);
   } catch (error) {
     console.log("error trying to add products to the cart", error);
+    res.status(401).send(error)
   }
 };
 
@@ -58,7 +59,7 @@ const remove = async (req, res) => {
   const { bookId, userId } = req.params;
 
   try {
-    if (!userId) res.status(400).json({ message: "User ID not provided." });
+    if (!userId) return res.status(400).json({ message: "User ID not provided." });
 
     const user = await User.findOne({
       where: { id: userId },
@@ -67,14 +68,14 @@ const remove = async (req, res) => {
         as: "user_cartBuy",
       },
     });
-    if (!user) res.status(400).json({ message: "User not found." });
+    if (!user) return res.status(400).json({ message: "User not found." });
 
     let actualCartBuy = await Cart_buy.findOne({
       where: { userId, bookId },
     });
 
     if (!actualCartBuy)
-      res.status(404).json({ message: "error trying to remove book" });
+      return res.status(404).json({ message: "error trying to remove book" });
 
     if (actualCartBuy.count > 1) {
       actualCartBuy.count -= 1;
@@ -95,6 +96,7 @@ const remove = async (req, res) => {
       .json({ message: "Product removed from the cart successfully." });
   } catch (error) {
     console.log("error trying to remove the product from the cart", error);
+    res.status(401).send(error)
   }
 };
 
@@ -138,6 +140,7 @@ const editCount = async (req, res) => {
       .json({ message: "Product'amount changed successfully." });
   } catch (error) {
     console.log("error trying to change the product's amount", error);
+    res.status(401).send(error)
   }
 };
 

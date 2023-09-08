@@ -16,6 +16,8 @@ export const AllProducts = () => {
       });
   }, []);
 
+  console.log(books[0]);
+
   return (
     <div className="columns is-multiline is-centered">
       {books.map((book) => {
@@ -41,7 +43,7 @@ export const AllProducts = () => {
                 </div>
                 <div className="card-content">
                   <div className="content">
-                    {book.volumeInfo.title}
+                    <p>{book.volumeInfo.title}</p>
                   </div>
                 </div>
               </div>
