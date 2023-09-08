@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const { Cart, Cart_buy, User } = require("../../db/models");
 const { getProductById } = require("../products/user/services");
-const { default: axios } = require("axios");
+const axios = require("axios");
 
 //ADD PRODUCTS
 const add = async (req, res) => {
@@ -38,19 +38,14 @@ const add = async (req, res) => {
       });
     }
 
-    // return res.status(200).json(actualCartBuy);
+    const books = await axios.get(
+      `http://localhost:4000/user/products/${bookId}`
+    );
 
-    // if (!actualCartBuy[1]) {
-    //   await actualCartBuy[0].update({
-    //     count: cantdad,
-    //   });
-    // }
-    //ver por que hay delay en la devolucuion del user con los datos "actualizados" de sus libros.
-
-    return res.status(200).json(user);
+    return res.status(200).json(books.data);
   } catch (error) {
     console.log("error trying to add products to the cart", error);
-    res.status(401).send(error)
+    res.status(401).send(error);
   }
 };
 
@@ -59,7 +54,8 @@ const remove = async (req, res) => {
   const { bookId, userId } = req.params;
 
   try {
-    if (!userId) return res.status(400).json({ message: "User ID not provided." });
+    if (!userId)
+      return res.status(400).json({ message: "User ID not provided." });
 
     const user = await User.findOne({
       where: { id: userId },
@@ -96,7 +92,7 @@ const remove = async (req, res) => {
       .json({ message: "Product removed from the cart successfully." });
   } catch (error) {
     console.log("error trying to remove the product from the cart", error);
-    res.status(401).send(error)
+    res.status(401).send(error);
   }
 };
 
@@ -140,7 +136,7 @@ const editCount = async (req, res) => {
       .json({ message: "Product'amount changed successfully." });
   } catch (error) {
     console.log("error trying to change the product's amount", error);
-    res.status(401).send(error)
+    res.status(401).send(error);
   }
 };
 
