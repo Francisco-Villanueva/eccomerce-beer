@@ -10,6 +10,7 @@ import { OneProduct } from "./components/OneProduct";
 import RegistrationForm from "./components/RegistrationForm";
 import Login from "./components/Login";
 import axios from "axios";
+import { Cart } from "./components/Cart";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -42,6 +43,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<AllProducts />} />
         <Route path="/user/products/:id" element={<OneProduct />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </>
   );
