@@ -105,6 +105,10 @@ export const OneProduct = () => {
                 <span className="title is-6">Language:</span>{" "}
                 {book.volumeInfo.language || "Unknown"}
               </p>
+              <p>
+                <span className="title is-6">Price:</span>{" "}
+                {`$${book.price}` || "Unknown"}
+              </p>
 
               {!isCart ? (
                 <button
