@@ -33,8 +33,7 @@ const AuthContextProvider = ({ children }) => {
       .then((user) => {
         localStorage.setItem("userId", user.id);
         toggleAuth(user);
-        // console.log(user);
-        // navigate(`/login/${user.username}`);
+        navigate(`/home`);
         console.log("Login exitoso:", user);
       })
       .catch((error) => {
