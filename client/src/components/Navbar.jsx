@@ -32,7 +32,7 @@ function Navbar() {
   return (
     <nav className="navbar has-background-black-ter mb-4">
       <div className="buttons">
-        <Link to="/home">
+        <Link to="/">
           <h1
             className="navbar-item"
             style={{ fontWeight: "bold", color: "white" }}
