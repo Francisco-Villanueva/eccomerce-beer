@@ -42,7 +42,7 @@ const add = async (req, res) => {
       `http://localhost:4000/user/products/${bookId}`
     );
 
-    return res.status(200).json(books.data);
+    return res.status(200).json(user);
   } catch (error) {
     console.log("error trying to add products to the cart", error);
     res.status(401).send(error);
@@ -87,9 +87,7 @@ const remove = async (req, res) => {
     //   await cart.save();
     // }
 
-    return res
-      .status(200)
-      .json({ message: "Product removed from the cart successfully." });
+    return res.status(200).json(user);
   } catch (error) {
     console.log("error trying to remove the product from the cart", error);
     res.status(401).send(error);

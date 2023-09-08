@@ -16,7 +16,7 @@ export const AllProducts = () => {
       });
   }, []);
 
-  console.log(books[0]);
+  // console.log(books[0]);
 
   return (
     <div className="columns is-multiline is-centered">
@@ -24,11 +24,11 @@ export const AllProducts = () => {
         const thumbnail = book.volumeInfo.imageLinks
           ? book.volumeInfo.imageLinks.smallThumbnail
           : "https://cdn-icons-png.flaticon.com/512/2421/2421033.png";
-  
+
         return (
           <div className="column is-one-fifth" key={book.id}>
             <Link
-              to={`user/products/${book.id}`}
+              to={`/user/products/${book.id}`}
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <div className="card">
@@ -54,4 +54,3 @@ export const AllProducts = () => {
     </div>
   );
 };
-
