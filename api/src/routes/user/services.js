@@ -73,10 +73,30 @@ const me = async (req, res) => {
   res.send(req.user);
 };
 
+const editProfile = async (req, res)=>{
+  const { email, password, username } = req.body;
+  const { userId } = req.params;
+  try {
+    const user = await User.findByPk(userId);
+    if (!user) res.status(404).json({ message: "User not found" });
+
+    if (username) user.username = username;
+    if (email) user.email = email;
+    if (password) user.password = password;
+
+    await user.save();
+
+    res.status(200).json({ message: "Profile updated successfully", user });
+  } catch (error) {
+    console.log("error trying to update profile", error);
+  }
+}
+
 module.exports = {
   register,
   login,
   logout,
   secret,
   me,
+  editProfile,
 };
