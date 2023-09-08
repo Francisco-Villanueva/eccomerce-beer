@@ -6,9 +6,9 @@ import "./index.css";
 import AuthContextProvider, { AuthContext } from "./contexts/AuthContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AuthContextProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <AuthContextProvider>
       <App />
-    </BrowserRouter>
-  </AuthContextProvider>
+    </AuthContextProvider>
+  </BrowserRouter>
 );

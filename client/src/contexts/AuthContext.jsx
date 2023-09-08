@@ -1,6 +1,6 @@
 import { useState, createContext } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   user: null,
@@ -11,7 +11,7 @@ const initialState = {
 export const AuthContext = createContext(initialState);
 
 const AuthContextProvider = ({ children }) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState({
     user: initialState.user,
     isAuthenticated: initialState.isAuthenticated,
@@ -33,7 +33,7 @@ const AuthContextProvider = ({ children }) => {
       .then((user) => {
         localStorage.setItem("userId", user.id);
         toggleAuth(user);
-        // navigate("/");
+        navigate("/");
         console.log("Login exitoso:", user);
       })
       .catch((error) => {
