@@ -2,6 +2,8 @@
 const express = require("express");
 const router = express.Router();
 const { Cart, Cart_buy, User } = require("../../db/models");
+const { getProductById } = require("../products/user/services");
+const { default: axios } = require("axios");
 
 //ADD PRODUCTS
 const add = async (req, res) => {
@@ -44,6 +46,7 @@ const add = async (req, res) => {
     //   });
     // }
     //ver por que hay delay en la devolucuion del user con los datos "actualizados" de sus libros.
+
     return res.status(200).json(user);
   } catch (error) {
     console.log("error trying to add products to the cart", error);
