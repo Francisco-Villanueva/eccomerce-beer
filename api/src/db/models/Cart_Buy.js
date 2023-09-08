@@ -7,7 +7,7 @@ class Cart_buy extends S.Model {}
 Cart_buy.init(
   {
     bookId: {
-      type: S.INTEGER,
+      type: S.STRING,
       allowNull: true,
     },
     count: {

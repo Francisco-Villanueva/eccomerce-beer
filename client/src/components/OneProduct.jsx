@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
-import { CartBooksContext } from "../contexts/CartBookContext"
+import { CartBooksContext } from "../contexts/CartBookContext";
 
 export const OneProduct = () => {
   const { id } = useParams();
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(true);
-  const [isCart, setIsCart] = useState(false)
-  const {cartBooks, addToCart, removeFromCart} = useContext(CartBooksContext)
+  const [isCart, setIsCart] = useState(false);
+  const { cartBooks, addToCart, removeFromCart } = useContext(CartBooksContext);
 
   useEffect(() => {
     axios
@@ -24,15 +24,15 @@ export const OneProduct = () => {
       });
   }, [id]);
 
-  function handleAddCart () {
-    addToCart(id)
+  function handleAddCart() {
+    addToCart(id);
+    setIsCart(true)
   }
 
-  function handleRemoveCart () {
-    removeFromCart(id)
+  function handleRemoveCart() {
+    removeFromCart(id);
+    setIsCart(false)
   }
-
-
 
   console.log(cartBooks);
 
@@ -92,13 +92,32 @@ export const OneProduct = () => {
                 {book.volumeInfo.language || "Unknown"}
               </p>
 
-              <button className="button" style={{ margin: "10px 0px" }} onClick={handleAddCart}>
-                <i
-                  className="ti ti-garden-cart"
-                  style={{ marginRight: "5px" }}
-                />
-                Add to Cart
-              </button>
+              {!isCart ? (
+                <button
+                  className="button"
+                  style={{ margin: "10px 0px" }}
+                  onClick={handleAddCart}
+                >
+                  <i
+                    className="ti ti-garden-cart"
+                    style={{ marginRight: "5px" }}
+                  />
+                  Add to Cart
+                </button>
+              ) : (
+                <button
+                  className="button"
+                  style={{ margin: "10px 0px" }}
+                  onClick={handleRemoveCart}
+                >
+                  <i
+                    className="ti ti-garden-cart"
+                    style={{ marginRight: "5px" }}
+                  />
+                  Remove to Cart
+                </button>
+              )}
+
               {/* <input /> */}
             </div>
           </div>
