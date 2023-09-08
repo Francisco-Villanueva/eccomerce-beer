@@ -5,14 +5,13 @@ import { CartBooksContext } from "../contexts/CartBookContext";
 export const Cart = () => {
   const { cartBooks } = useContext(CartBooksContext);
 
-
-
+  console.log(cartBooks);
 
   return (
     <div>
-      Cart
-      {/* {cartBooks.map((book) => {
-      })} */}
+      {cartBooks.map((book) => {
+        <p key={book.id}>{book.volumeInfo.title}</p>
+      })}
     </div>
   )
 }
