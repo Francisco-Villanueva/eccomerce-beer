@@ -32,7 +32,7 @@ function Navbar() {
   return (
     <nav className="navbar has-background-black-ter mb-4">
       <div className="buttons">
-        <Link to="/home">
+        <Link to="/">
           <h1
             className="navbar-item"
             style={{ fontWeight: "bold", color: "white" }}
@@ -43,7 +43,7 @@ function Navbar() {
       </div>
       <div className="navbar-item navbar-end">
         {isAuthenticated ? (
-          <Link to="/books">
+          <Link to="/home">
             <button className="button is-ghost has-text-white">BOOKS</button>
           </Link>
         ) : (
