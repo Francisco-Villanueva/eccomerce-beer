@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [emailData, setEmailData] = useState("");
   const [passwordData, setPasswordData] = useState("");
   const { loginUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     const value = e.target.value;
@@ -19,7 +21,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    loginUser(emailData, passwordData);
+    loginUser(emailData, passwordData, navigate);
   };
 
   return (
