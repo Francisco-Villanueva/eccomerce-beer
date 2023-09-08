@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
 import { CartBooksContext } from "../contexts/CartBookContext";
+import { AuthContext } from "../contexts/AuthContext";
 
 export const OneProduct = () => {
   const { id } = useParams();
@@ -10,6 +11,7 @@ export const OneProduct = () => {
   const [loading, setLoading] = useState(true);
   const [isCart, setIsCart] = useState(false);
   const { cartBooks, addToCart, removeFromCart } = useContext(CartBooksContext);
+  const { carrito } = useContext(AuthContext);
 
   useEffect(() => {
     axios
@@ -26,13 +28,25 @@ export const OneProduct = () => {
 
   function handleAddCart() {
     addToCart(id);
-    setIsCart(true)
+    setIsCart(true);
   }
 
   function handleRemoveCart() {
     removeFromCart(id);
-    setIsCart(false)
+    setIsCart(false);
   }
+
+  // VERIFICAR SI EXISTE LA ID EN EL CARRITO :
+  // const aux = carrito.filter((e) => e.id !== id);
+  // console.log(aux);
+  // function isCartAux() {
+  //   const aux = carrito.filter((e) => e.id === id);
+  //   console.log(aux);
+
+  //   if (aux.length === 0) {
+  //     return;
+  //   }
+  // }
 
   console.log(cartBooks);
 

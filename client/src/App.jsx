@@ -11,21 +11,25 @@ import RegistrationForm from "./components/RegistrationForm";
 import Login from "./components/Login";
 import axios from "axios";
 import { Cart } from "./components/Cart";
+import { CartBooksContext, useCartBooks } from "./contexts/CartBookContext";
 
 function App() {
   const [count, setCount] = useState(0);
-  const { toggleAuth, setUser } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
+  const { setCarrito, cartBooks } = useCartBooks();
+
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    console.log(userId);
+    // console.log(userId);
     if (userId) {
       axios
         .get(`http://localhost:4000/admin/users/${userId}`)
         .then((response) => {
           const user = response.data;
           setUser(user);
-          console.log(response);
+          setCarrito(user.user_cartBuy);
+          // console.log(response);
           // toggleAuth(user);
         })
         .catch((error) => {
@@ -34,6 +38,8 @@ function App() {
     }
   }, [userId]);
 
+  console.log(cartBooks[0]);
+
   return (
     <>
       <Navbar />
@@ -41,7 +47,9 @@ function App() {
       <Routes>
         <Route path="/register" element={<RegistrationForm />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<AllProducts />} />
+        <Route path="/home" element={<AllProducts />} />
+        <Route path="/books" element={<AllProducts />} />
+
         <Route path="/user/products/:id" element={<OneProduct />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
