@@ -10,12 +10,13 @@ import SignUp from "./components/RegistrationForm";
 import { AuthContext } from "./contexts/AuthContext";
 
 function App() {
-  const { setUser, setCarrito, carrito, user } = useContext(AuthContext);
+  const { setUser, setCarrito, getAllBooks, userId } = useContext(AuthContext);
 
-  const userId = localStorage.getItem("userId");
+  // const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     console.log(userId);
+    getAllBooks();
     if (userId) {
       axios
         .get(`http://localhost:4000/admin/users/${userId}`)
@@ -30,8 +31,8 @@ function App() {
     }
   }, [userId]);
 
-  console.log({ carrito_length: carrito?.length });
-  console.log({ user, carrito });
+  // console.log({ carrito_length: carrito?.length });
+  // console.log({ user, carrito });
 
   return (
     <>

@@ -9,11 +9,10 @@ const initialState = {
 };
 
 export const AuthContext = createContext(initialState);
-const userId = localStorage.getItem("userId");
 
 const AuthContextProvider = ({ children }) => {
-  // const navigate = useNavigate();
   const [state, setState] = useState({
+    userId: localStorage.getItem("userId"),
     user: "",
     isAuthenticated: false,
     carrito: [],
@@ -63,9 +62,20 @@ const AuthContextProvider = ({ children }) => {
       user: user,
       isAuthenticated: true,
       carrito: user.user_cartBuy,
+      books: [],
     }));
   };
 
+  const getAllBooks = () => {
+    axios
+      .get("http://localhost:4000/user/products")
+      .then((res) => {
+        setState((s) => ({ ...s, books: res.data }));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const addToCart = (id) => {
     axios
       .post(`http://localhost:4000/cart/add/${id}/${userId}`)
@@ -161,6 +171,7 @@ const AuthContextProvider = ({ children }) => {
         registerUser,
         removeFromCart,
         setCarrito,
+        getAllBooks,
       }}
     >
       {children}
