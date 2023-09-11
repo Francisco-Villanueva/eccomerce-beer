@@ -15,6 +15,7 @@ import { InfoOutlined } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { CartBooksContext } from "../../contexts/CartBookContext";
+import CardButtons from "../CardButtons";
 // import { items } from "../../mocks/books.json";
 
 const ExpandMore = styled((props) => {
@@ -30,12 +31,17 @@ const ExpandMore = styled((props) => {
 
 export default function Cards({ book }) {
   const [expanded, setExpanded] = React.useState(false);
-  const { addToCart } = useContext(CartBooksContext);
-  const { isOnCart } = useContext(AuthContext);
+  // const { addToCart } = useContext(CartBooksContext);
+  const { isOnCart, addToCart, removeFromCart } = useContext(AuthContext);
 
   const handleAddToCart = () => {
     // funcion para agregar a carrito con book.id
-    addToCart(book.id);
+
+    if (isOnCart(book.id)) {
+      removeFromCart(book.id);
+    } else {
+      addToCart(book.id);
+    }
   };
   const thumbnail = book.volumeInfo.imageLinks
     ? book.volumeInfo.imageLinks.smallThumbnail
@@ -58,7 +64,7 @@ export default function Cards({ book }) {
       />
       <CardContent>{book.volumeInfo.title.slice(0, 15)}...</CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={handleAddToCart}>
+        {/* <IconButton aria-label="add to favorites" onClick={handleAddToCart}>
           {isOnCart(book.id) ? (
             <RemoveShoppingCartIcon />
           ) : (
@@ -70,7 +76,13 @@ export default function Cards({ book }) {
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <InfoOutlined />
-        </Link>
+        </Link> */}
+
+        <CardButtons
+          book={book}
+          isOnCart={isOnCart}
+          handleAddToCart={handleAddToCart}
+        />
       </CardActions>
     </Card>
   );

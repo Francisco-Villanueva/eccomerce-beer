@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Cards from "../commons/Cards/Card";
 import Loading from "../commons/Cards/Loading";
+import { CartBooksContext } from "../contexts/CartBookContext";
 
 export const AllProducts = () => {
-  const [books, setBooks] = useState([]);
+  // const [books, setBooks] = useState([]);
 
+  const { books, setBooks } = useContext(CartBooksContext);
   useEffect(() => {
     axios
       .get("http://localhost:4000/user/products")
