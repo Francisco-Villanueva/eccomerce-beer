@@ -1,7 +1,8 @@
 const axios = require("axios");
 const { prices } = require("./prices.json");
 require("dotenv").config();
-const { API_KEY } = process.env;
+// const { API_KEY } = process.env;
+const API_KEY = "AIzaSyCgieI78zpbDkojepkBnUMOlbrjFgKhjCs";
 const getAllProducts = async (req, res) => {
   try {
     const products1 = await axios.get(

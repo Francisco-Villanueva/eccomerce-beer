@@ -1,90 +1,147 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useContext, useState } from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { AuthContext } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-function RegistrationForm() {
-  const [nameData, setNameData] = useState("");
-  const [emailData, setEmailData] = useState("");
-  const [passwordData, setPasswordData] = useState("");
-  const [isRegistered, setIsRegistered] = useState(false);
-
-  const handleNameChange = (e) => {
-    const value = e.target.value;
-    setNameData(value);
-  };
-
-  const handleEmailChange = (e) => {
-    const value = e.target.value;
-    setEmailData(value);
-  };
-
-  const handlePasswordChange = (e) => {
-    const value = e.target.value;
-    setPasswordData(value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post("http://localhost:4000/user/register", {
-        name: nameData,
-        email: emailData,
-        password: passwordData,
-      })
-      .then((res) => res.data)
-      .then((user) => {
-        console.log("Registro exitoso:", user);
-        setIsRegistered(true);
-      })
-      .catch((error) => {
-        console.error("Error en el registro:", error);
-        setIsRegistered(false);
-      });
-  };
+function Copyright(props) {
   return (
-    <div className="layout m-5">
-      <h3 className="title is-3">Register</h3>
-      {isRegistered ? (
-        <p className="has-text-success">
-          Registration successful! Go to Login!
-        </p>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <label className="label my-3">Name</label>
-          <input
-            className="input"
-            type="text"
-            placeholder="name"
-            value={nameData.name}
-            onChange={handleNameChange}
-            required
-          />
-
-          <label className="label my-3">Email</label>
-          <input
-            className="input"
-            type="email"
-            placeholder="email"
-            value={emailData.email}
-            onChange={handleEmailChange}
-            required
-          ></input>
-
-          <label className="label my-3">Password</label>
-          <input
-            className="input"
-            type="password"
-            placeholder="password"
-            value={passwordData.password}
-            onChange={handlePasswordChange}
-            required
-          ></input>
-          <button type="submit" className="button is-link my-5">
-            Submit
-          </button>
-        </form>
-      )}
-    </div>
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
   );
 }
 
-export default RegistrationForm;
+// TODO remove, this demo shouldn't need to reset the theme.
+
+const defaultTheme = createTheme();
+
+export default function SignUp() {
+  const { registerUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [boton, setBoton] = useState(true);
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    registerUser(user.username, user.email, user.password, navigate);
+  };
+
+  const handleInputChange = (e) => {
+    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+    if (user.name !== "" && user.email !== "" && user.password !== "") {
+      setBoton(false);
+    }
+  };
+
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 3 }}
+          >
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="given-name"
+                  name="username"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  autoFocus
+                  onChange={handleInputChange}
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                  onChange={handleInputChange}
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              disabled={boton}
+            >
+              Sign Up
+            </Button>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <Link href="#" variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 5 }} />
+      </Container>
+    </ThemeProvider>
+  );
+}

@@ -1,22 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import "bulma/css/bulma.min.css";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import AuthContextProvider, { AuthContext } from "./contexts/AuthContext";
-import Content from "./components/Content";
 import { Routes, Route } from "react-router-dom";
-import { AllProducts } from "./components/AllProducts";
 import { OneProduct } from "./components/OneProduct";
-import RegistrationForm from "./components/RegistrationForm";
 import Login from "./components/Login";
 import axios from "axios";
 import { Cart } from "./components/Cart";
 import { CartBooksContext, useCartBooks } from "./contexts/CartBookContext";
+import Home from "./components/Home";
+import SignUp from "./components/RegistrationForm";
+import { AuthContext } from "./contexts/AuthContext";
 
 function App() {
   const [count, setCount] = useState(0);
   const { setUser } = useContext(AuthContext);
-  const { setCarrito, cartBooks } = useCartBooks();
+  const { setCarrito, cartBooks, carrito } = useCartBooks();
 
   const userId = localStorage.getItem("userId");
 
@@ -38,17 +35,16 @@ function App() {
     }
   }, [userId]);
 
-  console.log(cartBooks[0]);
+  console.log({ carrito_length: cartBooks?.length });
 
   return (
     <>
-      <Navbar />
-      <Content />
+      {/* <Navbar /> */}
       <Routes>
-        <Route path="/register" element={<RegistrationForm />} />
+        <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<AllProducts />} />
-        <Route path="/books" element={<AllProducts />} />
+        <Route path="/home" element={<Home />} />
+        {/* <Route path="/books" element={<AllProducts />} /> */}
         <Route path="/user/products/:id" element={<OneProduct />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>

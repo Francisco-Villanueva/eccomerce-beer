@@ -4,7 +4,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-
+import { Avatar, Box } from "@mui/material";
+import { BookSharp, ShoppingCart } from "@mui/icons-material";
+// import devBookLogo from "../assets/images/image.png";
 function Navbar() {
   const { isAuthenticated, toggleAuth, user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ function Navbar() {
       .post("http://localhost:4000/user/logout")
       .then(() => {
         toggleAuth(null);
-        navigate("/home");
+        navigate("/login");
         localStorage.clear();
       })
       .catch((error) => {
@@ -30,21 +32,22 @@ function Navbar() {
   }, [isAuthenticated]);
 
   return (
-    <nav className="navbar has-background-black-ter mb-4">
+    <nav
+      className="navbar has-background-black-ter "
+      style={{ display: "flex", alignItems: "center" }}
+    >
       <div className="buttons">
-        <Link to="/">
-          <h1
-            className="navbar-item"
-            style={{ fontWeight: "bold", color: "white" }}
-          >
-            HOME
-          </h1>
+        <Link to="/home">
+          {/* <img src={devBookLogo} alt="devbooks" style={{ width: "100px" }} /> */}
+          <h1>LOGO</h1>
         </Link>
       </div>
       <div className="navbar-item navbar-end">
         {isAuthenticated ? (
           <Link to="/home">
-            <button className="button is-ghost has-text-white">BOOKS</button>
+            <button className="button is-ghost has-text-white">
+              <BookSharp />
+            </button>
           </Link>
         ) : (
           <div />
@@ -52,7 +55,9 @@ function Navbar() {
 
         {isAuthenticated ? (
           <Link to="/cart">
-            <button className="button is-ghost has-text-white">CART</button>
+            <button className="button is-ghost has-text-white">
+              <ShoppingCart />
+            </button>
           </Link>
         ) : (
           <div />
@@ -60,24 +65,19 @@ function Navbar() {
       </div>
       <div className="navbar-item navbar-end">
         <div className="navbar-item">
-          <div className="buttons">
+          <Box
+            className="buttons"
+            sx={{ display: "flex", alignItems: "center", gap: "8px" }}
+          >
+            {isAuthenticated && <Avatar>{user.username.slice(0, 1)} </Avatar>}
             <button
               className="button is-light"
+              style={{ margin: 0 }}
               onClick={() => (isAuthenticated ? logoutUser() : loginUser())}
             >
               {isAuthenticated ? "Logout" : "Login"}
             </button>
-            {!isAuthenticated && (
-              <div>
-                <Link to="/register">
-                  <button className="button is-light">REGISTER</button>
-                </Link>
-              </div>
-            )}
-            {isAuthenticated && (
-              <div className="notification">Welcome, {user.username}!!!</div>
-            )}
-          </div>
+          </Box>
         </div>
       </div>
     </nav>
