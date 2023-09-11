@@ -8,7 +8,7 @@ import { Avatar, Box } from "@mui/material";
 import { BookSharp, ShoppingCart } from "@mui/icons-material";
 // import devBookLogo from "../assets/images/image.png";
 function Navbar() {
-  const { isAuthenticated, toggleAuth, user } = useContext(AuthContext);
+  const { isAuthenticated, user, carrito } = useContext(AuthContext);
   const navigate = useNavigate();
   const loginUser = () => {
     navigate("/login");
@@ -18,7 +18,6 @@ function Navbar() {
     axios
       .post("http://localhost:4000/user/logout")
       .then(() => {
-        toggleAuth(null);
         navigate("/login");
         localStorage.clear();
       })
@@ -26,10 +25,6 @@ function Navbar() {
         console.error("Error en el logout:", error);
       });
   };
-
-  useEffect(() => {
-    console.log("isAuthenticated: " + isAuthenticated);
-  }, [isAuthenticated]);
 
   return (
     <nav
@@ -56,7 +51,7 @@ function Navbar() {
         {isAuthenticated ? (
           <Link to="/cart">
             <button className="button is-ghost has-text-white">
-              <ShoppingCart />
+              {carrito.length} | <ShoppingCart />
             </button>
           </Link>
         ) : (

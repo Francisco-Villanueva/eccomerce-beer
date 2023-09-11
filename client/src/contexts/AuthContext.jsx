@@ -13,18 +13,11 @@ const userId = localStorage.getItem("userId");
 
 const AuthContextProvider = ({ children }) => {
   // const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState({
-    user: initialState.user,
-    isAuthenticated: initialState.isAuthenticated,
+  const [state, setState] = useState({
+    user: "",
+    isAuthenticated: false,
+    carrito: [],
   });
-
-  const [carrito, setCarrito] = useState([]);
-
-  const toggleAuth = (user) =>
-    setIsLoggedIn({
-      user: user,
-      isAuthenticated: user ? true : false,
-    });
 
   const loginUser = (emailData, passwordData, navigate) => {
     axios
@@ -35,10 +28,9 @@ const AuthContextProvider = ({ children }) => {
       .then((res) => res.data)
       .then((user) => {
         localStorage.setItem("userId", user.id);
-        toggleAuth(user);
         message.success("Login succesfully");
+        setState((s) => ({ ...s, user: user }));
         navigate("/home");
-        console.log("Login exitoso:", user);
       })
       .catch((error) => {
         console.error("Error en el login:", error);
@@ -56,7 +48,6 @@ const AuthContextProvider = ({ children }) => {
       .then((user) => {
         console.log("Registro exitoso:", user);
         message.success("Registrado!");
-        // setIsRegistered(true);
         navigate("/login");
       })
       .catch((error) => {
@@ -67,11 +58,12 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const setUser = (user) => {
-    setIsLoggedIn({
+    setState((prevState) => ({
+      ...prevState,
       user: user,
       isAuthenticated: true,
-    });
-    setCarrito(user.user_cartBuy);
+      carrito: user.user_cartBuy,
+    }));
   };
 
   const addToCart = (id) => {
@@ -104,23 +96,71 @@ const AuthContextProvider = ({ children }) => {
           });
       });
   };
+
   const isOnCart = (bookId) => {
-    const arrayOfBooksId = carrito.map((m) => m.bookId);
+    const arrayOfBooksId = state.user.user_cartBuy.map((m) => m.bookId);
 
     return arrayOfBooksId.includes(bookId); //booleano
+  };
+
+  const setCarrito = async (carrito) => {
+    const arrayOfBooksId = carrito.map((m) => m.bookId);
+
+    // console.log("Inicio FAVORITES: ", arrayOfMoviesId);
+
+    const fetchBookDetail = async (bookId) => {
+      try {
+        const response = await axios.get(
+          `http://localhost:4000/user/products/${bookId}`
+        );
+
+        return response.data; // Suponiendo que los detalles de la película se encuentren en response.data
+      } catch (error) {
+        console.error("Error al obtener detalles de la película:", error);
+        // return null;
+      }
+    };
+
+    // Función para obtener los detalles de todas las películas en arrayOfMoviesId
+    const fetchAllBooksDetails = async () => {
+      try {
+        const detailsPromises_Books = arrayOfBooksId.map((movieId) =>
+          fetchBookDetail(movieId)
+        ); //ARREGLO DE PROMESAS, CADA PROMESA TRAE EL DETALLE DEL LIBRO.
+
+        const books_Details = await Promise.all(detailsPromises_Books);
+
+        // console.log("EN PROMISE ALL", { movieDetailsArray });
+
+        // console.log("DATA DEL CARRITO : ", books_Details);
+
+        // setCartBooks((prevBooks) => [...prevBooks, books_Details]);
+
+        // setCartBooks(books_Details);
+
+        setState((prevState) => ({
+          ...prevState,
+          carrito: books_Details,
+        }));
+        return { books_Details };
+      } catch (error) {
+        console.log({ error });
+      }
+    };
+
+    fetchAllBooksDetails();
   };
   return (
     <AuthContext.Provider
       value={{
-        ...isLoggedIn,
-        toggleAuth,
+        ...state,
         loginUser,
         setUser,
-        carrito,
         isOnCart,
         addToCart,
         registerUser,
         removeFromCart,
+        setCarrito,
       }}
     >
       {children}
