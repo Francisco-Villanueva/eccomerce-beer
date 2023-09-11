@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { message } from "antd";
 
 export const CartBooksContext = createContext();
 
@@ -11,11 +12,15 @@ const userId = localStorage.getItem("userId");
 
 export function CartBooksProvider({ children }) {
   const [cartBooks, setCartBooks] = useState([]);
+  const [books, setBooks] = useState([]);
 
   const addToCart = (id) => {
     axios
       .post(`http://localhost:4000/cart/add/${id}/${userId}`)
-      .then((user) => console.log("se agrego"))
+      .then((user) => {
+        console.log(user);
+        message.success("Agregado a carrito", 1);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -56,7 +61,9 @@ export function CartBooksProvider({ children }) {
 
         // console.log("DATA DEL CARRITO : ", books_Details);
 
-        setCartBooks((prevBooks) => [...prevBooks, books_Details]);
+        // setCartBooks((prevBooks) => [...prevBooks, books_Details]);
+
+        setCartBooks(books_Details);
 
         return { books_Details };
       } catch (error) {
@@ -69,7 +76,14 @@ export function CartBooksProvider({ children }) {
 
   return (
     <CartBooksContext.Provider
-      value={{ cartBooks, addToCart, removeFromCart, setCarrito }}
+      value={{
+        cartBooks,
+        addToCart,
+        removeFromCart,
+        setCarrito,
+        setBooks,
+        books,
+      }}
     >
       {children}
     </CartBooksContext.Provider>
