@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { Avatar, Box } from "@mui/material";
 import { BookSharp, ShoppingCart } from "@mui/icons-material";
+import Search from "../components/Search";
 // import devBookLogo from "../assets/images/image.png";
 function Navbar() {
   const { isAuthenticated, toggleAuth, user } = useContext(AuthContext);
@@ -64,6 +65,9 @@ function Navbar() {
         )}
       </div>
       <div className="navbar-item navbar-end">
+        <div>
+          <Search />
+        </div>
         <div className="navbar-item">
           <Box
             className="buttons"
