@@ -8,7 +8,7 @@ export const AllProducts = () => {
 
   return (
     <div className="grilla_libros">
-      {books?.length ? (
+      {books && books.length ? (
         books.map((book, index) => {
           return (
             <div className="column" key={index}>

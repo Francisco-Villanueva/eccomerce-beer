@@ -1,6 +1,5 @@
 import { useState, createContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 const initialState = {
   user: null,
@@ -13,7 +12,7 @@ export const AuthContext = createContext(initialState);
 const AuthContextProvider = ({ children }) => {
   const [state, setState] = useState({
     userId: localStorage.getItem("userId"),
-    user: "",
+    user: {},
     isAuthenticated: false,
     carrito: [],
   });
@@ -26,13 +25,46 @@ const AuthContextProvider = ({ children }) => {
       })
       .then((res) => res.data)
       .then((user) => {
-        localStorage.setItem("userId", user.id);
-        message.success("Login succesfully");
-        setState((s) => ({ ...s, user: user }));
-        navigate("/home");
+        console.log("IDUSER", user);
+        axios
+          .get(`http://localhost:4000/admin/users/${user.id}`)
+          .then((res) => {
+            const user = res.data;
+            localStorage.setItem("userId", user.id);
+            setUser(user);
+            getAllBooks();
+            // setState((s) => ({
+            //   ...s,
+            //   user: user,
+            //   userId: localStorage.setItem("userId", user.id),
+            //   isAuthenticated: true,
+            // }));
+            message.success("Login succesfully", 1);
+            setTimeout(() => {
+              navigate("/home");
+            }, 1000);
+          });
       })
       .catch((error) => {
         console.error("Error en el login:", error);
+      });
+  };
+
+  const logoutUser = (navigate) => {
+    axios
+      .post("http://localhost:4000/user/logout")
+      .then(() => {
+        navigate("/login");
+        localStorage.clear();
+        setState({
+          userId: "",
+          user: {},
+          isAuthenticated: false,
+          carrito: [],
+        });
+      })
+      .catch((error) => {
+        console.error("Error en el logout:", error);
       });
   };
 
@@ -46,7 +78,7 @@ const AuthContextProvider = ({ children }) => {
       .then((res) => res.data)
       .then((user) => {
         console.log("Registro exitoso:", user);
-        message.success("Registrado!");
+        message.success("Registrado!", 1);
         navigate("/login");
       })
       .catch((error) => {
@@ -78,15 +110,15 @@ const AuthContextProvider = ({ children }) => {
   };
   const addToCart = (id) => {
     axios
-      .post(`http://localhost:4000/cart/add/${id}/${userId}`)
+      .post(`http://localhost:4000/cart/add/${id}/${state.userId}`)
       .then((user) => {
         message.success("Agregado a carrito", 1);
         const userId = user.data.id;
         axios
           .get(`http://localhost:4000/admin/users/${userId}`)
           .then((user) => {
-            setUser(user.data);
-            // console.log(user.data); //ACA ESTA ACTUALIZADO EL BOOKID
+            setState((s) => ({ ...s, user: user.data }));
+            setCarrito(user.data.user_cartBuy);
           });
       })
       .catch((err) => console.log(err));
@@ -94,21 +126,23 @@ const AuthContextProvider = ({ children }) => {
 
   const removeFromCart = (id) => {
     axios
-      .delete(`http://localhost:4000/cart/remove/${id}/${userId}`)
+      .delete(`http://localhost:4000/cart/remove/${id}/${state.userId}`)
       .then((user) => {
         message.info("Eliminado del carrito");
         const userId = user.data.id;
         axios
           .get(`http://localhost:4000/admin/users/${userId}`)
           .then((user) => {
-            setUser(user.data);
-            // console.log(user.data); //ACA ESTA ACTUALIZADO EL BOOKID
+            setState((s) => ({ ...s, user: user.data }));
+            setCarrito(user.data.user_cartBuy);
           });
       });
   };
 
   const isOnCart = (bookId) => {
-    const arrayOfBooksId = state.user.user_cartBuy.map((m) => m.bookId);
+    const arrayOfBooksId = state.user.user_cartBuy
+      ? state.user.user_cartBuy.map((m) => m.bookId)
+      : [];
 
     return arrayOfBooksId.includes(bookId); //booleano
   };
@@ -172,6 +206,7 @@ const AuthContextProvider = ({ children }) => {
         removeFromCart,
         setCarrito,
         getAllBooks,
+        logoutUser,
       }}
     >
       {children}

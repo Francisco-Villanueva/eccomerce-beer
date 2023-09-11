@@ -15,7 +15,6 @@ function App() {
   // const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    console.log(userId);
     getAllBooks();
     if (userId) {
       axios
@@ -30,9 +29,6 @@ function App() {
         });
     }
   }, [userId]);
-
-  // console.log({ carrito_length: carrito?.length });
-  // console.log({ user, carrito });
 
   return (
     <>

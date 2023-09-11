@@ -15,7 +15,7 @@ import { Box } from "@mui/material";
 export default function Cards({ book }) {
   const [expanded, setExpanded] = React.useState(false);
   // const { addToCart } = useContext(CartBooksContext);
-  const { isOnCart, addToCart, removeFromCart } = useContext(AuthContext);
+  const { isOnCart, addToCart, removeFromCart, user } = useContext(AuthContext);
 
   const handleAddToCart = () => {
     // funcion para agregar a carrito con book.id
