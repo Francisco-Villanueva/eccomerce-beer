@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Cards from "../commons/Cards/Card";
+import Loading from "../commons/Cards/Loading";
+import { CartBooksContext } from "../contexts/CartBookContext";
 
 export const AllProducts = () => {
-  const [books, setBooks] = useState([]);
+  // const [books, setBooks] = useState([]);
 
+  const { books, setBooks } = useContext(CartBooksContext);
   useEffect(() => {
     axios
       .get("http://localhost:4000/user/products")
@@ -19,38 +23,18 @@ export const AllProducts = () => {
   // console.log(books[0]);
 
   return (
-    <div className="columns is-multiline is-centered">
-      {books.map((book) => {
-        const thumbnail = book.volumeInfo.imageLinks
-          ? book.volumeInfo.imageLinks.smallThumbnail
-          : "https://cdn-icons-png.flaticon.com/512/2421/2421033.png";
-
-        return (
-          <div className="column is-one-fifth" key={book.id}>
-            <Link
-              to={`/user/products/${book.id}`}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <div className="card">
-                <div className="card-image">
-                  <figure className="image is-4by3">
-                    <img
-                      src={thumbnail}
-                      alt={book.volumeInfo.title}
-                      style={{ height: "366px" }}
-                    />
-                  </figure>
-                </div>
-                <div className="card-content">
-                  <div className="content">
-                    <p>{book.volumeInfo.title}</p>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </div>
-        );
-      })}
+    <div className="grilla_libros">
+      {books.length ? (
+        books.map((book, index) => {
+          return (
+            <div className="column" key={index}>
+              <Cards book={book} />
+            </div>
+          );
+        })
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };
