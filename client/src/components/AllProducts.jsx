@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Card from "../commons/Cards/Card";
 
 export const AllProducts = () => {
   const [books, setBooks] = useState([]);
@@ -20,6 +21,7 @@ export const AllProducts = () => {
 
   return (
     <div className="columns is-multiline is-centered">
+      <Card />
       {books.map((book) => {
         const thumbnail = book.volumeInfo.imageLinks
           ? book.volumeInfo.imageLinks.smallThumbnail
