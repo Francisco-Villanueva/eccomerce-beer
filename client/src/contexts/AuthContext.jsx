@@ -51,9 +51,21 @@ const AuthContextProvider = ({ children }) => {
     setCarrito(user.user_cartBuy);
   };
 
+  const isOnCart = (bookId) => {
+    const arrayOfBooksId = carrito.map((m) => m.bookId);
+
+    return arrayOfBooksId.includes(bookId); //booleano
+  };
   return (
     <AuthContext.Provider
-      value={{ ...isLoggedIn, toggleAuth, loginUser, setUser, carrito }}
+      value={{
+        ...isLoggedIn,
+        toggleAuth,
+        loginUser,
+        setUser,
+        carrito,
+        isOnCart,
+      }}
     >
       {children}
     </AuthContext.Provider>

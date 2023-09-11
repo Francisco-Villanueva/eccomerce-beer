@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { message } from "antd";
 
 export const CartBooksContext = createContext();
 
@@ -15,7 +16,7 @@ export function CartBooksProvider({ children }) {
   const addToCart = (id) => {
     axios
       .post(`http://localhost:4000/cart/add/${id}/${userId}`)
-      .then((user) => console.log("se agrego"))
+      .then((user) => message.success("Agregado a carrito"))
       .catch((err) => console.log(err));
   };
 
