@@ -5,6 +5,18 @@ import axios from "axios";
 import Navbar from "../commons/Navbar";
 import CardButtons from "../commons/CardButtons";
 import Loading from "../commons/Cards/Loading";
+import {
+  Container,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+  TextField,
+  Grid,
+  Button,
+} from "@mui/material";
+import { Paid } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 export const Cart = () => {
   const { carrito } = useContext(AuthContext);
@@ -22,8 +34,8 @@ export const Cart = () => {
           const quantities = {};
 
           userCart.forEach((book) => {
-            const matchingBook = cartBooks.find(
-              (cartBook) => cartBook.id === book.bookId
+            const matchingBook = carrito.find(
+              (cartBook) => cartBook.bookId === book.bookId
             );
 
             if (matchingBook) {
@@ -40,7 +52,7 @@ export const Cart = () => {
           console.error("Error al verificar el token:", error);
         });
     }
-  }, [userId, cartBooks]);
+  }, [userId, carrito]);
 
   const handleQuantityChange = (bookId, newQuantity) => {
     setBookQuantities({
@@ -60,9 +72,8 @@ export const Cart = () => {
     setTotalProducts(sum);
   }, [bookQuantities]);
 
-  const totalPrice = cartBooks.reduce(
-    (total, book) =>
-      total + (bookQuantities[book.id]?.count * book.price),
+  const totalPrice = carrito.reduce(
+    (total, book) => total + bookQuantities[book.bookId]?.count * book.price,
     0
   );
 
@@ -71,90 +82,97 @@ export const Cart = () => {
   return (
     <div>
       <Navbar />
-      <div className="columns">
-        <div className="column is-three-quarters">
-          {carrito ? (
-            carrito.map((book, index) => (
-              <div key={index}>
-                <div className="individual" style={{ width: "820px" }}>
-                  <div className="card-content">
-                    <div className="columns">
-                    <div
-                      className="column is-one-quarter"
-                      style={{ display: "flex", justifyContent: "center" }}
-                    >
-                      <img style={{objectFit: "contain"}}
-                        src={
-                          book.image 
-                    
-                        }
+      <Container>
+        <Grid container spacing={3}>
+          <Grid item xs={8}>
+            {carrito ? (
+              carrito.map((book, index) => (
+                <Card
+                  key={index}
+                  style={{
+                    margin: "10px",
+                    boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.5)",
+                  }}
+                >
+                  <Grid container spacing={2}>
+                    <Grid item xs={3}>
+                      <CardMedia
+                        component="img"
                         alt={book.title}
+                        height="140"
+                        image={book.image}
                       />
-                    </div>
-                    <div className="column">
-                      <h1 className="title is-4">
-                        {book.title || "No Title"}
-                      </h1>
-                      <p>
-                        <span className="title is-6">Description:</span>{" "}
-                        {book.description
-                          ? book.description
-                              .split("<br>")
-                              .join("")
-                              .slice(0, 150) + "..."
-                          : "No Description"}
-                      </p>
-                      <p>
-                        <span className="title is-6">Price:</span>{" "}
-                        {`$${book.price}` || "Unknown"}
-                      </p>
-                      <CardButtons book={book} />
-                    </div>
-                    <div
-                      className="column is-one-quarter"
-                      style={{ display: "flex", justifyContent: "center" }}
-                    >
-                      <input
+                    </Grid>
+                    <Grid item xs={6}>
+                      <CardContent>
+                        <h1 className="title is-4">
+                          {book.title || "No Title"}
+                        </h1>
+                        <Typography>
+                          <span className="title is-6">Price:</span>{" "}
+                          {`$${
+                            (bookQuantities[book.bookId]?.count || 1) *
+                            book.price
+                          }`}
+                        </Typography>
+                        <CardButtons book={book} />
+                      </CardContent>
+                    </Grid>
+                    <Grid item xs={3}>
+                      <TextField
                         type="number"
-                        style={{ height: "30px", width: "100px" }}
                         value={
                           (bookQuantities[book.bookId] &&
                             bookQuantities[book.bookId].count) ||
                           1
                         }
                         onChange={(e) =>
-                          handleQuantityChange(book.bookId, parseInt(e.target.value))
+                          handleQuantityChange(
+                            book.bookId,
+                            parseInt(e.target.value)
+                          )
                         }
-                      />{" "}
-                    </div>
-                    <div className="column is-one-quarter">
-                      <p>
-                        <span className="title is-6">Precio parcial:</span>{" "}
-                        {`$${(bookQuantities[book.bookId]?.count || 1) *
-                          book.price}`}
-                      </p>
-                    </div>
-                    </div>
+                        variant="outlined"
+                        size="small"
+                      />
+                    </Grid>
+                  </Grid>
+                </Card>
+              ))
+            ) : (
+              <Loading />
+            )}
+          </Grid>
 
-      
-                  </div>
-                </div>
-              </div>
-            ))
-          ) : (
-            <Loading />
-          )}
-        </div>
-
-        <div className="column is-one-quarter">
-          <p className="title is-4">Resumen de Compra</p>
-          <p>
-            Productos ({totalProducts})
-            <br />
-            Precio Total: ${totalPrice}
-          </p>
-        </div>
-      </div>
+          <Grid item xs={4}>
+            <Card
+              style={{
+                margin: "10px",
+                boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.5)",
+              }}
+            >
+              <CardContent>
+                <h1 className="title is-4">Resumen de Compra</h1>
+                <Typography>
+                  Productos ({totalProducts})
+                  <br />
+                  <span className="title is-6">Total Price:</span> ${totalPrice}
+                </Typography>
+                <br />
+                <Link to="/checkout">
+                  <Button
+                    variant="contained"
+                    color="success"
+                    startIcon={<Paid />}
+                  >
+                    Ir a Pagar
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Container>
     </div>
   );
 };
