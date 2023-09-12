@@ -7,7 +7,8 @@ import { AuthContext } from "../contexts/AuthContext";
 import { Avatar, Box } from "@mui/material";
 import { BookSharp, ShoppingCart } from "@mui/icons-material";
 import Search from "../components/Search";
-//import devBookLogo from "../assets/images/image.png";
+import devBookLogo from "../assets/imgs/devbooks-circulo.png";
+// import devBookLogo from "../assets/images/image.png";
 function Navbar() {
   const { isAuthenticated, user, carrito, logoutUser } =
     useContext(AuthContext);
@@ -16,22 +17,38 @@ function Navbar() {
     navigate("/login");
   };
 
-  console.log({ carrito });
+  // console.log({ carrito });
   return (
     <nav
-      className="navbar has-background-black-ter "
-      style={{ display: "flex", alignItems: "center" }}
+      className="navbar-style navbar has-background-black-ter "
+      style={{
+        display: "flex",
+        alignItems: "center",
+        maxHeight: "60px",
+        position: "sticky",
+        width: "100%",
+        zIndex: 100,
+        top: 0,
+        background: "linear-gradient(to bottom, #242424, #535353)",
+      }}
     >
       <div className="buttons">
         <Link to="/home">
-          {/* <img src={devBookLogo} alt="devbooks" style={{ width: "100px" }} /> */}
-          <h1>LOGO</h1>
+          <img
+            className="logoDevBooks is-flex navbar-item navbar-end"
+            style={{ height: "75px", width: "75px" }}
+            src={devBookLogo}
+            alt="devbooks"
+          />
         </Link>
       </div>
       <div className="navbar-item navbar-end">
         {isAuthenticated ? (
           <Link to="/home">
-            <button className="button is-ghost has-text-white">
+            <button
+              className="button is-ghost has-text-white"
+              style={{ maxHeight: "35px", maxWidth: "53px" }}
+            >
               <BookSharp />
             </button>
           </Link>
@@ -41,7 +58,14 @@ function Navbar() {
 
         {isAuthenticated ? (
           <Link to="/cart">
-            <button className="button is-ghost has-text-white">
+            <button
+              className="button is-ghost has-text-white"
+              style={{
+                textDecoration: "none",
+                maxHeight: "35px",
+                maxWidth: "70px",
+              }}
+            >
               {carrito.length} | <ShoppingCart />
             </button>
           </Link>
@@ -54,14 +78,31 @@ function Navbar() {
       </div>
       <div className="navbar-item navbar-end">
         <div className="navbar-item">
-          <Box
-            className="buttons"
-            sx={{ display: "flex", alignItems: "center", gap: "8px" }}
-          >
-            {isAuthenticated && <Avatar>{user.username.slice(0, 1)} </Avatar>}
+          <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            {isAuthenticated && (
+              <Avatar
+                style={{
+                  maxHeight: "35px",
+                  maxWidth: "35px",
+                  backgroundColor: "black",
+                  margin: "1px",
+                  paddingTop: "3px",
+                }}
+              >
+                {user.username.slice(0, 1).toUpperCase()}{" "}
+              </Avatar>
+            )}
             <button
-              className="button is-light"
-              style={{ margin: 0 }}
+              className="button is-light is-hovered"
+              style={{
+                margin: 0,
+                fontFamily: "'Hanken Grotesk', sans-serif",
+                transition: "background-color 0.3s",
+                maxHeight: "30px",
+                maxWidth: "70px",
+              }}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#b0abab")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "")}
               onClick={() =>
                 isAuthenticated ? logoutUser(navigate) : loginUser()
               }
