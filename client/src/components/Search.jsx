@@ -13,7 +13,7 @@ export default function Search() {
       disablePortal
       id="combo-box-demo"
       options={nameBooks}
-      sx={{ width: 300, background: "white" }}
+      sx={{ width: 200, background: "white" }}
       renderInput={(params) => <TextField {...params} label="Search Books" />}
     />
   );
