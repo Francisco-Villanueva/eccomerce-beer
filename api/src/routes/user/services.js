@@ -103,6 +103,12 @@ const editProfile = async (req, res) => {
   }
 };
 
+const checkout = async (req, res) => {
+  try {
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
 module.exports = {
   register,
   login,
@@ -110,4 +116,5 @@ module.exports = {
   secret,
   me,
   editProfile,
+  checkout,
 };
