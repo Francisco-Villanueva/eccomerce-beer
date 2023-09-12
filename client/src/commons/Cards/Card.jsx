@@ -28,7 +28,7 @@ export default function Cards({ book }) {
   };
 
   return (
-    <Card
+    <Card className="card"
       sx={{
         height: "100%",
         display: "flex",

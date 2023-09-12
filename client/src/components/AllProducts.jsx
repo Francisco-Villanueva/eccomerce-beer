@@ -4,7 +4,7 @@ import Loading from "../commons/Cards/Loading";
 import { AuthContext } from "../contexts/AuthContext";
 
 export const AllProducts = () => {
-  const { books } = useContext(AuthContext);
+  const { books, Search } = useContext(AuthContext);
 
   return (
     <div className="grilla_libros">

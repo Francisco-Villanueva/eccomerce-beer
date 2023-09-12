@@ -11,6 +11,7 @@ export const AuthContext = createContext(initialState);
 
 const AuthContextProvider = ({ children }) => {
   const [state, setState] = useState({
+    books: [],
     userId: localStorage.getItem("userId"),
     user: {},
     isAuthenticated: false,
@@ -194,6 +195,15 @@ const AuthContextProvider = ({ children }) => {
 
     fetchAllBooksDetails();
   };
+
+  const [search, setSearch] = useState("");
+
+  function Search() {
+    return state.books.filter((book) => {
+      book.title === search;
+    });
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -207,6 +217,8 @@ const AuthContextProvider = ({ children }) => {
         setCarrito,
         getAllBooks,
         logoutUser,
+        Search,
+        setSearch,
       }}
     >
       {children}
