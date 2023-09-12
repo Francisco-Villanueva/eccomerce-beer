@@ -23,30 +23,11 @@ export default function Search() {
   };
   console.log({ books });
   return (
-    // <Autocomplete
-    //   disablePortal
-    //   id="combo-box-demo"
-    //   options={nameBooks}
-    //   onChange={(event, selectedOption) => {
-    //     if (selectedOption) {
-    //       handleBookSelect(selectedOption);
-    //     }
-    //   }}
-    //   sx={{ width: 200, height: 50, background: "white" }}
-    //   renderInput={(params) => (
-    //     <TextField
-    //       {...params}
-    //       label="Search Books"
-    //       onChange={(e) => {
-    //         setSearch(e.target.value);
-    //         SearchBook();
-    //       }}
-    //     />
-    //   )}
-    // />
+
 
     <form onSubmit={handleBookSelect}>
       <input type="text" onChange={handleInputChange} value={search} />
     </form>
-  );
+
+  )
 }
