@@ -49,10 +49,10 @@ function Navbar() {
           <div />
         )}
       </div>
+      <div>
+        <Search />
+      </div>
       <div className="navbar-item navbar-end">
-        <div>
-          <Search />
-        </div>
         <div className="navbar-item">
           <Box
             className="buttons"

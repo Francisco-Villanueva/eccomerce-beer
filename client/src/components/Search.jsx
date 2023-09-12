@@ -1,19 +1,32 @@
 import React, { useContext } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { CartBooksContext } from "../contexts/CartBookContext";
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function Search() {
-  const { books } = useContext(CartBooksContext);
-  const nameBooks = books.map((book) => {
-    return book.volumeInfo.title;
+  const { books, Search, setSearch } = useContext(AuthContext);
+  const nameBooks = books?.map((book) => {
+    return book.title;
   });
+
+  const handleBookSelect = (selectedBookTitle) => {
+    console.log("Libro seleccionado:", selectedBookTitle);
+    setSearch(selectedBookTitle);
+  };
+  const result = Search();
+  console.log(result);
+
   return (
     <Autocomplete
       disablePortal
       id="combo-box-demo"
       options={nameBooks}
-      sx={{ width: 200, background: "white" }}
+      onChange={(event, selectedOption) => {
+        if (selectedOption) {
+          handleBookSelect(selectedOption);
+        }
+      }}
+      sx={{ width: 200, height: 50, background: "white" }}
       renderInput={(params) => <TextField {...params} label="Search Books" />}
     />
   );
