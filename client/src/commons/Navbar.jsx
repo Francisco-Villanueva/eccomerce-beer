@@ -17,14 +17,14 @@ function Navbar() {
     navigate("/login");
   };
 
-  console.log({ carrito });
+  // console.log({ carrito });
   return (
     <nav
       className="navbar-style navbar has-background-black-ter "
       style={{
         display: "flex",
         alignItems: "center",
-        maxHeight: "65px",
+        maxHeight: "60px",
         position: "sticky",
         width: "100%",
         zIndex: 100,
@@ -36,6 +36,7 @@ function Navbar() {
         <Link to="/home">
           <img
             className="logoDevBooks is-flex navbar-item navbar-end"
+            style={{height: "75px", width: "75px"}}
             src={devBookLogo}
             alt="devbooks"
           />
@@ -44,7 +45,7 @@ function Navbar() {
       <div className="navbar-item navbar-end">
         {isAuthenticated ? (
           <Link to="/home">
-            <button className="button is-ghost has-text-white">
+            <button className="button is-ghost has-text-white" style={{maxHeight: "35px", maxWidth: "53px"}}>
               <BookSharp />
             </button>
           </Link>
@@ -56,7 +57,7 @@ function Navbar() {
           <Link to="/cart">
             <button
               className="button is-ghost has-text-white"
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: "none", maxHeight: "35px", maxWidth: "70px"}}
             >
               {carrito.length} | <ShoppingCart />
             </button>
@@ -72,7 +73,7 @@ function Navbar() {
         <div className="navbar-item">
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
             {isAuthenticated && (
-              <Avatar>{user.username.slice(0, 1).toUpperCase()} </Avatar>
+              <Avatar style={{maxHeight: "35px", maxWidth: "35px", backgroundColor: "black", margin: "1px", paddingTop: "3px"}}>{user.username.slice(0, 1).toUpperCase()} </Avatar>
             )}
             <button
               className="button is-light is-hovered"
@@ -80,6 +81,8 @@ function Navbar() {
                 margin: 0,
                 fontFamily: "'Hanken Grotesk', sans-serif",
                 transition: "background-color 0.3s",
+                maxHeight: "30px",
+                maxWidth: "70px"
               }}
               onMouseEnter={(e) => (e.target.style.backgroundColor = "#b0abab")}
               onMouseLeave={(e) => (e.target.style.backgroundColor = "")}
