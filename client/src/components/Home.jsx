@@ -6,7 +6,7 @@ import Loading from "../commons/Cards/Loading";
 
 export default function Home() {
   return (
-    <div>
+    <div className="home">
       <Navbar />
       <AllProducts />
     </div>

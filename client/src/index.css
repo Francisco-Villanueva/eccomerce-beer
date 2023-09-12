@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap');
+
 /* .card,
 .individual {
   /* height: 480px; */
@@ -5,6 +7,10 @@
   box-shadow: 5px 5px 5px 5px;
   transition: transform 0.3s;
 } */
+
+.home {
+  background-color: #5e5e5e;
+}
 
 .card:hover {
   transform: scale(1.05);
@@ -30,4 +36,80 @@
 .grilla_libros {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  background-color: #535353;
+}
+
+.logoDevBooks {
+  padding-top: 20px;
+  width: 80px;
+  border-radius: 40%;
+}
+
+.welcome {
+  background-color: #737373;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
+
+.welcome-img {
+  margin: 8%;
+  max-width: 50%;
+}
+
+.welcome-text {
+  font-family: 'Hanken Grotesk', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
+  color: white;
+  min-width: 50%;
+}
+
+.welcome-text h1{
+  font-size: 11vh;
+  margin-bottom: 0vh;
+  font-weight: bold;
+}
+
+.welcome-text h3 {
+  font-size: 4vh;
+  margin-bottom: 8vh;
+  font-weight: 100;
+}
+
+.welcome-text p {
+  max-width: 20vw;
+  text-align: center;
+  margin-bottom: 6vh;
+}
+
+.welcome-text button {
+  position: relative;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 10px 90px;
+  min-width: 400px;
+  max-width: 400px;
+  cursor: default;
+  transition: color 0.3s;
+}
+
+.welcome-divLink {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.welcome-text button:hover {
+  cursor: pointer;
+  color: #333;
 }
