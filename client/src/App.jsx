@@ -35,7 +35,6 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route path="/search" element={<Search />} /> */}
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
