@@ -4,7 +4,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function Search() {
-  const { books, Search, setSearch } = useContext(AuthContext);
+  const { books, setSearch } = useContext(AuthContext);
   const nameBooks = books?.map((book) => {
     return book.title;
   });
@@ -13,8 +13,6 @@ export default function Search() {
     console.log("Libro seleccionado:", selectedBookTitle);
     setSearch(selectedBookTitle);
   };
-  const result = Search();
-  console.log(result);
 
   return (
     <Autocomplete

@@ -45,7 +45,10 @@ function Navbar() {
       <div className="navbar-item navbar-end">
         {isAuthenticated ? (
           <Link to="/home">
-            <button className="button is-ghost has-text-white" style={{maxHeight: "35px", maxWidth: "53px"}}>
+            <button
+              className="button is-ghost has-text-white"
+              style={{ maxHeight: "35px", maxWidth: "53px" }}
+            >
               <BookSharp />
             </button>
           </Link>
@@ -57,7 +60,11 @@ function Navbar() {
           <Link to="/cart">
             <button
               className="button is-ghost has-text-white"
-              style={{ textDecoration: "none", maxHeight: "35px", maxWidth: "70px"}}
+              style={{
+                textDecoration: "none",
+                maxHeight: "35px",
+                maxWidth: "70px",
+              }}
             >
               {carrito.length} | <ShoppingCart />
             </button>
@@ -73,7 +80,17 @@ function Navbar() {
         <div className="navbar-item">
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
             {isAuthenticated && (
-              <Avatar style={{maxHeight: "35px", maxWidth: "35px", backgroundColor: "black", margin: "1px", paddingTop: "3px"}}>{user.username.slice(0, 1).toUpperCase()} </Avatar>
+              <Avatar
+                style={{
+                  maxHeight: "35px",
+                  maxWidth: "35px",
+                  backgroundColor: "black",
+                  margin: "1px",
+                  paddingTop: "3px",
+                }}
+              >
+                {user.username.slice(0, 1).toUpperCase()}{" "}
+              </Avatar>
             )}
             <button
               className="button is-light is-hovered"
@@ -82,7 +99,7 @@ function Navbar() {
                 fontFamily: "'Hanken Grotesk', sans-serif",
                 transition: "background-color 0.3s",
                 maxHeight: "30px",
-                maxWidth: "70px"
+                maxWidth: "70px",
               }}
               onMouseEnter={(e) => (e.target.style.backgroundColor = "#b0abab")}
               onMouseLeave={(e) => (e.target.style.backgroundColor = "")}

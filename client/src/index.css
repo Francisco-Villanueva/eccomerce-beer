@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap");
 
 body {
   background-color: #5e5e5e;
@@ -35,10 +35,9 @@ body {
   margin-top: 100px;
 }
 
-
 .carrito {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   max-width: 90%;
 }
 
@@ -71,7 +70,7 @@ body {
 }
 
 .welcome-text {
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: "Hanken Grotesk", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -81,7 +80,7 @@ body {
   min-width: 50%;
 }
 
-.welcome-text h1{
+.welcome-text h1 {
   font-size: 11vh;
   margin-bottom: 0vh;
   font-weight: bold;
