@@ -173,17 +173,9 @@ const AuthContextProvider = ({ children }) => {
       try {
         const detailsPromises_Books = arrayOfBooksId.map((movieId) =>
           fetchBookDetail(movieId)
-        ); //ARREGLO DE PROMESAS, CADA PROMESA TRAE EL DETALLE DEL LIBRO.
+        );
 
         const books_Details = await Promise.all(detailsPromises_Books);
-
-        // console.log("EN PROMISE ALL", { movieDetailsArray });
-
-        // console.log("DATA DEL CARRITO : ", books_Details);
-
-        // setCartBooks((prevBooks) => [...prevBooks, books_Details]);
-
-        // setCartBooks(books_Details);
 
         setState((prevState) => ({
           ...prevState,

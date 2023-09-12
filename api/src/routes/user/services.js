@@ -1,5 +1,7 @@
 const { generateToken, validateToken } = require("../../config/tokens");
+const { Cart_buy, Cart } = require("../../db/models");
 const User = require("../../db/models/User");
+const { data } = require("../../utils/Data");
 
 const register = async (req, res) => {
   try {
@@ -22,6 +24,9 @@ const register = async (req, res) => {
       password,
     });
 
+    const newCart = await Cart.create({ userId: newUser.id });
+
+    await newUser.update({ currentCart: newCart.id });
     res.status(201).json(newUser);
   } catch (error) {
     console.log({ error });
@@ -105,6 +110,11 @@ const editProfile = async (req, res) => {
 
 const checkout = async (req, res) => {
   try {
+    const { userId } = req.params;
+
+    const { lastCart, arrayOfBooksId, cartData } = await data(userId);
+
+    res.status(200).json({ carrito: cartData });
   } catch (error) {
     res.status(400).send(error);
   }

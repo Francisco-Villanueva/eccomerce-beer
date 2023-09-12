@@ -23,7 +23,21 @@ const getAllBooks = async () => {
       }
     }
 
-    return allBooks;
+    const response = allBooks.map((m) => ({
+      bookId: m.id,
+      title: m.volumeInfo.title,
+      price: m.price,
+      date: m.volumeInfo.publishedDate,
+      categories: m.volumeInfo.categories,
+      rating: m.volumeInfo.averageRating,
+      image: m.volumeInfo.imageLinks
+        ? m.volumeInfo.imageLinks.thumbnail
+        : "https://libribook.com/images/manual-forensic-taphonomy-2nd-edition-pdf.jpg",
+      lenguage: m.volumeInfo.lenguage,
+      description: m.volumeInfo.description,
+    }));
+
+    return response;
   } catch (error) {
     console.log(error);
     res.status(401).json({ error });
@@ -41,10 +55,23 @@ const getBookById = async (product_id) => {
       book.data.price = prices[prices_index].price;
     }
 
-    return book.data;
+    const response = {
+      bookId: book.data.id,
+      title: book.data.volumeInfo.title,
+      price: book.data.price,
+      date: book.data.volumeInfo.publishedDate,
+      categories: book.data.volumeInfo.categories,
+      rating: book.data.volumeInfo.averageRating,
+      image: book.data.volumeInfo.imageLinks
+        ? book.data.volumeInfo.imageLinks.thumbnail
+        : "https://libribook.com/images/manual-forensic-taphonomy-2nd-edition-pdf.jpg",
+      lenguage: book.data.volumeInfo.lenguage,
+      description: book.data.volumeInfo.description,
+    };
+
+    return response;
   } catch (error) {
-    console.log(error);
-    res.status(401).send({ error });
+    console.log("NO ANDA EL GET BY ID");
   }
 };
 

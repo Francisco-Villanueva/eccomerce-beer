@@ -36,7 +36,7 @@ function Navbar() {
         <Link to="/home">
           <img
             className="logoDevBooks is-flex navbar-item navbar-end"
-            style={{height: "75px", width: "75px"}}
+            style={{ height: "75px", width: "75px" }}
             src={devBookLogo}
             alt="devbooks"
           />
@@ -66,7 +66,7 @@ function Navbar() {
                 maxWidth: "70px",
               }}
             >
-              {carrito.length} | <ShoppingCart />
+              {carrito?.length} | <ShoppingCart />
             </button>
           </Link>
         ) : (

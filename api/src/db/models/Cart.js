@@ -10,6 +10,14 @@ Cart.init(
       type: S.INTEGER,
       allowNull: true,
     },
+    date: {
+      type: S.DATE,
+      allowNull: true,
+    },
+    isOpen: {
+      type: S.BOOLEAN,
+      defaultValue: true,
+    },
   },
   { sequelize: db, modelName: "cart" }
 );
