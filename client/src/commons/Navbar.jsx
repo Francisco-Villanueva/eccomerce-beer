@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { Avatar, Box } from "@mui/material";
 import { BookSharp, ShoppingCart } from "@mui/icons-material";
+import Search from "../components/Search";
 import devBookLogo from "../assets/imgs/devbooks-circulo.png";
 // import devBookLogo from "../assets/images/image.png";
 function Navbar() {
@@ -47,6 +48,9 @@ function Navbar() {
         ) : (
           <div />
         )}
+      </div>
+      <div>
+        <Search />
       </div>
       <div className="navbar-item navbar-end">
         <div className="navbar-item">
