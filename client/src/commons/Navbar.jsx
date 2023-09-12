@@ -20,11 +20,24 @@ function Navbar() {
   return (
     <nav
       className="navbar-style navbar has-background-black-ter "
-      style={{ display: "flex", alignItems: "center", maxHeight: "90px"}}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        maxHeight: "65px",
+        position: "sticky",
+        width: "100%",
+        zIndex: 100,
+        top: 0,
+        background: "linear-gradient(to bottom, #242424, #535353)",
+      }}
     >
       <div className="buttons">
-        <Link to="/">
-          <img className="logoDevBooks is-flex navbar-item navbar-end" src={devBookLogo} alt="devbooks"/>
+        <Link to="/home">
+          <img
+            className="logoDevBooks is-flex navbar-item navbar-end"
+            src={devBookLogo}
+            alt="devbooks"
+          />
         </Link>
       </div>
       <div className="navbar-item navbar-end">
@@ -40,7 +53,10 @@ function Navbar() {
 
         {isAuthenticated ? (
           <Link to="/cart">
-            <button className="button is-ghost has-text-white">
+            <button
+              className="button is-ghost has-text-white"
+              style={{ textDecoration: "none" }}
+            >
               {carrito.length} | <ShoppingCart />
             </button>
           </Link>
@@ -50,14 +66,19 @@ function Navbar() {
       </div>
       <div className="navbar-item navbar-end">
         <div className="navbar-item">
-          <Box
-            
-            sx={{ display: "flex", alignItems: "center", gap: "8px" }}
-          >
-            {isAuthenticated && <Avatar>{user.username.slice(0, 1).toUpperCase()} </Avatar>}
+          <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            {isAuthenticated && (
+              <Avatar>{user.username.slice(0, 1).toUpperCase()} </Avatar>
+            )}
             <button
-              className="button is-light"
-              style={{ margin: 0, fontFamily: "'Hanken Grotesk', sans-serif"}}
+              className="button is-light is-hovered"
+              style={{
+                margin: 0,
+                fontFamily: "'Hanken Grotesk', sans-serif",
+                transition: "background-color 0.3s",
+              }}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#b0abab")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "")}
               onClick={() =>
                 isAuthenticated ? logoutUser(navigate) : loginUser()
               }
