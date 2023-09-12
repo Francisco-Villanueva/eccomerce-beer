@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import SignUp from "./components/RegistrationForm";
 import { AuthContext } from "./contexts/AuthContext";
 import Welcome from "./components/Welcome";
+import Search from "./components/Search";
 
 function App() {
   const { setUser, setCarrito, getAllBooks, userId } = useContext(AuthContext);
@@ -34,6 +35,7 @@ function App() {
   return (
     <>
       <Routes>
+        {/* <Route path="/search" element={<Search />} /> */}
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />

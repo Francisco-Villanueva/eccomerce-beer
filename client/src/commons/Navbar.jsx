@@ -7,8 +7,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { Avatar, Box } from "@mui/material";
 import { BookSharp, ShoppingCart } from "@mui/icons-material";
 import Search from "../components/Search";
-import devBookLogo from "../assets/imgs/devbooks-circulo.png";
-// import devBookLogo from "../assets/images/image.png";
+//import devBookLogo from "../assets/images/image.png";
 function Navbar() {
   const { isAuthenticated, user, carrito, logoutUser } =
     useContext(AuthContext);
@@ -20,12 +19,13 @@ function Navbar() {
   console.log({ carrito });
   return (
     <nav
-      className="navbar-style navbar has-background-black-ter "
-      style={{ display: "flex", alignItems: "center", maxHeight: "90px"}}
+      className="navbar has-background-black-ter "
+      style={{ display: "flex", alignItems: "center" }}
     >
       <div className="buttons">
-        <Link to="/">
-          <img className="logoDevBooks is-flex navbar-item navbar-end" src={devBookLogo} alt="devbooks"/>
+        <Link to="/home">
+          {/* <img src={devBookLogo} alt="devbooks" style={{ width: "100px" }} /> */}
+          <h1>LOGO</h1>
         </Link>
       </div>
       <div className="navbar-item navbar-end">
@@ -55,13 +55,13 @@ function Navbar() {
       <div className="navbar-item navbar-end">
         <div className="navbar-item">
           <Box
-            
+            className="buttons"
             sx={{ display: "flex", alignItems: "center", gap: "8px" }}
           >
-            {isAuthenticated && <Avatar>{user.username.slice(0, 1).toUpperCase()} </Avatar>}
+            {isAuthenticated && <Avatar>{user.username.slice(0, 1)} </Avatar>}
             <button
               className="button is-light"
-              style={{ margin: 0, fontFamily: "'Hanken Grotesk', sans-serif"}}
+              style={{ margin: 0 }}
               onClick={() =>
                 isAuthenticated ? logoutUser(navigate) : loginUser()
               }
