@@ -40,9 +40,11 @@ export default function Cards({ book }) {
         component="img"
         src={book.image}
         alt="Paella dish"
-        sx={{ objectFit: "contain", height: "300px" }}
+        sx={{ objectFit: "contain", height: "280px", borderRadius: "5px"}}
       />
-      <CardContent>{book.title.slice(0, 50)}...</CardContent>
+      <CardContent
+      sx={{ objectFit: "contain", padding: "10px", paddingBottom: "0px",  fontFamily: "'Hanken Grotesk', sans-serif",  fontSize: "14px"}}
+      >{book.title.slice(0, 50)}...</CardContent>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <CardButtons
           book={book}

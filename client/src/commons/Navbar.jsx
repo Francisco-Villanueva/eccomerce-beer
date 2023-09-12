@@ -19,7 +19,7 @@ function Navbar() {
   console.log({ carrito });
   return (
     <nav
-      className="navbar has-background-black-ter "
+      className="navbar-style navbar has-background-black-ter "
       style={{ display: "flex", alignItems: "center", maxHeight: "90px"}}
     >
       <div className="buttons">
@@ -57,7 +57,7 @@ function Navbar() {
             {isAuthenticated && <Avatar>{user.username.slice(0, 1).toUpperCase()} </Avatar>}
             <button
               className="button is-light"
-              style={{ margin: 0 }}
+              style={{ margin: 0, fontFamily: "'Hanken Grotesk', sans-serif"}}
               onClick={() =>
                 isAuthenticated ? logoutUser(navigate) : loginUser()
               }
