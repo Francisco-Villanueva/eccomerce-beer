@@ -1,47 +1,54 @@
-const axios = require("axios");
-const { prices } = require("./prices.json");
-require("dotenv").config();
-// const { API_KEY } = process.env;
-const API_KEY = "AIzaSyCgieI78zpbDkojepkBnUMOlbrjFgKhjCs";
+const {
+  getAllBooks,
+  getBookById,
+} = require("../../../repositories/google_books_API/booksApi_eccomerce");
+
 const getAllProducts = async (req, res) => {
   try {
-    const products1 = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=programacion&key=${API_KEY}&maxResults=40`
-    );
-    const products2 = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=programacion&key=${API_KEY}&startIndex=40&maxResults=40`
-    );
-    const allBooks = products1.data.items.concat(products2.data.items);
+    const books = await getAllBooks();
 
-    for (let i = 0; i < allBooks.length; i++) {
-      const prices_index = prices.findIndex((e) => e.idBook === allBooks[i].id);
-      if (i < 1) {
-        console.log({ index: prices_index, prices: prices[prices_index] });
-      }
-      if (prices[prices_index]) {
-        allBooks[i].price = prices[prices_index].price;
-      }
-    }
-    res.status(200).json(allBooks);
+    const response = books.map((m) => ({
+      bookId: m.id,
+      title: m.volumeInfo.title,
+      price: m.price,
+      date: m.volumeInfo.publishedDate,
+      categories: m.volumeInfo.categories,
+      rating: m.volumeInfo.averageRating,
+      image: m.volumeInfo.imageLinks
+        ? m.volumeInfo.imageLinks.thumbnail
+        : "https://libribook.com/images/manual-forensic-taphonomy-2nd-edition-pdf.jpg",
+      lenguage: m.volumeInfo.lenguage,
+      description: m.volumeInfo.description,
+    }));
+
+    res.status(200).json(response);
   } catch (error) {
     console.log(error);
     res.status(401).json({ error });
   }
+  ``;
 };
 
 const getProductById = async (req, res) => {
   try {
     const { product_id } = req.params;
 
-    const book = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes/${product_id}`
-    );
-    const prices_index = prices.findIndex((e) => e.idBook === book.data.id);
+    const book = await getBookById(product_id);
 
-    if (prices[prices_index]) {
-      book.data.price = prices[prices_index].price;
-    }
-    res.status(200).json(book.data);
+    const response = {
+      bookId: book.id,
+      title: book.volumeInfo.title,
+      price: book.price,
+      date: book.volumeInfo.publishedDate,
+      categories: book.volumeInfo.categories,
+      rating: book.volumeInfo.averageRating,
+      image: book.volumeInfo.imageLinks
+        ? book.volumeInfo.imageLinks.thumbnail
+        : "https://libribook.com/images/manual-forensic-taphonomy-2nd-edition-pdf.jpg",
+      lenguage: book.volumeInfo.lenguage,
+      description: book.volumeInfo.description,
+    };
+    res.status(200).json(response);
   } catch (error) {
     console.log(error);
     res.status(401).send({ error });
