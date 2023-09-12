@@ -9,6 +9,7 @@ import { CartBooksContext, useCartBooks } from "./contexts/CartBookContext";
 import Home from "./components/Home";
 import SignUp from "./components/RegistrationForm";
 import { AuthContext } from "./contexts/AuthContext";
+import Welcome from "./components/Welcome";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -44,6 +45,7 @@ function App() {
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Welcome />} />
         {/* <Route path="/books" element={<AllProducts />} /> */}
         <Route path="/user/products/:id" element={<OneProduct />} />
         <Route path="/cart" element={<Cart />} />
