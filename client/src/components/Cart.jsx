@@ -8,7 +8,7 @@ import CardButtons from "../commons/CardButtons";
 import Loading from "../commons/Cards/Loading";
 
 export const Cart = () => {
-  const { cartBooks, setCarrito } = useContext(CartBooksContext);
+  const { carrito } = useContext(AuthContext);
 
   // const { setUser } = useContext(AuthContext);
   // useEffect(() => {
@@ -26,40 +26,26 @@ export const Cart = () => {
   return (
     <div>
       <Navbar />
-      {cartBooks ? (
-        cartBooks.map((book, index) => (
+      {carrito.length ? (
+        carrito.map((book, index) => (
           <div key={index}>
             <div className="individual" style={{ width: "820px" }}>
               <div className="card-content">
                 <div className="columns">
                   <div className="column is-one-third">
                     <img
-                      src={
-                        book?.volumeInfo.imageLinks?.smallThumbnail ||
-                        "https://cdn-icons-png.flaticon.com/512/2421/2421033.png"
-                      }
-                      alt={book.volumeInfo.title}
+                      src={book.image}
+                      alt={book.title}
                       style={{ height: "366px" }}
                     />
                   </div>
                   <div className="column">
-                    <h1 className="title is-3">
-                      {book.volumeInfo.title || "No Title"}
-                    </h1>
-                    <p>
-                      <span className="title is-6">Description:</span>{" "}
-                      {book.volumeInfo.description
-                        ? book.volumeInfo.description
-                            .split("<br>")
-                            .join("")
-                            .slice(0, 150) + "..."
-                        : "No Description"}
-                    </p>
+                    <h1 className="title is-3">{book.title || "No Title"}</h1>
+                    {/* 
                     <p>
                       <span className="title is-6">Authors:</span>{" "}
                       {book.volumeInfo.authors?.join(", ") || "Not Authors"}
                     </p>
-                    {/* <p>{book.volumeInfo.price}</p> */}
                     <p>
                       <span className="title is-6">Release Date:</span>{" "}
                       {book.volumeInfo.publishedDate || "Unknown"}
@@ -81,11 +67,9 @@ export const Cart = () => {
                       <span className="title is-6">Language:</span>{" "}
                       {book.volumeInfo.language || "Unknown"}
                     </p>
-                    <p>
-                      <span className="title is-6">Price:</span>{" "}
-                      {`$${book.price}` || "Unknown"}
-                    </p>
-                    {/* <input /> */}
+                    <p> */}
+                    <span className="title is-6">Price:</span>{" "}
+                    {`$${book.price}` || "Unknown"}
                     <CardButtons book={book} />
                   </div>
                 </div>
