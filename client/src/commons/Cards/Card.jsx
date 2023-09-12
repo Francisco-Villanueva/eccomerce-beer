@@ -1,38 +1,21 @@
 import React, { useContext } from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import ShareIcon from "@mui/icons-material/Share";
-import { InfoOutlined } from "@mui/icons-material";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../contexts/AuthContext";
-import { CartBooksContext } from "../../contexts/CartBookContext";
-import CardButtons from "../CardButtons";
-// import { items } from "../../mocks/books.json";
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+import IconButton from "@mui/material/IconButton";
+
+import { AuthContext } from "../../contexts/AuthContext";
+import CardButtons from "../CardButtons";
+import { Box } from "@mui/material";
+// import { items } from "../../mocks/books.json";
 
 export default function Cards({ book }) {
   const [expanded, setExpanded] = React.useState(false);
   // const { addToCart } = useContext(CartBooksContext);
-  const { isOnCart, addToCart, removeFromCart } = useContext(AuthContext);
+  const { isOnCart, addToCart, removeFromCart, user } = useContext(AuthContext);
 
   const handleAddToCart = () => {
     // funcion para agregar a carrito con book.id
@@ -43,9 +26,7 @@ export default function Cards({ book }) {
       addToCart(book.id);
     }
   };
-  const thumbnail = book.volumeInfo.imageLinks
-    ? book.volumeInfo.imageLinks.smallThumbnail
-    : "https://cdn-icons-png.flaticon.com/512/2421/2421033.png";
+
   return (
     <Card
       sx={{
@@ -57,33 +38,20 @@ export default function Cards({ book }) {
     >
       <CardMedia
         component="img"
-        height="194"
-        src={thumbnail}
+        src={book.image}
         alt="Paella dish"
-        sx={{ height: "150px" }}
+        sx={{ objectFit: "contain", height: "280px", borderRadius: "5px"}}
       />
-      <CardContent>{book.volumeInfo.title.slice(0, 15)}...</CardContent>
-      <CardActions disableSpacing>
-        {/* <IconButton aria-label="add to favorites" onClick={handleAddToCart}>
-          {isOnCart(book.id) ? (
-            <RemoveShoppingCartIcon />
-          ) : (
-            <ShoppingCartIcon />
-          )}
-        </IconButton>
-        <Link
-          to={`/user/products/${book.id}`}
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          <InfoOutlined />
-        </Link> */}
-
+      <CardContent
+      sx={{ objectFit: "contain", padding: "10px", paddingBottom: "0px",  fontFamily: "'Hanken Grotesk', sans-serif",  fontSize: "14px"}}
+      >{book.title.slice(0, 50)}...</CardContent>
+      <Box sx={{ display: "flex", alignItems: "center" }}>
         <CardButtons
           book={book}
           isOnCart={isOnCart}
           handleAddToCart={handleAddToCart}
         />
-      </CardActions>
+      </Box>
     </Card>
   );
 }

@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 // import devBooks from "../assets/images/image.png";
 import { AuthContext } from "../contexts/AuthContext";
+import foto from "../assets/images/devBookLogo.png";
 
 function Copyright(props) {
   return (
@@ -39,38 +40,35 @@ const defaultTheme = createTheme();
 
 export default function SignInSide() {
   const { loginUser } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // emailData, passwordData, navigate
     loginUser(data.get("email"), data.get("password"), navigate);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    // console.log({
+    //   email: data.get("email"),
+    //   password: data.get("password"),
+    // });
   };
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage: 'url("../assets/images/image.png")',
-            backgroundRepeat: "no-repeat",
-            backgroundColor: (t) =>
-              t.palette.mode === "light"
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
+
+        <Grid sm={4} md={7}>
+          <img
+            src={foto}
+            alt="devBooksLogo"
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        </Grid>
+
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
@@ -113,10 +111,7 @@ export default function SignInSide() {
                 id="password"
                 autoComplete="current-password"
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
+
               <Button
                 type="submit"
                 fullWidth

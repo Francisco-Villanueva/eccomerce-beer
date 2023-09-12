@@ -109,7 +109,7 @@ const editCount = async (req, res) => {
         as: "user_cartBuy",
       },
     });
-    if (!user) res.status(400).json({ message: "User not found." });
+    if (!user) return res.status(400).json({ message: "User not found." });
 
     let actualCartBuy = await Cart_buy.findOne({
       where: { userId, bookId },

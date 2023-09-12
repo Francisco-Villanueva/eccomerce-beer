@@ -73,8 +73,8 @@ export const Cart = () => {
       <Navbar />
       <div className="columns">
         <div className="column is-three-quarters">
-          {cartBooks ? (
-            cartBooks.map((book, index) => (
+          {carrito ? (
+            carrito.map((book, index) => (
               <div key={index}>
                 <div className="individual" style={{ width: "820px" }}>
                   <div className="card-content">
@@ -85,20 +85,20 @@ export const Cart = () => {
                     >
                       <img style={{objectFit: "contain"}}
                         src={
-                          book?.volumeInfo.imageLinks?.smallThumbnail ||
-                          "https://cdn-icons-png.flaticon.com/512/2421/2421033.png"
+                          book.image 
+                    
                         }
-                        alt={book.volumeInfo.title}
+                        alt={book.title}
                       />
                     </div>
                     <div className="column">
                       <h1 className="title is-4">
-                        {book.volumeInfo.title || "No Title"}
+                        {book.title || "No Title"}
                       </h1>
                       <p>
                         <span className="title is-6">Description:</span>{" "}
-                        {book.volumeInfo.description
-                          ? book.volumeInfo.description
+                        {book.description
+                          ? book.description
                               .split("<br>")
                               .join("")
                               .slice(0, 150) + "..."
@@ -118,23 +118,25 @@ export const Cart = () => {
                         type="number"
                         style={{ height: "30px", width: "100px" }}
                         value={
-                          (bookQuantities[book.id] &&
-                            bookQuantities[book.id].count) ||
+                          (bookQuantities[book.bookId] &&
+                            bookQuantities[book.bookId].count) ||
                           1
                         }
                         onChange={(e) =>
-                          handleQuantityChange(book.id, parseInt(e.target.value))
+                          handleQuantityChange(book.bookId, parseInt(e.target.value))
                         }
                       />{" "}
                     </div>
                     <div className="column is-one-quarter">
                       <p>
                         <span className="title is-6">Precio parcial:</span>{" "}
-                        {`$${(bookQuantities[book.id]?.count || 1) *
+                        {`$${(bookQuantities[book.bookId]?.count || 1) *
                           book.price}`}
                       </p>
                     </div>
                     </div>
+
+      
                   </div>
                 </div>
               </div>
@@ -156,15 +158,3 @@ export const Cart = () => {
     </div>
   );
 };
-// const { setUser } = useContext(AuthContext);
-// useEffect(() => {
-//   axios
-//     .get(`http://localhost:4000/admin/users/${userId}`)
-//     .then((response) => {
-//       const user = response.data;
-//       setCarrito(user.user_cartBuy);
-//     })
-//     .catch((error) => {
-//       console.error("Error al verificar el token:", error);
-//     });
-// }, []);

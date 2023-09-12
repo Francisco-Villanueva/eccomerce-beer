@@ -9,23 +9,24 @@ import { AuthContext } from "../contexts/AuthContext";
 export default function CardButtons({ book }) {
   const { isOnCart, addToCart, removeFromCart } = useContext(AuthContext);
   const handleAddToCart = () => {
-    // funcion para agregar a carrito con book.id
+    // funcion para agregar a carrito con book.bookId
 
-    if (isOnCart(book.id)) {
-      removeFromCart(book.id);
+    if (isOnCart(book.bookId)) {
+      removeFromCart(book.bookId);
     } else {
-      addToCart(book.id);
+      addToCart(book.bookId);
     }
   };
   return (
-    <div>
+    <div className="is-flex is-justify-content-center is-align-items-baseline">
       <IconButton aria-label="add to favorites" onClick={handleAddToCart}>
-        {isOnCart(book.id) ? <RemoveShoppingCartIcon /> : <ShoppingCartIcon />}
+        {isOnCart(book.bookId) ? (
+          <RemoveShoppingCartIcon />
+        ) : (
+          <ShoppingCartIcon />
+        )}
       </IconButton>
-      <Link
-        to={`/user/products/${book.id}`}
-        style={{ textDecoration: "none", color: "inherit" }}
-      >
+      <Link to={`/user/products/${book.bookId}`} style={{ textDecoration: "none", color: "inherit", margin: 0 }}>
         <InfoOutlined />
       </Link>
     </div>

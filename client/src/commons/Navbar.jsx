@@ -6,40 +6,25 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { Avatar, Box } from "@mui/material";
 import { BookSharp, ShoppingCart } from "@mui/icons-material";
+import devBookLogo from "../assets/imgs/devbooks-circulo.png";
 // import devBookLogo from "../assets/images/image.png";
 function Navbar() {
-  const { isAuthenticated, toggleAuth, user } = useContext(AuthContext);
+  const { isAuthenticated, user, carrito, logoutUser } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const loginUser = () => {
     navigate("/login");
   };
 
-  const logoutUser = () => {
-    axios
-      .post("http://localhost:4000/user/logout")
-      .then(() => {
-        toggleAuth(null);
-        navigate("/login");
-        localStorage.clear();
-      })
-      .catch((error) => {
-        console.error("Error en el logout:", error);
-      });
-  };
-
-  useEffect(() => {
-    console.log("isAuthenticated: " + isAuthenticated);
-  }, [isAuthenticated]);
-
+  console.log({ carrito });
   return (
     <nav
-      className="navbar has-background-black-ter "
-      style={{ display: "flex", alignItems: "center" }}
+      className="navbar-style navbar has-background-black-ter "
+      style={{ display: "flex", alignItems: "center", maxHeight: "90px"}}
     >
       <div className="buttons">
-        <Link to="/home">
-          {/* <img src={devBookLogo} alt="devbooks" style={{ width: "100px" }} /> */}
-          <h1>LOGO</h1>
+        <Link to="/">
+          <img className="logoDevBooks is-flex navbar-item navbar-end" src={devBookLogo} alt="devbooks"/>
         </Link>
       </div>
       <div className="navbar-item navbar-end">
@@ -56,7 +41,7 @@ function Navbar() {
         {isAuthenticated ? (
           <Link to="/cart">
             <button className="button is-ghost has-text-white">
-              <ShoppingCart />
+              {carrito.length} | <ShoppingCart />
             </button>
           </Link>
         ) : (
@@ -66,14 +51,16 @@ function Navbar() {
       <div className="navbar-item navbar-end">
         <div className="navbar-item">
           <Box
-            className="buttons"
+            
             sx={{ display: "flex", alignItems: "center", gap: "8px" }}
           >
-            {isAuthenticated && <Avatar>{user.username.slice(0, 1)} </Avatar>}
+            {isAuthenticated && <Avatar>{user.username.slice(0, 1).toUpperCase()} </Avatar>}
             <button
               className="button is-light"
-              style={{ margin: 0 }}
-              onClick={() => (isAuthenticated ? logoutUser() : loginUser())}
+              style={{ margin: 0, fontFamily: "'Hanken Grotesk', sans-serif"}}
+              onClick={() =>
+                isAuthenticated ? logoutUser(navigate) : loginUser()
+              }
             >
               {isAuthenticated ? "Logout" : "Login"}
             </button>
