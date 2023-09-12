@@ -24,7 +24,7 @@ export default function Search() {
           handleBookSelect(selectedOption);
         }
       }}
-      sx={{ width: 200, height: 50, background: "white" }}
+      sx={{ width: "200px", height: "40px", background: "white", textDecoration: "none"}}
       renderInput={(params) => <TextField {...params} label="Search Books" />}
     />
   );
