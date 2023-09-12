@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
 // Función para enviar el correo electrónico
 function enviarCorreo(message, email) {
   const mailOptions = {
-    from: "panchovillanuevaj99@gmail.com", // Cambia esto a tu dirección de correo electrónico
+    from: "panchovillanueva99@gmail.com", // Cambia esto a tu dirección de correo electrónico
     to: email, // Usar la dirección de correo proporcionada en la data
     subject: "Compra realizada!",
     text: message,

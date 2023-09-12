@@ -4,12 +4,14 @@ import Loading from "../commons/Cards/Loading";
 import { AuthContext } from "../contexts/AuthContext";
 
 export const AllProducts = () => {
-  const { books } = useContext(AuthContext);
+  const { books, searchedBooks, search } = useContext(AuthContext);
 
+  console.log({ searchedBooks, search });
+  const booksToShow = searchedBooks.length > 0 ? searchedBooks : books;
   return (
     <div className="grilla_libros">
       {books && books.length ? (
-        books.map((book, index) => {
+        booksToShow.map((book, index) => {
           return (
             <div className="column" key={index}>
               <Cards book={book} />

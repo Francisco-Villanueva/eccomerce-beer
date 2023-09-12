@@ -17,6 +17,7 @@ const AuthContextProvider = ({ children }) => {
     isAuthenticated: false,
     carrito: [],
     search: "",
+    searchedBooks: [],
   });
 
   const loginUser = (emailData, passwordData, navigate) => {
@@ -205,7 +206,14 @@ const AuthContextProvider = ({ children }) => {
   };
 
   function SearchBook() {
-    return state.books.filter((book) => book.title.includes(state.search));
+    if (state.search !== "") {
+      setState((state) => ({
+        ...state,
+        searchedBooks: state.books.filter((book) =>
+          book.title.includes(state.search)
+        ),
+      }));
+    }
   }
 
   return (
