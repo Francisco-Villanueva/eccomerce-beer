@@ -23,6 +23,7 @@ export default function Search() {
   return (
     <form onSubmit={handleBookSelect}>
       <input
+        className="search"
         type="text"
         placeholder="Search Book"
         onChange={handleInputChange}

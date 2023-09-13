@@ -1,9 +1,9 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Grid from '@mui/material/Grid';
+import * as React from "react";
+import Typography from "@mui/material/Typography";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Grid from "@mui/material/Grid";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
@@ -12,7 +12,6 @@ import { AuthContext } from "../contexts/AuthContext";
 //   desc: 'A nice thing',
 //   price: '$9.99',
 // },
-
 
 const addresses = [
   // '1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'
@@ -28,18 +27,18 @@ export default function Review() {
   const { carrito } = useContext(AuthContext);
   const userId = localStorage.getItem("userId");
 
-console.log("carrito---------", carrito);
-console.log("userId--------------", userId);
+  console.log("carrito---------", carrito);
+  console.log("userId--------------", userId);
 
-const products = [
-  carrito.map(e=> ({
-    name: e.title.slice(0, 35) + "...",
-    desc: e.description ? e.description.slice(0, 20) + "..." : "",
-    price: e.price
-  })),
-  // { name: 'Shipping', desc: '', price: 'Free' },
-];
-console.log("products---------", products);
+  const products = [
+    carrito.map((e) => ({
+      name: e.title.slice(0, 35) + "...",
+      desc: e.description ? e.description.slice(0, 20) + "..." : "",
+      price: e.price,
+    })),
+    // { name: 'Shipping', desc: '', price: 'Free' },
+  ];
+  console.log("products---------", products);
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -55,10 +54,10 @@ console.log("products---------", products);
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            {products[0].map((p)=>{
-              const totalPrice = p.price.reduce((a, b)=> a + b)
+            {products[0].map((p) => {
+              const totalPrice = p.price.reduce((a, b) => a + b);
               return "$" + totalPrice;
-              })}
+            })}
           </Typography>
         </ListItem>
       </List>
@@ -68,7 +67,7 @@ console.log("products---------", products);
             Shipping
           </Typography>
           <Typography gutterBottom>Andreani</Typography>
-          <Typography gutterBottom>{addresses.join(', ')}</Typography>
+          <Typography gutterBottom>{addresses.join(", ")}</Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>

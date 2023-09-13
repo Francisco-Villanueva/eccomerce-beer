@@ -17,7 +17,7 @@ function Navbar() {
     navigate("/login");
   };
 
-  // console.log({ carrito });
+  // console.log({ user });
   return (
     <nav
       className="navbar-style navbar has-background-black-ter "
@@ -84,6 +84,7 @@ function Navbar() {
               textDecoration: "none",
               maxHeight: "35px",
               maxWidth: "70px",
+              fontFamily: "'Hanken Grotesk', sans-serif"
             }}
           >
             Add Book

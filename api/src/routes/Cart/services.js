@@ -6,12 +6,16 @@ const { data } = require("../../utils/Data");
 const getCart = async (req, res) => {
   try {
     const { userId } = req.params;
-    const { cartData, lastCart } = await data(userId);
-    const price = cartData.reduce((a, b) => a.price + b.price);
+    const { cartData, lastCart, price } = await data(userId);
+    if (!cartData) {
+      return res.status(200).json({ price, lastCart, cartData: [] });
+    }
+    // const price = cartData.reduce((a, b) => a + b.price, 0);
     const cart = await Cart.findOne({ where: { id: lastCart.id } });
     await cart.update({ price });
     res.status(200).json({ price, lastCart, cartData });
   } catch (error) {
+    console.log(error);
     res.status(401).send(error);
   }
 };
@@ -45,7 +49,7 @@ const add = async (req, res) => {
     //   price:
     // })
 
-    return res.status(200).json({ actualCartBuy, user });
+    return res.status(200).json(user);
   } catch (error) {
     res.status(401).send(error);
   }
