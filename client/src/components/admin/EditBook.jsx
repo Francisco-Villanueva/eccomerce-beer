@@ -41,27 +41,27 @@ export default function AddBook() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios
-      .post("http://localhost:4000/admin/books", {
+    axios.put(`http://localhost:4000/admin/books/${bookId}`),
+      {
         title: title,
         description: description,
         author: author,
         genre: genre,
         year: year,
-      })
-      .then((newBook) => {
-        message.success("Libro Creado!");
-        setTitle("");
-        setAuthor("");
-        setGenre("");
-        setYear("");
-      })
-      .catch((err) => console.log(err));
+      }
+        .then((editBook) => {
+          message.success("Libro Editado!");
+          setTitle("");
+          setAuthor("");
+          setGenre("");
+          setYear("");
+        })
+        .catch((err) => console.log(err));
   };
 
   return (
     <div>
-      <Typography variant="h4">Add new Book</Typography>
+      <Typography variant="h4">Edit Book</Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -119,7 +119,7 @@ export default function AddBook() {
           </Grid>
         </Grid>
         <Button type="submit" variant="contained" color="primary">
-          Add Book
+          submit
         </Button>
       </form>
     </div>

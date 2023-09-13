@@ -10,6 +10,7 @@ import SignUp from "./components/RegistrationForm";
 import { AuthContext } from "./contexts/AuthContext";
 import Welcome from "./components/Welcome";
 import AddBook from "./components/admin/AddBook";
+import EditBook from "./components/admin/EditBook";
 
 function App() {
   const { setUser, setCarrito, getAllBooks, userId } = useContext(AuthContext);
@@ -43,6 +44,7 @@ function App() {
         <Route path="/user/products/:id" element={<OneProduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/admin/addBook" element={<AddBook />} />
+        <Route path="/admin/editBook" element={<EditBook />} />
       </Routes>
     </>
   );
