@@ -28,29 +28,52 @@ export default function Cards({ book }) {
   };
 
   return (
-    <Card className="card"
+    <Card
+      className="card"
       sx={{
         height: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        transition: "all .15s",
+        border: "none",
       }}
     >
       <CardMedia
         component="img"
         src={book.image}
         alt="Paella dish"
-        sx={{ objectFit: "contain", height: "280px", borderRadius: "5px"}}
+        sx={{ objectFit: "contain", height: "280px", borderRadius: "5px" }}
       />
       <CardContent
-      sx={{ objectFit: "contain", padding: "10px", paddingBottom: "0px",  fontFamily: "'Hanken Grotesk', sans-serif",  fontSize: "14px"}}
-      >{book.title.slice(0, 50)}...</CardContent>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+        sx={{
+          objectFit: "contain",
+          padding: "10px",
+          paddingBottom: "0px",
+          fontFamily: "'Hanken Grotesk', sans-serif",
+          fontSize: "16px",
+        }}
+      >
+        {book.title}
+      </CardContent>
+
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          background: "rgba(0,0,0,.1)",
+          padding: 1,
+          borderRadius: "3px",
+        }}
+      >
         <CardButtons
           book={book}
           isOnCart={isOnCart}
           handleAddToCart={handleAddToCart}
         />
+
+        <b style={{ color: "#0949a5" }}>$ {book.price}</b>
       </Box>
     </Card>
   );
