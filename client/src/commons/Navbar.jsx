@@ -84,6 +84,7 @@ function Navbar() {
               textDecoration: "none",
               maxHeight: "35px",
               maxWidth: "70px",
+              fontFamily: "'Hanken Grotesk', sans-serif"
             }}
           >
             Add Book

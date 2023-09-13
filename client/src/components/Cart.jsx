@@ -92,6 +92,7 @@ export const Cart = () => {
                   style={{
                     margin: "10px",
                     boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.5)",
+                    fontFamily: "'Hanken Grotesk', sans-serif"
                   }}
                 >
                   <Grid container spacing={2}>
@@ -105,11 +106,16 @@ export const Cart = () => {
                     </Grid>
                     <Grid item xs={6}>
                       <CardContent>
-                        <h1 className="title is-4">
+                        <h1 className="title is-4" style={{
+                          fontFamily: "'Hanken Grotesk', sans-serif"}}>
                           {book.title || "No Title"}
                         </h1>
                         <Typography>
-                          <span className="title is-6">Price:</span>{" "}
+                          <span className="title is-6" style={{
+                            fontFamily: "'Hanken Grotesk', sans-serif",
+                            fontWeight: "bold",
+                            fontSize: "17px"
+                          }}>Price:</span>{" "}
                           {`$${
                             (bookQuantities[book.bookId]?.count || 1) *
                             book.price
@@ -149,20 +155,28 @@ export const Cart = () => {
               style={{
                 margin: "10px",
                 boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.5)",
+                fontFamily: "'Hanken Grotesk', sans-serif"
               }}
             >
               <CardContent>
-                <h1 className="title is-4">Resumen de Compra</h1>
-                <Typography>
+                <h1 className="title is-4" style={{
+                  fontFamily: "'Hanken Grotesk', sans-serif"
+                }}>Resumen de Compra</h1>
+                <Typography style={{
+                  fontFamily: "'Hanken Grotesk', sans-serif"
+                }}>
                   Productos ({totalProducts})
                   <br />
-                  <span className="title is-6">Total Price:</span> ${totalPrice}
+                  <span className="title is-6" style={{
+                    fontFamily: "'Hanken Grotesk', sans-serif"
+                  }}>Total Price:</span> ${totalPrice}
                 </Typography>
                 <br />
                 <Link to="/checkout">
                   <Button
                     variant="contained"
                     color="success"
+                    style={{fontFamily: "'Hanken Grotesk', sans-serif"}}
                     startIcon={<Paid />}
                   >
                     Ir a Pagar
