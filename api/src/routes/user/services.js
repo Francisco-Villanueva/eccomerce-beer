@@ -129,6 +129,10 @@ const checkout = async (req, res) => {
     const newCart = await Cart.create({
       userId: user.id,
     });
+    await user.update({
+      currentCart: newCart.id,
+    });
+
     const mail = `tu compra fue realizada con exito! \n TOTAL: $ ${
       lastCart.price
     } \n Canditda de libros: ${cartData.length} \n Libros comprados: ${cartData
@@ -141,6 +145,7 @@ const checkout = async (req, res) => {
       msg: "CARRITO CERRADO",
       mail,
       user: user.email,
+      user: user.currentCart,
       carritoCerrado: currentCart,
       carritoNuevo: newCart,
     });

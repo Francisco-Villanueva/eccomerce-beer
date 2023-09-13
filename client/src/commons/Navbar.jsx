@@ -17,7 +17,7 @@ function Navbar() {
     navigate("/login");
   };
 
-  // console.log({ carrito });
+  // console.log({ user });
   return (
     <nav
       className="navbar-style navbar has-background-black-ter "

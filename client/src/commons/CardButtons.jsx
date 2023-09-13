@@ -21,12 +21,15 @@ export default function CardButtons({ book }) {
     <div className="is-flex is-justify-content-center is-align-items-baseline">
       <IconButton aria-label="add to favorites" onClick={handleAddToCart}>
         {isOnCart(book.bookId) ? (
-          <RemoveShoppingCartIcon />
+          <RemoveShoppingCartIcon style={{ color: "#c4024e" }} />
         ) : (
-          <ShoppingCartIcon />
+          <ShoppingCartIcon style={{ color: "#0949a5" }} />
         )}
       </IconButton>
-      <Link to={`/user/products/${book.bookId}`} style={{ textDecoration: "none", color: "inherit", margin: 0 }}>
+      <Link
+        to={`/user/products/${book.bookId}`}
+        style={{ textDecoration: "none", color: "inherit", margin: 0 }}
+      >
         <InfoOutlined />
       </Link>
     </div>

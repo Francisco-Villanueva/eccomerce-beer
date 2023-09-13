@@ -18,6 +18,7 @@ const AuthContextProvider = ({ children }) => {
     carrito: { cart: [], books: [] },
     search: "",
     searchedBooks: [],
+    totalPrice: 0,
   });
 
   const loginUser = (emailData, passwordData, navigate) => {
@@ -80,7 +81,7 @@ const AuthContextProvider = ({ children }) => {
       })
       .then((res) => res.data)
       .then((user) => {
-        console.log("Registro exitoso:", user);
+        // console.log("Registro exitoso:", user);
         message.success("Registrado!", 1);
         navigate("/login");
       })
@@ -114,13 +115,14 @@ const AuthContextProvider = ({ children }) => {
     axios
       .post(`http://localhost:4000/cart/add/${id}/${state.userId}`)
       .then((user) => {
+        setCarrito();
         message.success("Agregado a carrito", 1);
         const userId = user.data.id;
+        // console.log(user.data);
         axios
           .get(`http://localhost:4000/admin/users/${userId}`)
           .then((user) => {
             setState((s) => ({ ...s, user: user.data }));
-            setCarrito(user.data.user_cartBuy);
           });
       })
       .catch((err) => console.log(err));
@@ -130,22 +132,23 @@ const AuthContextProvider = ({ children }) => {
     axios
       .delete(`http://localhost:4000/cart/remove/${id}/${state.userId}`)
       .then((user) => {
+        setCarrito();
         message.info("Eliminado del carrito");
         const userId = user.data.id;
         axios
           .get(`http://localhost:4000/admin/users/${userId}`)
           .then((user) => {
             setState((s) => ({ ...s, user: user.data }));
-            setCarrito(user.data.user_cartBuy);
           });
       });
   };
 
   const isOnCart = (bookId) => {
-    const arrayOfBooksId = state.user.user_cartBuy
-      ? state.user.user_cartBuy.map((m) => m.bookId)
+    const arrayOfBooksId = state.carrito
+      ? state.carrito.books.map((m) => m.bookId)
       : [];
 
+    // console.log(arrayOfBooksId.includes(bookId));
     return arrayOfBooksId.includes(bookId); //booleano
   };
 
@@ -155,10 +158,17 @@ const AuthContextProvider = ({ children }) => {
         `http://localhost:4000/cart/${state.userId}`
       );
 
+      // console.log("RESPUESTA DEL BACK\n", carrito.data);
       setState((prevState) => ({
         ...prevState,
-        carrito: { cart: carrito.data.lastCart, books: carrito.data.cartData },
+        totalPrice: carrito.data.price,
+        carrito: {
+          cart: carrito.data.lastCart,
+          books: carrito.data.cartData,
+        },
       }));
+
+      // console.log("DESPUES DEL SETSTATE\n", state.carrito, state.totalPrice);
     } catch (error) {
       console.log(error);
     }
