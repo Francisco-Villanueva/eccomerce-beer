@@ -19,7 +19,8 @@ import { Paid } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 export const Cart = () => {
-  const { carrito } = useContext(AuthContext);
+  const { carrito, setCarrito } = useContext(AuthContext);
+  console.log("EN CARRITO: ", carrito);
   const [bookQuantities, setBookQuantities] = useState({});
   const [totalProducts, setTotalProducts] = useState(0);
 
@@ -72,21 +73,20 @@ export const Cart = () => {
     setTotalProducts(sum);
   }, [bookQuantities]);
 
-  const totalPrice = carrito.reduce(
-    (total, book) => total + bookQuantities[book.bookId]?.count * book.price,
-    0
-  );
-
-  console.log(bookQuantities);
-
+  // const totalPrice = carrito.reduce(
+  //   (total, book) => total + bookQuantities[book.bookId]?.count * book.price,
+  //   0
+  // );
+  const totalPrice = carrito ? carrito.cart.price : 0;
+  // const { cart_cartBuy: cart } = carrito;
   return (
     <div className="div-cart">
       <Navbar />
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={8}>
-            {carrito ? (
-              carrito.map((book, index) => (
+            {carrito && carrito.books ? (
+              carrito.books.map((book, index) => (
                 <Card
                   key={index}
                   style={{

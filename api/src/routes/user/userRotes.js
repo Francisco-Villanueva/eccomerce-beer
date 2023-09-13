@@ -19,5 +19,5 @@ router.get("/secret", secret);
 router.put("/profile/:userId", editProfile);
 router.get("/me", validateUser, me);
 
-router.post("/checkout", checkout);
+router.post("/checkout/:userId", checkout);
 module.exports = router;
