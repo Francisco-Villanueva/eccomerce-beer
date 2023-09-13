@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function Search() {
@@ -24,7 +22,12 @@ export default function Search() {
   // console.log({ books });
   return (
     <form onSubmit={handleBookSelect}>
-      <input type="text" onChange={handleInputChange} value={search} />
+      <input
+        type="text"
+        placeholder="Search Book"
+        onChange={handleInputChange}
+        value={search}
+      />
     </form>
   );
 }

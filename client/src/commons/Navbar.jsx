@@ -76,6 +76,20 @@ function Navbar() {
       <div>
         <Search />
       </div>
+      <div>
+        <Link to="/admin/addBook">
+          <button
+            className="button is-ghost has-text-white"
+            style={{
+              textDecoration: "none",
+              maxHeight: "35px",
+              maxWidth: "70px",
+            }}
+          >
+            Add Book
+          </button>
+        </Link>
+      </div>
       <div className="navbar-item navbar-end">
         <div className="navbar-item">
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
