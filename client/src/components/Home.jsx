@@ -4,6 +4,7 @@ import { AllProducts } from "./AllProducts";
 import { AuthContext } from "../contexts/AuthContext";
 import Loading from "../commons/Cards/Loading";
 import { useNavigate } from "react-router-dom";
+import { Categories } from "./Categories";
 
 export default function Home() {
   const { search, SearchBook } = useContext(AuthContext);
@@ -19,6 +20,7 @@ export default function Home() {
   return (
     <div className="home">
       <Navbar />
+      <Categories/>
       <AllProducts />
     </div>
   );
