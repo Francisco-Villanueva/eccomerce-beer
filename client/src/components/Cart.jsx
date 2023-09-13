@@ -19,41 +19,10 @@ import { Paid } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 export const Cart = () => {
-  const { carrito, setCarrito } = useContext(AuthContext);
-  console.log("EN CARRITO: ", carrito);
+  const { carrito, setCarrito, totalPrice } = useContext(AuthContext);
+  console.log("EN CART COMPONENT: ", carrito, totalPrice);
   const [bookQuantities, setBookQuantities] = useState({});
   const [totalProducts, setTotalProducts] = useState(0);
-
-  const userId = localStorage.getItem("userId");
-
-  useEffect(() => {
-    if (userId) {
-      axios
-        .get(`http://localhost:4000/admin/users/${userId}`)
-        .then((response) => {
-          const userCart = response.data.user_cartBuy;
-          const quantities = {};
-
-          userCart.forEach((book) => {
-            const matchingBook = carrito.find(
-              (cartBook) => cartBook.bookId === book.bookId
-            );
-
-            if (matchingBook) {
-              quantities[book.bookId] = {
-                count: book.count,
-                price: matchingBook.price,
-              };
-            }
-          });
-
-          setBookQuantities(quantities);
-        })
-        .catch((error) => {
-          console.error("Error al verificar el token:", error);
-        });
-    }
-  }, [userId, carrito]);
 
   const handleQuantityChange = (bookId, newQuantity) => {
     setBookQuantities({
@@ -64,6 +33,12 @@ export const Cart = () => {
       },
     });
   };
+  useEffect(() => {
+    setCarrito();
+    // console.log("EFECTO, CARRITO \n ", carrito);
+  }, [carrito.cart.length]);
+
+  // console.log(totalPrice);
 
   useEffect(() => {
     let sum = 0;
@@ -73,11 +48,6 @@ export const Cart = () => {
     setTotalProducts(sum);
   }, [bookQuantities]);
 
-  // const totalPrice = carrito.reduce(
-  //   (total, book) => total + bookQuantities[book.bookId]?.count * book.price,
-  //   0
-  // );
-  const totalPrice = carrito ? carrito.cart.price : 0;
   // const { cart_cartBuy: cart } = carrito;
   return (
     <div className="div-cart">

@@ -17,8 +17,6 @@ import { Checkout } from "./components/Checkout";
 function App() {
   const { setUser, setCarrito, getAllBooks, userId } = useContext(AuthContext);
 
-  // const userId = localStorage.getItem("userId");
-
   useEffect(() => {
     getAllBooks();
     if (userId) {
@@ -27,7 +25,7 @@ function App() {
         .then((response) => {
           const user = response.data;
           setUser(user);
-          setCarrito(user.user_cartBuy);
+          setCarrito();
         })
         .catch((error) => {
           console.error("Error al verificar el token:", error);

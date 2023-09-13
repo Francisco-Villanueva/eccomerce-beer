@@ -15,19 +15,19 @@ const data = async (userId) => {
       },
     },
   });
-  const { user_cart } = user;
-  const lastCart = user_cart[user_cart.length - 1];
-
+  const { user_cart, currentCart } = user;
+  const lastCart = user_cart.filter((e) => e.id === parseInt(currentCart))[0];
   const arrayOfBooksId = lastCart.cart_cartBuy.map((m) => m.bookId);
   let cartData;
-  let price;
   if (arrayOfBooksId.length > 0) {
     cartData = await getCartData(arrayOfBooksId);
-    price = cartData.reduce((a, b) => a + b.price, 0);
-    const cart = await Cart.findOne({ where: { id: lastCart.id } });
-    await cart.update({ price });
   }
 
+  const price = arrayOfBooksId.length
+    ? cartData.reduce((a, b) => a + b.price, 0)
+    : 0;
+  const cart = await Cart.findOne({ where: { id: lastCart.id } });
+  await cart.update({ price });
   return {
     user,
     user_cart,
@@ -36,6 +36,20 @@ const data = async (userId) => {
     cartData,
     price,
   };
+};
+
+const updateCart_TotalPrice = async (userId) => {
+  try {
+    const { arrayOfBooksId, lastCart, cartData } = await data(userId);
+
+    const price = arrayOfBooksId.length
+      ? cartData.reduce((a, b) => a + b.price, 0)
+      : 0;
+    const cart = await Cart.findOne({ where: { id: lastCart.id } });
+    await cart.update({ price });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 async function getCartData(arrayOfBooksId) {

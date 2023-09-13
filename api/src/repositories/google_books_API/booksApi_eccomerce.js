@@ -26,11 +26,10 @@ const getAllBooks = async () => {
     const response = allBooks.map((m) => ({
       bookId: m.id,
       title: m.volumeInfo.title,
-      // price: m.price,
       date: m.volumeInfo.publishedDate,
       categories: m.volumeInfo.categories,
       rating: m.volumeInfo.averageRating,
-      price: m.saleInfo.listPrice.amount,
+      price: Math.trunc(m.saleInfo.listPrice.amount),
       image: m.volumeInfo.imageLinks
         ? m.volumeInfo.imageLinks.thumbnail
         : "https://libribook.com/images/manual-forensic-taphonomy-2nd-edition-pdf.jpg",
