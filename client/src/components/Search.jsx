@@ -13,13 +13,13 @@ export default function Search() {
     SearchBook();
   };
 
-  console.log({ search });
+  // console.log({ search });
 
   const handleInputChange = (e) => {
     setSearch(e.target.value);
     SearchBook();
   };
-  console.log({ books });
+  // console.log({ books });
   return (
     <form onSubmit={handleBookSelect}>
       <input

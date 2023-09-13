@@ -1,5 +1,9 @@
 const { generateToken, validateToken } = require("../../config/tokens");
+const { Cart_buy, Cart } = require("../../db/models");
 const User = require("../../db/models/User");
+const { data } = require("../../utils/Data");
+
+const { enviarCorreo } = require("../../repositories/mailer/mailer");
 
 const register = async (req, res) => {
   try {
@@ -22,6 +26,9 @@ const register = async (req, res) => {
       password,
     });
 
+    const newCart = await Cart.create({ userId: newUser.id });
+
+    await newUser.update({ currentCart: newCart.id });
     res.status(201).json(newUser);
   } catch (error) {
     console.log({ error });
@@ -105,8 +112,41 @@ const editProfile = async (req, res) => {
 
 const checkout = async (req, res) => {
   try {
+    const { userId } = req.params;
+
+    const { lastCart, arrayOfBooksId, cartData, user } = await data(userId);
+
+    const currentCart = await Cart.findOne({
+      where: { id: lastCart.id },
+    });
+
+    const currentDay = new Date(); //FECHA DE CIERRE DEL CARRITO
+
+    await currentCart.update({ isOpen: false, date: currentDay });
+
+    // // crear otro
+
+    const newCart = await Cart.create({
+      userId: user.id,
+    });
+    const mail = `tu compra fue realizada con exito! \n TOTAL: $ ${
+      lastCart.price
+    } \n Canditda de libros: ${cartData.length} \n Libros comprados: ${cartData
+      .map((m) => `\n\t => ${m.title}`)
+      .join("")}`;
+
+    enviarCorreo(mail, user.email);
+
+    res.status(200).json({
+      msg: "CARRITO CERRADO",
+      mail,
+      user: user.email,
+      carritoCerrado: currentCart,
+      carritoNuevo: newCart,
+    });
   } catch (error) {
-    res.status(400).send(error);
+    console.log(error);
+    res.status(401).json(error);
   }
 };
 module.exports = {

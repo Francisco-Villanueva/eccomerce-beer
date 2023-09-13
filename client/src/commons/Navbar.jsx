@@ -11,6 +11,7 @@ import devBookLogo from "../assets/imgs/devbooks-circulo.png";
 function Navbar() {
   const { isAuthenticated, user, carrito, logoutUser } =
     useContext(AuthContext);
+
   const navigate = useNavigate();
   const loginUser = () => {
     navigate("/login");
@@ -65,7 +66,7 @@ function Navbar() {
                 maxWidth: "70px",
               }}
             >
-              {carrito.length} | <ShoppingCart />
+              {carrito?.books.length} | <ShoppingCart />
             </button>
           </Link>
         ) : (
