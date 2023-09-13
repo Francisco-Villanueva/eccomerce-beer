@@ -60,7 +60,7 @@ export default function AddBook() {
   };
 
   return (
-    <div>
+    <div className="welcome">
       <Typography variant="h4">Edit Book</Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
