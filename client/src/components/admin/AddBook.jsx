@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import Grid from "@mui/material/Grid";
 import { message } from "antd";
 
 export default function AddBook() {
@@ -40,7 +41,7 @@ export default function AddBook() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:4000/books/createBook", {
+      .post("http://localhost:4000/admin/books/createBook", {
         title: title,
         description: description,
         author: author,
@@ -60,51 +61,61 @@ export default function AddBook() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <TextField
-          label="Título"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          value={title}
-          onChange={handleTitleChange}
-          required
-        />
-        <TextField
-          label="Descripción"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          value={description}
-          onChange={handleDescriptionChange}
-          required
-        />
-        <TextField
-          label="Autor"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          value={author}
-          onChange={handleAuthorChange}
-          required
-        />
-        <TextField
-          label="Género"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          value={genre}
-          onChange={handleGenreChange}
-          required
-        />
-        <TextField
-          label="Año de Publicación"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          value={year}
-          onChange={handleYearChange}
-          required
-        />
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              margin="normal"
+              required
+              value={title}
+              onChange={handleTitleChange}
+              label="titulo"
+              autoComplete="titulo"
+              autoFocus
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Descripción"
+              margin="normal"
+              value={description}
+              onChange={handleDescriptionChange}
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Autor"
+              margin="normal"
+              value={author}
+              onChange={handleAuthorChange}
+              autoComplete="Autor"
+              autoFocus
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Género"
+              margin="normal"
+              value={genre}
+              onChange={handleGenreChange}
+              autoComplete="Genero"
+              autoFocus
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Año de Publicación"
+              margin="normal"
+              value={year}
+              onChange={handleYearChange}
+              autoComplete="Año de publicacion"
+              autoFocus
+              required
+            />
+          </Grid>
+        </Grid>
         <Button type="submit" variant="contained" color="primary">
           Agregar Libro
         </Button>
