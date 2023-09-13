@@ -66,7 +66,7 @@ function Navbar() {
                 maxWidth: "70px",
               }}
             >
-              {carrito?.cart_cartBuy.length} | <ShoppingCart />
+              {carrito?.books.length} | <ShoppingCart />
             </button>
           </Link>
         ) : (

@@ -3,7 +3,7 @@ const {
   getBookById,
 } = require("../repositories/google_books_API/booksApi_eccomerce");
 
-const data = async (userId, bookId) => {
+const data = async (userId) => {
   const user = await User.findOne({
     where: { id: userId },
     include: {
@@ -17,10 +17,25 @@ const data = async (userId, bookId) => {
   });
   const { user_cart } = user;
   const lastCart = user_cart[user_cart.length - 1];
-  const arrayOfBooksId = lastCart.cart_cartBuy.map((m) => m.bookId);
-  const cartData = await getCartData(arrayOfBooksId);
 
-  return { user, user_cart, lastCart, arrayOfBooksId, cartData };
+  const arrayOfBooksId = lastCart.cart_cartBuy.map((m) => m.bookId);
+  let cartData;
+  let price;
+  if (arrayOfBooksId.length > 0) {
+    cartData = await getCartData(arrayOfBooksId);
+    price = cartData.reduce((a, b) => a.price + b.price);
+    const cart = await Cart.findOne({ where: { id: lastCart.id } });
+    await cart.update({ price });
+  }
+
+  return {
+    user,
+    user_cart,
+    lastCart,
+    arrayOfBooksId,
+    cartData,
+    price,
+  };
 };
 
 async function getCartData(arrayOfBooksId) {

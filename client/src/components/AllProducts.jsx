@@ -6,7 +6,7 @@ import { AuthContext } from "../contexts/AuthContext";
 export const AllProducts = () => {
   const { books, searchedBooks, carrito } = useContext(AuthContext);
 
-  console.log({ carrito });
+  console.log(carrito);
   const booksToShow = searchedBooks.length > 0 ? searchedBooks : books;
   return (
     <div className="grilla_libros">

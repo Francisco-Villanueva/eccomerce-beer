@@ -1,18 +1,21 @@
 //CONTROLLERS FOR CART
 
-const { Cart_buy, User } = require("../../db/models");
+const { Cart_buy, User, Cart } = require("../../db/models");
 const { data } = require("../../utils/Data");
 //ADD PRODUCTS
 const getCart = async (req, res) => {
   try {
     const { userId } = req.params;
     const { cartData, lastCart } = await data(userId);
-
-    res.status(200).json({ lastCart });
+    const price = cartData.reduce((a, b) => a.price + b.price);
+    const cart = await Cart.findOne({ where: { id: lastCart.id } });
+    await cart.update({ price });
+    res.status(200).json({ price, lastCart, cartData });
   } catch (error) {
     res.status(401).send(error);
   }
 };
+
 const add = async (req, res) => {
   const { bookId, userId } = req.params;
   // const {cantidad }= req.body estoy para ver la cantidad
@@ -37,6 +40,10 @@ const add = async (req, res) => {
         cartId: lastCart.id,
       },
     });
+
+    // await Cart.update({
+    //   price:
+    // })
 
     return res.status(200).json({ actualCartBuy, user });
   } catch (error) {

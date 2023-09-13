@@ -15,7 +15,7 @@ const AuthContextProvider = ({ children }) => {
     userId: localStorage.getItem("userId"),
     user: {},
     isAuthenticated: false,
-    carrito: [],
+    carrito: { cart: [], books: [] },
     search: "",
     searchedBooks: [],
   });
@@ -96,7 +96,6 @@ const AuthContextProvider = ({ children }) => {
       ...prevState,
       user: user,
       isAuthenticated: true,
-      carrito: user.user_cartBuy,
       books: [],
     }));
   };
@@ -158,7 +157,7 @@ const AuthContextProvider = ({ children }) => {
 
       setState((prevState) => ({
         ...prevState,
-        carrito: carrito.data.lastCart,
+        carrito: { cart: carrito.data.lastCart, books: carrito.data.cartData },
       }));
     } catch (error) {
       console.log(error);

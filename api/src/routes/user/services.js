@@ -112,9 +112,24 @@ const checkout = async (req, res) => {
   try {
     const { userId } = req.params;
 
-    const { lastCart, arrayOfBooksId, cartData } = await data(userId);
+    const { lastCart, arrayOfBooksId, cartData, user } = await data(userId);
 
-    res.status(200).json({ carrito: cartData });
+    const currentCart = await Cart.findOne({
+      where: { id: lastCart.id },
+    });
+
+    const currentDay = new Date();
+
+    await currentCart.update({ isOpen: false, date: currentDay });
+
+    // crear otro
+
+    const newCart = await Cart.create({
+      userId: user.id,
+    });
+    res
+      .status(200)
+      .json({ carritoCerrado: currentCart, carritoNuevo: newCart });
   } catch (error) {
     res.status(400).send(error);
   }
