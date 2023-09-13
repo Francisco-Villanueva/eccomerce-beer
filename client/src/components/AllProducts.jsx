@@ -4,9 +4,9 @@ import Loading from "../commons/Cards/Loading";
 import { AuthContext } from "../contexts/AuthContext";
 
 export const AllProducts = () => {
-  const { books, searchedBooks, search } = useContext(AuthContext);
+  const { books, searchedBooks, carrito } = useContext(AuthContext);
 
-  console.log({ searchedBooks, search });
+  console.log({ carrito });
   const booksToShow = searchedBooks.length > 0 ? searchedBooks : books;
   return (
     <div className="grilla_libros">

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useContext } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
@@ -12,6 +11,7 @@ import devBookLogo from "../assets/imgs/devbooks-circulo.png";
 function Navbar() {
   const { isAuthenticated, user, carrito, logoutUser } =
     useContext(AuthContext);
+
   const navigate = useNavigate();
   const loginUser = () => {
     navigate("/login");
@@ -66,7 +66,7 @@ function Navbar() {
                 maxWidth: "70px",
               }}
             >
-              {carrito?.length} | <ShoppingCart />
+              {carrito?.cart_cartBuy.length} | <ShoppingCart />
             </button>
           </Link>
         ) : (

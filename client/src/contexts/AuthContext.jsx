@@ -150,44 +150,19 @@ const AuthContextProvider = ({ children }) => {
     return arrayOfBooksId.includes(bookId); //booleano
   };
 
-  const setCarrito = async (carrito) => {
-    const arrayOfBooksId = carrito.map((m) => m.bookId);
+  const setCarrito = async () => {
+    try {
+      const carrito = await axios.get(
+        `http://localhost:4000/cart/${state.userId}`
+      );
 
-    // console.log("Inicio FAVORITES: ", arrayOfMoviesId);
-
-    const fetchBookDetail = async (bookId) => {
-      try {
-        const response = await axios.get(
-          `http://localhost:4000/user/products/${bookId}`
-        );
-
-        return response.data; // Suponiendo que los detalles de la película se encuentren en response.data
-      } catch (error) {
-        console.error("Error al obtener detalles de la película:", error);
-        // return null;
-      }
-    };
-
-    // Función para obtener los detalles de todas las películas en arrayOfMoviesId
-    const fetchAllBooksDetails = async () => {
-      try {
-        const detailsPromises_Books = arrayOfBooksId.map((movieId) =>
-          fetchBookDetail(movieId)
-        );
-
-        const books_Details = await Promise.all(detailsPromises_Books);
-
-        setState((prevState) => ({
-          ...prevState,
-          carrito: books_Details,
-        }));
-        return { books_Details };
-      } catch (error) {
-        console.log({ error });
-      }
-    };
-
-    fetchAllBooksDetails();
+      setState((prevState) => ({
+        ...prevState,
+        carrito: carrito.data.lastCart,
+      }));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const setSearch = (booktitle) => {

@@ -77,8 +77,7 @@ export const Cart = () => {
     0
   );
 
-  console.log(bookQuantities);
-
+  // const { cart_cartBuy: cart } = carrito;
   return (
     <div>
       <Navbar />
@@ -86,7 +85,7 @@ export const Cart = () => {
         <Grid container spacing={3}>
           <Grid item xs={8}>
             {carrito ? (
-              carrito.map((book, index) => (
+              carrito.cart_cartBuy.map((book, index) => (
                 <Card
                   key={index}
                   style={{
