@@ -80,7 +80,7 @@ export const Cart = () => {
   console.log(bookQuantities);
 
   return (
-    <div>
+    <div className="div-cart">
       <Navbar />
       <Container>
         <Grid container spacing={3}>
