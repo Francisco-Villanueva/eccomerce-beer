@@ -1,50 +1,52 @@
 //CONTROLLERS FOR CART
-const express = require("express");
-const router = express.Router();
-const { Cart, Cart_buy, User } = require("../../db/models");
-const { getProductById } = require("../products/user/services");
-const axios = require("axios");
 
+const { Cart_buy, User, Cart } = require("../../db/models");
+const { data } = require("../../utils/Data");
 //ADD PRODUCTS
+const getCart = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { cartData, lastCart } = await data(userId);
+    const price = cartData.reduce((a, b) => a.price + b.price);
+    const cart = await Cart.findOne({ where: { id: lastCart.id } });
+    await cart.update({ price });
+    res.status(200).json({ price, lastCart, cartData });
+  } catch (error) {
+    res.status(401).send(error);
+  }
+};
+
 const add = async (req, res) => {
   const { bookId, userId } = req.params;
   // const {cantidad }= req.body estoy para ver la cantidad
   try {
     if (!userId)
       return res.status(400).json({ message: "User ID not provided." });
-    const user = await User.findOne({
-      where: { id: userId },
-      include: {
-        model: Cart_buy,
-        as: "user_cartBuy",
-      },
-    });
+
+    const { user, lastCart } = await data(userId);
 
     if (!user) {
       return res.status(400).json({ message: "User not found." });
     }
 
-    let actualCartBuy = await Cart_buy.findOne({
+    if (!lastCart.isOpen) {
+      return res.send("Crear carrito nuevo");
+    }
+
+    let actualCartBuy = await Cart_buy.findOrCreate({
       where: {
         bookId,
         userId,
+        cartId: lastCart.id,
       },
     });
 
-    if (!actualCartBuy) {
-      await Cart_buy.create({
-        bookId,
-        userId,
-      });
-    }
+    // await Cart.update({
+    //   price:
+    // })
 
-    const books = await axios.get(
-      `http://localhost:4000/user/products/${bookId}`
-    );
-
-    return res.status(200).json(user);
+    return res.status(200).json({ actualCartBuy, user });
   } catch (error) {
-    console.log("error trying to add products to the cart", error);
     res.status(401).send(error);
   }
 };
@@ -56,14 +58,8 @@ const remove = async (req, res) => {
   try {
     if (!userId)
       return res.status(400).json({ message: "User ID not provided." });
+    const { user, lastCart } = await data(userId);
 
-    const user = await User.findOne({
-      where: { id: userId },
-      include: {
-        model: Cart_buy,
-        as: "user_cartBuy",
-      },
-    });
     if (!user) return res.status(400).json({ message: "User not found." });
 
     let actualCartBuy = await Cart_buy.findOne({
@@ -138,4 +134,32 @@ const editCount = async (req, res) => {
   }
 };
 
-module.exports = { add, remove, editCount };
+const setCount = async (req, res) => {
+  try {
+    const { bookId, userId } = req.params;
+    const { count } = req.body;
+    const { lastCart } = await data(userId);
+
+    const actualCartBuy = await Cart_buy.findOne({
+      where: {
+        bookId,
+        userId,
+        cartId: lastCart.id,
+      },
+    });
+
+    if (!actualCartBuy) {
+      return res.status(401).send("This cart buy does not exist!");
+    }
+
+    await actualCartBuy.update({
+      count,
+    });
+
+    res.status(201).json({ msg: "Cantidad actualizada", actualCartBuy });
+  } catch (error) {
+    res.status(401).send(error);
+  }
+};
+
+module.exports = { add, remove, editCount, setCount, getCart };

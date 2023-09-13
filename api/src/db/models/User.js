@@ -3,6 +3,7 @@ const S = require("sequelize");
 const { hash, genSaltSync } = require("bcrypt");
 
 const db = require("../db");
+const { Cart, Cart_buy } = require("../models/index");
 
 class User extends S.Model {
   async validatePassword(loginPw) {
@@ -14,10 +15,6 @@ class User extends S.Model {
       return console.log("se rompe el validate: ", err);
     }
   }
-
-  // async createCart(id){
-
-  // }
 }
 
 User.init(
@@ -41,6 +38,10 @@ User.init(
     salt: {
       type: S.STRING,
     },
+    currentCart: {
+      type: S.STRING,
+      allowNull: true,
+    },
   },
   { sequelize: db, modelName: "user" }
 );
@@ -56,4 +57,17 @@ User.beforeCreate((user) => {
     .catch((e) => console.log(e));
 });
 
+User.prototype.getInfo = async function (id) {
+  return User.findOne({
+    where: { id },
+    include: {
+      model: Cart,
+      as: "user_cart",
+      include: {
+        model: Cart_buy,
+        as: "cart_cartBuy",
+      },
+    },
+  });
+};
 module.exports = User;

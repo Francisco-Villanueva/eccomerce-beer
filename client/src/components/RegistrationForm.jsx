@@ -25,7 +25,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        DevBooks
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -133,8 +133,8 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                <Link to= "/login" variant="body2">
+                  {"Already have an account? Sign in"}
                 </Link>
               </Grid>
             </Grid>

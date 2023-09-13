@@ -1,11 +1,15 @@
-const { Cart_buy, User } = require("../../db/models");
+const { Cart_buy, User, Cart } = require("../../db/models");
 
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.findAll({
       include: {
-        model: Cart_buy,
-        as: "user_cartBuy",
+        model: Cart,
+        as: "user_cart",
+        include: {
+          model: Cart_buy,
+          as: "cart_cartBuy",
+        },
       },
     });
 
@@ -63,8 +67,12 @@ const getUserById = async (req, res) => {
         id: userId,
       },
       include: {
-        model: Cart_buy,
-        as: "user_cartBuy",
+        model: Cart,
+        as: "user_cart",
+        include: {
+          model: Cart_buy,
+          as: "cart_cartBuy",
+        },
       },
     });
 

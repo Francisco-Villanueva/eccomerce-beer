@@ -9,7 +9,10 @@ import Home from "./components/Home";
 import SignUp from "./components/RegistrationForm";
 import { AuthContext } from "./contexts/AuthContext";
 import Welcome from "./components/Welcome";
+import AddBook from "./components/admin/AddBook";
+import EditBook from "./components/admin/EditBook";
 import Search from "./components/Search";
+import { Checkout } from "./components/Checkout";
 
 function App() {
   const { setUser, setCarrito, getAllBooks, userId } = useContext(AuthContext);
@@ -39,9 +42,12 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/" element={<Welcome />} />
+        <Route path="/checkout" element={<Checkout />} />
         {/* <Route path="/books" element={<AllProducts />} /> */}
         <Route path="/user/products/:id" element={<OneProduct />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/admin/addBook" element={<AddBook />} />
+        <Route path="/admin/editBook" element={<EditBook />} />
       </Routes>
     </>
   );
