@@ -13,12 +13,4 @@ router.use("/user", userRoutes);
 router.use("/user/products", userProductsRoutes);
 router.use("/admin/books", adminProductsRoutes);
 
-// const { enviarCorreo } = require("../repositories/mailer/mailer");
-// router.post("/mail", (req, res) => {
-//   const { mail, msg } = req.body;
-
-//   enviarCorreo(msg, mail);
-
-//   res.status(200).send("mail enviado");
-// });
 module.exports = router;

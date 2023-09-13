@@ -138,7 +138,7 @@ const setCount = async (req, res) => {
   try {
     const { bookId, userId } = req.params;
     const { count } = req.body;
-    const { user, lastCart } = await data(userId);
+    const { lastCart } = await data(userId);
 
     const actualCartBuy = await Cart_buy.findOne({
       where: {

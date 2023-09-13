@@ -23,7 +23,7 @@ const data = async (userId) => {
   let price;
   if (arrayOfBooksId.length > 0) {
     cartData = await getCartData(arrayOfBooksId);
-    price = cartData.reduce((a, b) => a.price + b.price);
+    price = cartData.reduce((a, b) => a + b.price, 0);
     const cart = await Cart.findOne({ where: { id: lastCart.id } });
     await cart.update({ price });
   }
