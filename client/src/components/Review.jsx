@@ -4,56 +4,61 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
-const products = [
-  {
-    name: 'Product 1',
-    desc: 'A nice thing',
-    price: '$9.99',
-  },
-  {
-    name: 'Product 2',
-    desc: 'Another thing',
-    price: '$3.45',
-  },
-  {
-    name: 'Product 3',
-    desc: 'Something else',
-    price: '$6.51',
-  },
-  {
-    name: 'Product 4',
-    desc: 'Best thing of all',
-    price: '$14.11',
-  },
-  { name: 'Shipping', desc: '', price: 'Free' },
+// {
+//   name: 'Product 1',
+//   desc: 'A nice thing',
+//   price: '$9.99',
+// },
+
+
+const addresses = [
+  // '1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'
 ];
-
-const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
 const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
+  // { name: 'Card type', detail: 'Visa' },
+  // { name: 'Card holder', detail: 'Mr John Smith' },
+  // { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
+  // { name: 'Expiry date', detail: '04/2024' },
 ];
 
 export default function Review() {
+  const { carrito } = useContext(AuthContext);
+  const userId = localStorage.getItem("userId");
+
+console.log("carrito---------", carrito);
+console.log("userId--------------", userId);
+
+const products = [
+  carrito.map(e=> ({
+    name: e.title.slice(0, 35) + "...",
+    desc: e.description ? e.description.slice(0, 20) + "..." : "",
+    price: e.price
+  })),
+  // { name: 'Shipping', desc: '', price: 'Free' },
+];
+console.log("products---------", products);
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Order summary
       </Typography>
       <List disablePadding>
-        {products.map((product) => (
+        {products[0].map((product) => (
           <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
             <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
+            <Typography variant="body2">{"$" + product.price}</Typography>
           </ListItem>
         ))}
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $34.06
+            {products[0].map((p)=>{
+              const totalPrice = p.price.reduce((a, b)=> a + b)
+              return "$" + totalPrice;
+              })}
           </Typography>
         </ListItem>
       </List>
@@ -62,7 +67,7 @@ export default function Review() {
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Shipping
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
+          <Typography gutterBottom>Andreani</Typography>
           <Typography gutterBottom>{addresses.join(', ')}</Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
