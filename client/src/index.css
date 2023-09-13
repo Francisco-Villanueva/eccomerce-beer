@@ -135,7 +135,14 @@ body {
 
 .div-checkout{
   height: 100vh;
-  background-color: 535353;
+  background-color: #535353;
   color: white;
   font-family: "Hanken Grotesk", sans-serif;
+}
+
+.div-categories {
+  background-color: #535353;
+  color: white;
+  font-family: "Hanken Grotesk", sans-serif;
+  padding-left: 8px;
 }
