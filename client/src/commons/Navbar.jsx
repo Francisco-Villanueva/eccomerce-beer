@@ -36,7 +36,7 @@ function Navbar() {
         <Link to="/home">
           <img
             className="logoDevBooks is-flex navbar-item navbar-end"
-            style={{height: "75px", width: "75px"}}
+            style={{ height: "75px", width: "75px" }}
             src={devBookLogo}
             alt="devbooks"
           />
@@ -75,6 +75,20 @@ function Navbar() {
       </div>
       <div>
         <Search />
+      </div>
+      <div>
+        <Link to="/admin/addBook">
+          <button
+            className="button is-ghost has-text-white"
+            style={{
+              textDecoration: "none",
+              maxHeight: "35px",
+              maxWidth: "70px",
+            }}
+          >
+            Add Book
+          </button>
+        </Link>
       </div>
       <div className="navbar-item navbar-end">
         <div className="navbar-item">
