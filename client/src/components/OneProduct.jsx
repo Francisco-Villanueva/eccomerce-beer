@@ -5,11 +5,14 @@ import { useContext } from "react";
 import { CartBooksContext } from "../contexts/CartBookContext";
 import { AuthContext } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../commons/Navbar";
 
 export const OneProduct = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(true);
@@ -47,6 +50,9 @@ export const OneProduct = () => {
       .delete(`http://localhost:4000/admin/books/${id}`)
       .then(() => {
         setDeleteBook(true);
+        message.success("Libro Eliminado!");
+        navigate("/home");
+        getAllBooks();
 
         console.log("Libro eliminado exitosamente");
       })
