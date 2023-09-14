@@ -5,12 +5,8 @@ import { AuthContext } from "../contexts/AuthContext";
 
 export const AllProducts = ({ selectedCategories }) => {
   const { books, searchedBooks, carrito } = useContext(AuthContext);
-  const booksToShow = searchedBooks.length > 0 ? searchedBooks : books;
 
-  return (
-    <div className="grilla_libros">
-      {booksToShow && booksToShow.length ? ( // cambie esto
-
+  
   const filteredBooks = books.filter((book) => {
 
     if (selectedCategories.length === 0) {
