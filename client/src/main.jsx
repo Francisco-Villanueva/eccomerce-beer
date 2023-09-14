@@ -9,12 +9,12 @@ import CheckoutContextProvider from "./contexts/CheckoutContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <CheckoutContextProvider>
-      <CartBooksProvider>
-        <AuthContextProvider>
-          <App />
-        </AuthContextProvider>
-      </CartBooksProvider>
-    </CheckoutContextProvider>
+    {/* <CheckoutContextProvider> */}
+    <CartBooksProvider>
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
+    </CartBooksProvider>
+    {/* </CheckoutContextProvider> */}
   </BrowserRouter>
 );
