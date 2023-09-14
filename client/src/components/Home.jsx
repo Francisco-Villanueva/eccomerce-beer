@@ -1,14 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../commons/Navbar";
 import { AllProducts } from "./AllProducts";
 import { AuthContext } from "../contexts/AuthContext";
 import Loading from "../commons/Cards/Loading";
 import { useNavigate } from "react-router-dom";
-import { Categories } from "./Categories";
+import Categories from './Categories'
 
 export default function Home() {
   const { search, SearchBook } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
   // useEffect(() => {
   //   let book = SearchBook();
@@ -20,8 +22,8 @@ export default function Home() {
   return (
     <div className="home">
       <Navbar />
-      <Categories/>
-      <AllProducts />
+      <Categories setSelectedCategories={setSelectedCategories} />
+      <AllProducts selectedCategories={selectedCategories} />
     </div>
   );
 }
