@@ -1,11 +1,10 @@
 import { useState, createContext } from "react";
 
 // const initialState = {};
-export const AddressContext = createContext();
+export const CheckoutContext = createContext();
 
-const CheckoutContextProvider = ({ children }) => {
+export const CheckoutContextProvider = ({ children }) => {
   const [addresses, setAddresses] = useState([]);
-
 
   return (
     <AddressContext.Provider value={{ addresses, setAddresses }}>
@@ -14,4 +13,4 @@ const CheckoutContextProvider = ({ children }) => {
   );
 };
 
-export default CheckoutContextProvider;
+// export default CheckoutContextProvider;

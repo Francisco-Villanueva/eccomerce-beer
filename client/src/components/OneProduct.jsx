@@ -8,8 +8,10 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../commons/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export const OneProduct = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(true);
@@ -17,11 +19,10 @@ export const OneProduct = () => {
   const [deleteBook, setDeleteBook] = useState(true);
   const { cartBooks, addToCart, removeFromCart } = useContext(CartBooksContext);
   const { carrito } = useContext(AuthContext);
-  // const [adminUser, setAdminUser] = useState(false)
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/user/products/${id}`) // esta URL es de los libros de la API
+      .get(`http://localhost:4000/user/products/${id}`)
       .then((res) => {
         setBook(res.data);
         setLoading(false);
@@ -47,6 +48,8 @@ export const OneProduct = () => {
       .delete(`http://localhost:4000/admin/books/${id}`)
       .then(() => {
         setDeleteBook(true);
+        navigate("/home");
+        getAllBooks();
 
         console.log("Libro eliminado exitosamente");
       })
@@ -71,12 +74,14 @@ export const OneProduct = () => {
   console.log(book);
 
   return (
-    <div style={{backgroundColor: "#535353", fontFamily: "'Hanken Grotesk', sans-serif"}}>
+    <div
+      style={{
+        backgroundColor: "#535353",
+        fontFamily: "'Hanken Grotesk', sans-serif",
+      }}
+    >
       <Navbar />
-      <div
-        className="individual"
-        style={{ width: "100vw", height: "79.4vh"}}
-      >
+      <div className="individual" style={{ width: "100vw", height: "79.4vh" }}>
         <div
           className="card-content"
           style={{
@@ -85,7 +90,7 @@ export const OneProduct = () => {
             marginLeft: "20px",
             marginRight: "20px",
             marginTop: "75px",
-            backgroundColor: "#fff"
+            backgroundColor: "#fff",
           }}
         >
           {loading ? (
@@ -139,54 +144,77 @@ export const OneProduct = () => {
                 <span className="title is-6">Price:</span>{" "}
                 {`$${book.price}` || "Unknown"}
               </p> */}
-              <div className="botonera" style={{display: "flex", gap: "15px"}}>
-                {!isCart ? (
-                  <button
-                    className="button"
-                    style={{ margin: "10px 0px", borderRadius: "8px", border: "none", fontFamily: "'Hanken Grotesk', sans-serif"}}
-                    onClick={handleAddCart}
-                  >
-                    <i
-                      className="ti ti-garden-cart"
-                      style={{ marginRight: "5px" }}
-                    />
-                    Add to Cart
-                  </button>
-                ) : (
-                  <button
-                    className="button"
-                    style={{ margin: "10px 0px", borderRadius: "8px", border: "none", fontFamily: "'Hanken Grotesk', sans-serif" }}
-                    onClick={handleRemoveCart}
-                  >
-                    <i
-                      className="ti ti-garden-cart"
-                      style={{ marginRight: "5px" }}
-                    />
-                    Remove to Cart
-                  </button>
-                )}
-                {/* {adminUser ? ( */}
-                <>
-                  <Link to={`/admin/books/${id}`}>
+                <div
+                  className="botonera"
+                  style={{ display: "flex", gap: "15px" }}
+                >
+                  {!isCart ? (
                     <button
                       className="button"
-                      style={{ margin: "10px 0px", borderRadius: "8px", border: "none", fontFamily: "'Hanken Grotesk', sans-serif" }}
-                      // onClick={handleEditBook}
+                      style={{
+                        margin: "10px 0px",
+                        borderRadius: "8px",
+                        border: "none",
+                        fontFamily: "'Hanken Grotesk', sans-serif",
+                      }}
+                      onClick={handleAddCart}
+                    >
+                      <i
+                        className="ti ti-garden-cart"
+                        style={{ marginRight: "5px" }}
+                      />
+                      Add to Cart
+                    </button>
+                  ) : (
+                    <button
+                      className="button"
+                      style={{
+                        margin: "10px 0px",
+                        borderRadius: "8px",
+                        border: "none",
+                        fontFamily: "'Hanken Grotesk', sans-serif",
+                      }}
+                      onClick={handleRemoveCart}
+                    >
+                      <i
+                        className="ti ti-garden-cart"
+                        style={{ marginRight: "5px" }}
+                      />
+                      Remove to Cart
+                    </button>
+                  )}
+                  {/* {adminUser ? ( */}
+                  <>
+                    <Link to={`/admin/books/${id}`}>
+                      <button
+                        className="button"
+                        style={{
+                          margin: "10px 0px",
+                          borderRadius: "8px",
+                          border: "none",
+                          fontFamily: "'Hanken Grotesk', sans-serif",
+                        }}
+                        // onClick={handleEditBook}
+                      >
+                        <i style={{ marginRight: "5px" }} />
+                        Edit Book
+                      </button>
+                    </Link>
+                    <button
+                      className="button"
+                      style={{
+                        margin: "10px 0px",
+                        borderRadius: "8px",
+                        border: "none",
+                        fontFamily: "'Hanken Grotesk', sans-serif",
+                      }}
+                      onClick={handleDeleteBook}
                     >
                       <i style={{ marginRight: "5px" }} />
-                      Edit Book
+                      Delete Book
                     </button>
-                  </Link>
-                  <button
-                    className="button"
-                    style={{ margin: "10px 0px", borderRadius: "8px", border: "none", fontFamily: "'Hanken Grotesk', sans-serif" }}
-                    onClick={handleDeleteBook}
-                  >
-                    <i style={{ marginRight: "5px" }} />
-                    Delete Book
-                  </button>
-                </>
-              </div>
+                  </>
+                </div>
               </div>
             </div>
           )}

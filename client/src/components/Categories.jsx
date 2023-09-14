@@ -43,11 +43,9 @@ function Categories({ setSelectedCategories }) {
     } = event;
 
     setSelectedCategoriesLocal(value);
-
+    
     setSelectedCategories(value);
   };
-
-  // ...
 
   return (
     <div style={{ backgroundColor: "#535353" }}>
