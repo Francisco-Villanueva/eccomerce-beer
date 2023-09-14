@@ -9,6 +9,7 @@ const {
   logout,
   editProfile,
   checkout,
+  getHistoryCart,
 } = require("./services");
 const { validateUser } = require("../../middleware/auth");
 
@@ -20,4 +21,6 @@ router.put("/profile/:userId", editProfile);
 router.get("/me", validateUser, me);
 
 router.post("/checkout/:userId", checkout);
+router.get("/history/:userId", getHistoryCart);
+
 module.exports = router;

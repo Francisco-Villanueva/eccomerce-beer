@@ -66,7 +66,7 @@ function Navbar() {
                 maxWidth: "70px",
               }}
             >
-              {carrito?.books.length} | <ShoppingCart />
+              {carrito.books?.length} | <ShoppingCart />
             </button>
           </Link>
         ) : (
@@ -84,7 +84,7 @@ function Navbar() {
               textDecoration: "none",
               maxHeight: "35px",
               maxWidth: "70px",
-              fontFamily: "'Hanken Grotesk', sans-serif"
+              fontFamily: "'Hanken Grotesk', sans-serif",
             }}
           >
             Add Book
