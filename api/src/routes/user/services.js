@@ -158,9 +158,9 @@ const checkout = async (req, res) => {
 const getHistoryCart = async (req, res) => {
   try {
     const { userId } = req.params;
-    const { lastCart, arrayOfBooksId, cartData, user } = await data(userId);
+    const { history } = await data(userId);
 
-    res.status(200).json({ COMPRAS: user });
+    res.status(200).json(history);
   } catch (error) {
     console.log(error);
     res.status(401).json(error);

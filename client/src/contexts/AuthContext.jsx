@@ -19,6 +19,7 @@ const AuthContextProvider = ({ children }) => {
     search: "",
     searchedBooks: [],
     totalPrice: 0,
+    history: [],
   });
 
   const loginUser = (emailData, passwordData, navigate) => {
@@ -218,6 +219,17 @@ const AuthContextProvider = ({ children }) => {
       });
   }
 
+  const setHistory = async (userId) => {
+    try {
+      const history = await axios.get(
+        `http://localhost:4000/user/history/${userId}`
+      );
+
+      setState((s) => ({ ...s, history: history.data }));
+    } catch (error) {
+      console.log(err);
+    }
+  };
   return (
     <AuthContext.Provider
       value={{
@@ -234,6 +246,7 @@ const AuthContextProvider = ({ children }) => {
         SearchBook,
         setSearch,
         setCount,
+        setHistory,
       }}
     >
       {children}
