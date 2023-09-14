@@ -67,7 +67,7 @@ export const OneProduct = () => {
   // }
 
   // console.log(cartBooks);
-  // console.log(book);
+  console.log(book);
 
   return (
     <div className="individual" style={{ width: "820px" }}>
@@ -104,10 +104,10 @@ export const OneProduct = () => {
                 <span className="title is-6">Publisher:</span>{" "}
                 {book.volumeInfo.publisher || "Unknown"}
               </p> */}
-              {/* <p>
+              <p>
                 <span className="title is-6">Categories:</span>{" "}
-                {book.volumeInfo.categories?.join(", ") || "Not Categories"}
-              </p> */}
+                {book.categories?.join(", ") || "Not Categories"}
+              </p>
               {/* <p>
                 <span className="title is-6">Language:</span>{" "}
                 {book.volumeInfo.language || "Unknown"}
