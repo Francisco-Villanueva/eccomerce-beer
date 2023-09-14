@@ -27,11 +27,9 @@ const getAllBooks = async () => {
       bookId: m.id,
       title: m.volumeInfo.title,
       date: m.volumeInfo.publishedDate,
-      categories: m.categories,
+      categories: m.categories ? m.categories : ["Robotics", "Education"],
       rating: m.volumeInfo.averageRating,
-      price: Math.trunc(m.saleInfo.listPrice.amount),
-      // price: m.saleInfo.listPrice.amount,
-
+      price: Math.trunc(m.saleInfo.listPrice.amount) < 900 ? 2398 : Math.trunc(m.saleInfo.listPrice.amount),
       image: m.volumeInfo.imageLinks
         ? m.volumeInfo.imageLinks.thumbnail
         : "https://libribook.com/images/manual-forensic-taphonomy-2nd-edition-pdf.jpg",

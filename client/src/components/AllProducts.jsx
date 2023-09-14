@@ -5,7 +5,6 @@ import { AuthContext } from "../contexts/AuthContext";
 
 export const AllProducts = ({ selectedCategories }) => {
   const { books, searchedBooks, carrito } = useContext(AuthContext);
-
   
   const filteredBooks = books.filter((book) => {
     if (selectedCategories.length === 0) {
@@ -23,7 +22,6 @@ export const AllProducts = ({ selectedCategories }) => {
 
   const booksToShow = searchedBooks.length > 0 ? searchedBooks : filteredBooks;
 
-  // console.log(booksToShow);
   return (
     <div className="grilla_libros">
       {booksToShow.length ? (
@@ -35,7 +33,16 @@ export const AllProducts = ({ selectedCategories }) => {
           );
         })
       ) : (
-        <p>Not Found</p>
+        <h1
+        className="title is-4"
+        style={{
+          fontFamily: "'Hanken Grotesk', sans-serif",
+          color: "white",
+          fontSize: "50px"
+        }}
+      >
+        Not Found
+      </h1>
       )}
     </div>
   );
