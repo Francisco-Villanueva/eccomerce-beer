@@ -145,14 +145,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Ajusta la altura según tus necesidades */
+  height: 100vh;
 }
 
 .form {
   width: 100%;
-  max-width: 400px; /* Ancho máximo del formulario */
+  max-width: 400px;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #ffffffaf;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

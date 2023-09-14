@@ -96,15 +96,30 @@ const AuthContextProvider = ({ children }) => {
       ...prevState,
       user: user,
       isAuthenticated: true,
-      books: [],
+      // books: [],
     }));
   };
 
   const getAllBooks = () => {
     axios
-      .get("http://localhost:4000/user/products")
+      .get("http://localhost:4000/admin/books")
+      //.get("http://localhost:4000/user/products")
       .then((res) => {
-        setState((s) => ({ ...s, books: res.data }));
+        const customBooks = res.data.map((book) => {
+          return {
+            // bookId: book.bookId ? book.bookId : book.id,
+            bookId: book.bookId ?? book.id,
+            title: book.title,
+            description: book.description,
+            image: book.image ?? "",
+            rating: book.rating ?? 1,
+            price: book.price ?? 0,
+            date: book.date ?? "",
+            categories: book.categories ?? [],
+          };
+        });
+        console.log(customBooks);
+        setState((s) => ({ ...s, books: customBooks }));
       })
       .catch((error) => {
         console.log(error);

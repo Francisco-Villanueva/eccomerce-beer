@@ -5,8 +5,10 @@ import axios from "axios";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 export default function AddBook() {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [author, setAuthor] = useState("");
@@ -42,7 +44,7 @@ export default function AddBook() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:4000/admin/books", {
+      .post("http://localhost:4000/admin/books/createBook", {
         title: title,
         description: description,
         author: author,
@@ -51,6 +53,7 @@ export default function AddBook() {
       })
       .then((newBook) => {
         message.success("Libro Creado!");
+        navigate("/home");
         setTitle("");
         setAuthor("");
         setGenre("");
