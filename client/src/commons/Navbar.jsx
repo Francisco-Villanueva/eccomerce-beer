@@ -82,9 +82,10 @@ function Navbar() {
             className="button is-ghost has-text-white"
             style={{
               textDecoration: "none",
-              maxHeight: "35px",
-              maxWidth: "70px",
+              maxHeight: "25px",
+              maxWidth: "75px",
               fontFamily: "'Hanken Grotesk', sans-serif",
+              marginLeft: "1vw"
             }}
           >
             Add Book

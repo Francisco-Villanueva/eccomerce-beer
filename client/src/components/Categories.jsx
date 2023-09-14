@@ -50,7 +50,7 @@ function Categories({ setSelectedCategories }) {
   return (
     <div style={{ backgroundColor: "#535353" }}>
       <FormControl
-        sx={{ m: 0, width: 200 }}
+        sx={{ m: 0, width: 300 }}
         style={{ backgroundColor: "#535353", padding: 0, display: "flex"}}
       >
         <InputLabel
