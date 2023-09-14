@@ -58,7 +58,7 @@ const getBookById = async (product_id) => {
     const response = {
       bookId: book.data.id,
       title: book.data.volumeInfo.title,
-      price: book.data.saleInfo.listPrice.amount,
+      price: Math.trunc(book.data.saleInfo.listPrice.amount),
       date: book.data.volumeInfo.publishedDate,
       categories: book.data.categories,
       rating: book.data.volumeInfo.averageRating,

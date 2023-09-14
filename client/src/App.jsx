@@ -11,11 +11,12 @@ import { AuthContext } from "./contexts/AuthContext";
 import Welcome from "./components/Welcome";
 import AddBook from "./components/admin/AddBook";
 import EditBook from "./components/admin/EditBook";
-import Search from "./components/Search";
 import { Checkout } from "./components/Checkout";
+import HistoryCart from "./components/HistoryCart";
 
 function App() {
-  const { setUser, setCarrito, getAllBooks, userId } = useContext(AuthContext);
+  const { setUser, setCarrito, getAllBooks, userId, setHistory } =
+    useContext(AuthContext);
 
   useEffect(() => {
     getAllBooks();
@@ -26,6 +27,7 @@ function App() {
           const user = response.data;
           setUser(user);
           setCarrito();
+          setHistory(userId);
         })
         .catch((error) => {
           console.error("Error al verificar el token:", error);
@@ -41,11 +43,11 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/" element={<Welcome />} />
         <Route path="/checkout" element={<Checkout />} />
-        {/* <Route path="/books" element={<AllProducts />} /> */}
         <Route path="/user/products/:id" element={<OneProduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/admin/addBook" element={<AddBook />} />
-        <Route path="/admin/editBook" element={<EditBook />} />
+        <Route path="/admin/books/:id" element={<EditBook />} />
+        <Route path="/history" element={<HistoryCart />} />
       </Routes>
     </>
   );
