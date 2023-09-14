@@ -15,19 +15,24 @@ const data = async (userId) => {
       },
     },
   });
-  const { user_cart } = user;
-  const lastCart = user_cart[user_cart.length - 1];
-
+  const { user_cart, currentCart } = user;
+  const lastCart = user_cart.filter((e) => e.id === parseInt(currentCart))[0];
   const arrayOfBooksId = lastCart.cart_cartBuy.map((m) => m.bookId);
   let cartData;
-  let price;
   if (arrayOfBooksId.length > 0) {
     cartData = await getCartData(arrayOfBooksId);
-    price = cartData.reduce((a, b) => a + b.price, 0);
-    const cart = await Cart.findOne({ where: { id: lastCart.id } });
-    await cart.update({ price });
   }
 
+  const aux = getCount(lastCart.cart_cartBuy, "Po-fDwAAQBAJ");
+
+  const price = arrayOfBooksId.length
+    ? cartData.reduce(
+        (a, b) => a + b.price * getCount(lastCart.cart_cartBuy, b.bookId),
+        0
+      )
+    : 0;
+  const cart = await Cart.findOne({ where: { id: lastCart.id } });
+  await cart.update({ price });
   return {
     user,
     user_cart,
@@ -35,7 +40,20 @@ const data = async (userId) => {
     arrayOfBooksId,
     cartData,
     price,
+    cartBuy: lastCart.cart_cartBuy,
+    aux,
   };
+};
+
+const getCount = (cartBuy, bookId) => {
+  try {
+    // FUNCION PARA OBTENER LA CANTIDAD DE CADA LIBRO y ESTABLECER EL PRECIO TOTAL
+    const filterdCartBuy = cartBuy.filter((e) => e.bookId === bookId)[0];
+
+    return filterdCartBuy.count;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 async function getCartData(arrayOfBooksId) {

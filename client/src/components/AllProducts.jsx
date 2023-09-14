@@ -4,7 +4,7 @@ import Loading from "../commons/Cards/Loading";
 import { AuthContext } from "../contexts/AuthContext";
 
 export const AllProducts = () => {
-  const { books, searchedBooks } = useContext(AuthContext);
+  const { books, searchedBooks, carrito } = useContext(AuthContext);
   const booksToShow = searchedBooks.length > 0 ? searchedBooks : books;
 
   return (
