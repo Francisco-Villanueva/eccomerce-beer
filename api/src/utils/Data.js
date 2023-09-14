@@ -17,22 +17,30 @@ const data = async (userId) => {
   });
   const { user_cart, currentCart } = user;
   const lastCart = user_cart.filter((e) => e.id === parseInt(currentCart))[0];
-  const arrayOfBooksId = lastCart.cart_cartBuy.map((m) => m.bookId);
+
+  // console.log(lastCart.length);
+  const arrayOfBooksId = lastCart
+    ? lastCart.cart_cartBuy
+        .sort((a, b) => a.createdAt - b.createdAt)
+        .map((m) => m.bookId)
+    : [];
   let cartData;
+  let price;
+  let cart;
   if (arrayOfBooksId.length > 0) {
     cartData = await getCartData(arrayOfBooksId);
+
+    price = arrayOfBooksId.length
+      ? cartData.reduce(
+          (a, b) =>
+            a + Math.trunc(b.price) * getCount(lastCart.cart_cartBuy, b.bookId),
+          0
+        )
+      : 0;
+    cart = await Cart.findOne({ where: { id: lastCart.id } });
+    await cart.update({ price });
   }
 
-  const aux = getCount(lastCart.cart_cartBuy, "Po-fDwAAQBAJ");
-
-  const price = arrayOfBooksId.length
-    ? cartData.reduce(
-        (a, b) => a + b.price * getCount(lastCart.cart_cartBuy, b.bookId),
-        0
-      )
-    : 0;
-  const cart = await Cart.findOne({ where: { id: lastCart.id } });
-  await cart.update({ price });
   return {
     user,
     user_cart,
@@ -40,8 +48,7 @@ const data = async (userId) => {
     arrayOfBooksId,
     cartData,
     price,
-    cartBuy: lastCart.cart_cartBuy,
-    aux,
+    cartBuy: lastCart.cart_cartBuy || [],
   };
 };
 

@@ -113,7 +113,7 @@ const AuthContextProvider = ({ children }) => {
   };
   const addToCart = (id) => {
     axios
-      .post(`http://localhost:4000/cart/add/${id}/${state.userId}`)
+      .post(`http://localhost:4000/cart/add/${id}/${state.user.id}`)
       .then((user) => {
         setCarrito();
         message.success("Agregado a carrito", 1);
@@ -130,7 +130,7 @@ const AuthContextProvider = ({ children }) => {
 
   const removeFromCart = (id) => {
     axios
-      .delete(`http://localhost:4000/cart/remove/${id}/${state.userId}`)
+      .delete(`http://localhost:4000/cart/remove/${id}/${state.user.id}`)
       .then((user) => {
         setCarrito();
         message.info("Eliminado del carrito");

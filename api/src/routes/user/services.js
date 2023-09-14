@@ -154,6 +154,18 @@ const checkout = async (req, res) => {
     res.status(401).json(error);
   }
 };
+
+const getHistoryCart = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { lastCart, arrayOfBooksId, cartData, user } = await data(userId);
+
+    res.status(200).json({ COMPRAS: user });
+  } catch (error) {
+    console.log(error);
+    res.status(401).json(error);
+  }
+};
 module.exports = {
   register,
   login,
@@ -162,4 +174,5 @@ module.exports = {
   me,
   editProfile,
   checkout,
+  getHistoryCart,
 };
