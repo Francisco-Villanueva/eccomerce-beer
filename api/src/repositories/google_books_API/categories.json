@@ -1,0 +1,324 @@
+{
+  "categories": [
+    {
+      "idBook": "gHA-EAAAQBAJ",
+      "categorie": ["Business & Economics", "Software"]
+    },
+    {
+      "idBook": "xo6fDwAAQBAJ",
+      "categorie": ["Education", "Software"]
+    },
+    {
+      "idBook": "pOvDDwAAQBAJ",
+      "categorie": ["Education", "Algorithms"]
+    },
+    {
+      "idBook": "Po-fDwAAQBAJ",
+      "categorie": ["Algorithms", "Business & Economics"]
+    },
+    {
+      "idBook": "zdo3DgAAQBAJ",
+      "categorie": ["Robotics", "Education"]
+    },
+    {
+      "idBook": "caW6EAAAQBAJ",
+      "categorie": ["Software", "Computers"]
+    },
+    {
+      "idBook": "4I6fDwAAQBAJ",
+      "categorie": ["Databases", "Algorithms"]
+    },
+    {
+      "idBook": "cI6fDwAAQBAJ",
+      "categorie": ["Education", "Databases"]
+    },
+    {
+      "idBook": "R8k1EAAAQBAJ",
+      "categorie": ["Databases", "Engineering"]
+    },
+    {
+      "idBook": "7zOjDwAAQBAJ",
+      "categorie": ["Accouting", "Computers"]
+    },
+    {
+      "idBook": "uI6fDwAAQBAJ",
+      "categorie": ["Business & Economics", "Algorithms"]
+    },
+    {
+      "idBook": "NfXdCgAAQBAJ",
+      "categorie": ["Collectibles", "Databases"]
+    },
+    {
+      "idBook": "iuaUPNi6JmEC",
+      "categorie": ["Databases", "Software"]
+    },
+    {
+      "idBook": "B3lYEAAAQBAJ",
+      "categorie": ["Algorithms", "Computers"]
+    },
+    {
+      "idBook": "otysDwAAQBAJ",
+      "categorie": ["Databases", "Business & Economics"]
+    },
+    {
+      "idBook": "A_l3EAAAQBAJ",
+      "categorie": ["Computers", "Games"]
+    },
+    {
+      "idBook": "KI6fDwAAQBAJ",
+      "categorie": ["Algorithms", "Robotics"]
+    },
+    {
+      "idBook": "FI6fDwAAQBAJ",
+      "categorie": ["Accouting", "Computers"]
+    },
+    {
+      "idBook": "flPUDwAAQBAJ",
+      "categorie": ["Collectibles", "Robotics"]
+    },
+    {
+      "idBook": "skxOEAAAQBAJ",
+      "categorie": ["Engineering", "Databases"]
+    },
+    {
+      "idBook": "bBVFDwAAQBAJ",
+      "categorie": ["Software", "Accouting"]
+    },
+    {
+      "idBook": "EPSuDwAAQBAJ",
+      "categorie": ["Robotics", "Robotics"]
+    },
+    {
+      "idBook": "bdOAvra90N0C",
+      "categorie": ["Collectibles", "Algorithms"]
+    },
+    {
+      "idBook": "IPuEDwAAQBAJ",
+      "categorie": ["Education", "Engineering"]
+    },
+    {
+      "idBook": "9I2fDwAAQBAJ",
+      "categorie": ["Games", "Theory"]
+    },
+    {
+      "idBook": "tTWGDwAAQBAJ",
+      "categorie": ["Software", "Computers"]
+    },
+    {
+      "idBook": "EhqvDwAAQBAJ",
+      "categorie": ["Collectibles", "Business & Economics"]
+    },
+    {
+      "idBook": "3PRp623LPjEC",
+      "categorie": ["Software", "Engineering"]
+    },
+    {
+      "idBook": "ucQ9DwAAQBAJ",
+      "categorie": ["Software", "Computers"]
+    },
+    {
+      "idBook": "yZ5FBgAAQBAJ",
+      "categorie": ["Computers", "Accouting"]
+    },
+    {
+      "idBook": "1Y2bEAAAQBAJ",
+      "categorie": ["Robotics", "Business & Economics"]
+    },
+    {
+      "idBook": "3ly7XVl6bxgC",
+      "categorie": ["Databases", "Algorithms"]
+    },
+    {
+      "idBook": "FoNmDAAAQBAJ",
+      "categorie": ["Databases", "Engineering"]
+    },
+    {
+      "idBook": "WYF-DwAAQBAJ",
+      "categorie": ["Algorithms", "Theory"]
+    },
+    {
+      "idBook": "KC2mDAAAQBAJ",
+      "categorie": ["Software", "Computers"]
+    },
+    {
+      "idBook": "YyPBDAAAQBAJ",
+      "categorie": ["Accouting", "Databases"]
+    },
+    {
+      "idBook": "CFaIDwAAQBAJ",
+      "categorie": ["Algorithms", "Software"]
+    },
+    {
+      "idBook": "Xgv2DwAAQBAJ",
+      "categorie": ["Engineering", "Games"]
+    },
+    {
+      "idBook": "sjxyEAAAQBAJ",
+      "categorie": ["Collectibles", "Education"]
+    },
+    {
+      "idBook": "_Vs-DwAAQBAJ",
+      "categorie": ["Algorithms", "Accouting"]
+    },
+    {
+      "idBook": "AyxpCwAAQBAJ",
+      "categorie": ["Algorithms", "Software"]
+    },
+    {
+      "idBook": "v-3LCgAAQBAJ",
+      "categorie": ["Algorithms", "Software"]
+    },
+    {
+      "idBook": "XyBFDwAAQBAJ",
+      "categorie": ["Education", "Software"]
+    },
+    {
+      "idBook": "mI2fDwAAQBAJ",
+      "categorie": ["Algorithms", "Databases"]
+    },
+    {
+      "idBook": "31OXEAAAQBAJ",
+      "categorie": ["Algorithms", "Business & Economics"]
+    },
+    {
+      "idBook": "9fh3EAAAQBAJ",
+      "categorie": ["Accouting", "Algorithms"]
+    },
+    {
+      "idBook": "WyBFDwAAQBAJ",
+      "categorie": ["Software", "Engineering"]
+    },
+    {
+      "idBook": "_DOgEAAAQBAJ",
+      "categorie": ["Databases", "Robotics"]
+    },
+    {
+      "idBook": "edIG9mRCHMEC",
+      "categorie": ["Accouting", "Business & Economics"]
+    },
+    {
+      "idBook": "Wo-fDwAAQBAJ",
+      "categorie": ["Accouting", "Software"]
+    },
+    {
+      "idBook": "6LAEEAAAQBAJ",
+      "categorie": ["Algorithms", "Accouting"]
+    },
+    {
+      "idBook": "_cy4EAAAQBAJ",
+      "categorie": ["Software", "Education"]
+    },
+    {
+      "idBook": "0J9GDwAAQBAJ",
+      "categorie": ["Collectibles", "Theory"]
+    },
+    {
+      "idBook": "zJ9GDwAAQBAJ",
+      "categorie": ["Collectibles", "Robotics"]
+    },
+    {
+      "idBook": "0p9GDwAAQBAJ",
+      "categorie": ["Software", "Computers"]
+    },
+    {
+      "idBook": "FoNTEAAAQBAJ",
+      "categorie": ["Robotics", "Theory"]
+    },
+    {
+      "idBook": "QCtFDwAAQBAJ",
+      "categorie": ["Software", "Algorithms"]
+    },
+    {
+      "idBook": "sCxDAgAAQBAJ",
+      "categorie": ["Software", "Robotics"]
+    },
+    {
+      "idBook": "QhVFDwAAQBAJ",
+      "categorie": ["Collectibles", "Robotics"]
+    },
+    {
+      "idBook": "DYRzEAAAQBAJ",
+      "categorie": ["Collectibles", "Theory"]
+    },
+    {
+      "idBook": "M4o-DwAAQBAJ",
+      "categorie": ["Business & Economics", "Collectibles"]
+    },
+    {
+      "idBook": "KUl9OqsCYOQC",
+      "categorie": ["Computers", "Computers"]
+    },
+    {
+      "idBook": "bCo5DwAAQBAJ",
+      "categorie": ["Collectibles", "Education"]
+    },
+    {
+      "idBook": "QOq8AgAAQBAJ",
+      "categorie": ["Accouting", "Algorithms"]
+    },
+    {
+      "idBook": "Zut1EAAAQBAJ",
+      "categorie": ["Theory", "Robotics"]
+    },
+    {
+      "idBook": "JtwoDwAAQBAJ",
+      "categorie": ["Theory", "Algorithms"]
+    },
+    {
+      "idBook": "Cd2sDwAAQBAJ",
+      "categorie": ["Business & Economics", "Education"]
+    },
+    {
+      "idBook": "bpBFDwAAQBAJ",
+      "categorie": ["Games", "Business & Economics"]
+    },
+    {
+      "idBook": "eJ0qEAAAQBAJ",
+      "categorie": ["Collectibles", "Robotics"]
+    },
+    {
+      "idBook": "uyFff1HDW90C",
+      "categorie": ["Engineering", "Robotics"]
+    },
+    {
+      "idBook": "xOXuDwAAQBAJ",
+      "categorie": ["Theory", "Business & Economics"]
+    },
+    {
+      "idBook": "9pdGDwAAQBAJ",
+      "categorie": ["Computers", "Algorithms"]
+    },
+    {
+      "idBook": "xdysDwAAQBAJ",
+      "categorie": ["Engineering", "Robotics"]
+    },
+    {
+      "idBook": "L_L2AgAAQBAJ",
+      "categorie": ["Education", "Computers"]
+    },
+    {
+      "idBook": "ZPRyEAAAQBAJ",
+      "categorie": ["Databases", "Engineering"]
+    },
+    {
+      "idBook": "XVCUAAAAQBAJ",
+      "categorie": ["Business & Economics", "Business & Economics"]
+    },
+    {
+      "idBook": "I6a6EAAAQBAJ",
+      "categorie": ["Accouting", "Databases"]
+    },
+    {
+      "idBook": "gI2fDwAAQBAJ",
+      "categorie": ["Accouting", "Education"]
+    },
+    {
+      "idBook": "vI6fDwAAQBAJ",
+      "categorie": ["Accouting", "Software"]
+    },
+    {
+      "idBook": "ESXXDwAAQBAJ",
+      "categorie": ["Algorithms", "Theory"]
+    }
+  ]
+}
