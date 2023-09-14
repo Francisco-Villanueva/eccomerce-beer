@@ -17,9 +17,11 @@ import {
 } from "@mui/material";
 import { Paid } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import ProgressButton from "../commons/Progress_button/ProgessBotton";
 
 export const Cart = () => {
-  const { carrito, setCarrito, totalPrice } = useContext(AuthContext);
+  const { carrito, setCarrito, totalPrice, user, setCount } =
+    useContext(AuthContext);
   console.log("EN CART COMPONENT: ", carrito, totalPrice);
   const [bookQuantities, setBookQuantities] = useState({});
   const [totalProducts, setTotalProducts] = useState(0);
@@ -62,7 +64,7 @@ export const Cart = () => {
                   style={{
                     margin: "10px",
                     boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.5)",
-                    fontFamily: "'Hanken Grotesk', sans-serif"
+                    fontFamily: "'Hanken Grotesk', sans-serif",
                   }}
                 >
                   <Grid container spacing={2}>
@@ -76,16 +78,25 @@ export const Cart = () => {
                     </Grid>
                     <Grid item xs={6}>
                       <CardContent>
-                        <h1 className="title is-4" style={{
-                          fontFamily: "'Hanken Grotesk', sans-serif"}}>
+                        <h1
+                          className="title is-4"
+                          style={{
+                            fontFamily: "'Hanken Grotesk', sans-serif",
+                          }}
+                        >
                           {book.title || "No Title"}
                         </h1>
                         <Typography>
-                          <span className="title is-6" style={{
-                            fontFamily: "'Hanken Grotesk', sans-serif",
-                            fontWeight: "bold",
-                            fontSize: "17px"
-                          }}>Price:</span>{" "}
+                          <span
+                            className="title is-6"
+                            style={{
+                              fontFamily: "'Hanken Grotesk', sans-serif",
+                              fontWeight: "bold",
+                              fontSize: "17px",
+                            }}
+                          >
+                            Price:
+                          </span>{" "}
                           {`$${
                             (bookQuantities[book.bookId]?.count || 1) *
                             book.price
@@ -111,6 +122,17 @@ export const Cart = () => {
                         variant="outlined"
                         size="small"
                       />
+
+                      <button
+                        onClick={() =>
+                          setCount(
+                            bookQuantities[book.bookId].count,
+                            book.bookId
+                          )
+                        }
+                      >
+                        OK
+                      </button>
                     </Grid>
                   </Grid>
                 </Card>
@@ -125,28 +147,41 @@ export const Cart = () => {
               style={{
                 margin: "10px",
                 boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.5)",
-                fontFamily: "'Hanken Grotesk', sans-serif"
+                fontFamily: "'Hanken Grotesk', sans-serif",
               }}
             >
               <CardContent>
-                <h1 className="title is-4" style={{
-                  fontFamily: "'Hanken Grotesk', sans-serif"
-                }}>Resumen de Compra</h1>
-                <Typography style={{
-                  fontFamily: "'Hanken Grotesk', sans-serif"
-                }}>
-                  Productos ({totalProducts})
+                <h1
+                  className="title is-4"
+                  style={{
+                    fontFamily: "'Hanken Grotesk', sans-serif",
+                  }}
+                >
+                  Resumen de Compra
+                </h1>
+                <Typography
+                  style={{
+                    fontFamily: "'Hanken Grotesk', sans-serif",
+                  }}
+                >
+                  Productos ({carrito.books.length})
                   <br />
-                  <span className="title is-6" style={{
-                    fontFamily: "'Hanken Grotesk', sans-serif"
-                  }}>Total Price:</span> ${totalPrice}
+                  <span
+                    className="title is-6"
+                    style={{
+                      fontFamily: "'Hanken Grotesk', sans-serif",
+                    }}
+                  >
+                    Total Price:
+                  </span>{" "}
+                  ${totalPrice}
                 </Typography>
                 <br />
                 <Link to="/checkout">
                   <Button
                     variant="contained"
                     color="success"
-                    style={{fontFamily: "'Hanken Grotesk', sans-serif"}}
+                    style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
                     startIcon={<Paid />}
                   >
                     Ir a Pagar

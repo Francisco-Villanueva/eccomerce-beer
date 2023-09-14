@@ -192,6 +192,17 @@ const AuthContextProvider = ({ children }) => {
     }
   }
 
+  function setCount(count, bookId) {
+    axios
+      .put(`http://localhost:4000/cart/edit/${bookId}/${state.userId}`, {
+        count,
+      })
+      .then((res) => {
+        setCarrito();
+        console.log("CAMBIO DE CANTIDAD\n", res.data);
+      });
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -207,6 +218,7 @@ const AuthContextProvider = ({ children }) => {
         logoutUser,
         SearchBook,
         setSearch,
+        setCount,
       }}
     >
       {children}
