@@ -7,9 +7,9 @@ export const CheckoutContextProvider = ({ children }) => {
   const [addresses, setAddresses] = useState([]);
 
   return (
-    <CheckoutContext.Provider value={{ addresses, setAddresses }}>
+    <AddressContext.Provider value={{ addresses, setAddresses }}>
       {children}
-    </CheckoutContext.Provider>
+    </AddressContext.Provider>
   );
 };
 
