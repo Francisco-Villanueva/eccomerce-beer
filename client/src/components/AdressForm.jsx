@@ -7,7 +7,9 @@ import Checkbox from '@mui/material/Checkbox';
 import { useState, useContext } from 'react';
 import { AddressContext } from '../contexts/CheckoutContext';
 
-export default function AddressForm({setAddresses}) {
+export default function AddressForm() {
+  const { addresses, setAddresses } = useContext(AddressContext);
+
   const [formData, setFormData] = useState({
     address1: "",
     lastName: "",
@@ -26,7 +28,7 @@ export default function AddressForm({setAddresses}) {
   }
 
   const handleSaveAddress =()=>{
-    setAddresses((prevAddresses)=> [...prevAddresses, formData]);
+    setAddresses([...addresses, formData]);
 
     setFormData({
       address1: "",

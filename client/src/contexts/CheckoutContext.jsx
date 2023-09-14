@@ -8,9 +8,9 @@ const CheckoutContextProvider = ({ children }) => {
 
 
   return (
-    <CheckoutContext.Provider value={{ addresses, setAddresses }}>
+    <AddressContext.Provider value={{ addresses, setAddresses }}>
       {children}
-    </CheckoutContext.Provider>
+    </AddressContext.Provider>
   );
 };
 

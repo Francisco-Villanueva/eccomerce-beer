@@ -4,13 +4,9 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import AddressForm from "./AdressForm.jsx";
-import PaymentForm from "./PaymentForm.jsx";
-import { useState } from 'react';
-
-console.log("adressform-------", AddressForm);
+import { AddressContext } from '../contexts/CheckoutContext';
 
 // {
 //   name: 'Product 1',
@@ -22,19 +18,21 @@ console.log("adressform-------", AddressForm);
 //   '1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'
 // ];
 const payments = [
-  // { name: 'Card type', detail: 'Visa' },
-  // { name: 'Card holder', detail: 'Mr John Smith' },
-  // { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  // { name: 'Expiry date', detail: '04/2024' },
+  { name: 'Card type', detail: 'Visa' },
+  { name: 'Card holder', detail: 'Mr John Smith' },
+  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
+  { name: 'Expiry date', detail: '04/2024' },
 ];
 
 export default function Review() {
   const { carrito } = useContext(AuthContext);
+  const { addresses } = useContext(AddressContext);
   const userId = localStorage.getItem("userId");
-  const [addresses, setAddresses] = useState([]);
+  // const [addresses, setAddresses] = useState([]);
   
 console.log("carrito---------", carrito);
 console.log("userId--------------", userId);
+console.log("ADDRESSES--------------", addresses);
 
 const products = [
   carrito.books.map(e=> ({
