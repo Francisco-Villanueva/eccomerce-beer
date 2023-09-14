@@ -1,9 +1,9 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Grid from '@mui/material/Grid';
+import * as React from "react";
+import Typography from "@mui/material/Typography";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Grid from "@mui/material/Grid";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import AddressForm from "./AdressForm.jsx";
@@ -17,7 +17,6 @@ console.log("adressform-------", AddressForm);
 //   desc: 'A nice thing',
 //   price: '$9.99',
 // },
-
 
 // const addresses = [
   // '1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'

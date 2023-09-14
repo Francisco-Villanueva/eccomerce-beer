@@ -11,13 +11,10 @@ import { AuthContext } from "./contexts/AuthContext";
 import Welcome from "./components/Welcome";
 import AddBook from "./components/admin/AddBook";
 import EditBook from "./components/admin/EditBook";
-import Search from "./components/Search";
 import { Checkout } from "./components/Checkout";
 
 function App() {
   const { setUser, setCarrito, getAllBooks, userId } = useContext(AuthContext);
-
-  // const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     getAllBooks();
@@ -27,7 +24,7 @@ function App() {
         .then((response) => {
           const user = response.data;
           setUser(user);
-          setCarrito(user.user_cartBuy);
+          setCarrito();
         })
         .catch((error) => {
           console.error("Error al verificar el token:", error);
@@ -47,7 +44,7 @@ function App() {
         <Route path="/user/products/:id" element={<OneProduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/admin/addBook" element={<AddBook />} />
-        <Route path="/admin/editBook" element={<EditBook />} />
+        <Route path="/admin/books/:id" element={<EditBook />} />
       </Routes>
     </>
   );
