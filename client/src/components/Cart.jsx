@@ -111,7 +111,9 @@ export const Cart = () => {
                         value={
                           (bookQuantities[book.bookId] &&
                             bookQuantities[book.bookId].count) ||
-                          1
+                          carrito.cart.cart_cartBuy.filter(
+                            (e) => e.bookId === book.bookId
+                          )[0].count
                         }
                         onChange={(e) =>
                           handleQuantityChange(

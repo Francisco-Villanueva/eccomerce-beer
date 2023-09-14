@@ -7,6 +7,7 @@ const userProductsRoutes = require("./products/user/productsRoutes");
 const adminProductsRoutes = require("./products/admin/adminProductsRoutes");
 
 const adminRoutes = require("./admin/adminRoutes");
+const { data } = require("../utils/Data");
 router.use("/admin", adminRoutes);
 router.use("/cart", cartRouter);
 router.use("/user", userRoutes);
