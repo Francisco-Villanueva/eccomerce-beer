@@ -19,7 +19,7 @@ console.log("adressform-------", AddressForm);
 // },
 
 // const addresses = [
-  // '1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'
+//   '1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'
 // ];
 const payments = [
   // { name: 'Card type', detail: 'Visa' },

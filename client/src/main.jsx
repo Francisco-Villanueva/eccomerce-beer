@@ -5,13 +5,16 @@ import App from "./App.jsx";
 import "./index.css";
 import AuthContextProvider, { AuthContext } from "./contexts/AuthContext";
 import { CartBooksProvider } from "./contexts/CartBookContext.jsx";
+import CheckoutContextProvider from "./contexts/CheckoutContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <CartBooksProvider>
-      <AuthContextProvider>
-        <App />
-      </AuthContextProvider>
-    </CartBooksProvider>
+    <CheckoutContextProvider>
+      <CartBooksProvider>
+        <AuthContextProvider>
+          <App />
+        </AuthContextProvider>
+      </CartBooksProvider>
+    </CheckoutContextProvider>
   </BrowserRouter>
 );
