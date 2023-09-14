@@ -38,16 +38,17 @@ export default function HistoryCart() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          width: "60%",
+          width: "90%",
           margin: "20px auto",
         }}
       >
         <h1 style={{ color: "#fff", fontSize: "20px" }}>HISTORY</h1>
         <div
           style={{
-            display: "flex",
+            display: "grid",
+            gridTemplateColumns: "repeat(4,1fr)",
             gap: "30px",
-            justifyContent: "space-between",
+            // justifyContent: "space-between",
             // background: "#fff",
             height: "100%",
           }}
@@ -59,55 +60,61 @@ export default function HistoryCart() {
                   background: "#fff",
                   padding: "1em",
                   borderRadius: "10px",
-                  width: "40%",
+                  // width: "40%",
                   height: "80%",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
                 }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "1rem",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <h3>{formatearFecha(m.cart.date)}</h3>
-                  <b style={{ display: "flex", alignItems: "center" }}>
-                    <VerifiedUser sx={{ m: 0, p: 0 }} /> | {user.username}
-                  </b>
-                </div>
-                <hr />
-                <h3>Libros:</h3>
-                {m.booksData.map((b) => (
+                <div>
                   <div
                     style={{
-                      display: "grid",
-                      gridTemplateColumns: "1fr 3fr 1fr",
-                      alignItems: "center",
-                      gap: "30px",
+                      display: "flex",
+                      gap: "1rem",
+                      justifyContent: "space-between",
                     }}
                   >
-                    <img
-                      src={b.image}
-                      alt={b.title}
-                      style={{
-                        objectFit: "contain",
-                        width: "40px",
-                        borderRadius: "100%",
-                      }}
-                    />
-                    <p>- {b.title}</p>
-                    <b>${b.price}</b>
-                  </div>
-                ))}
+                    <h3>
+                      <b> {m.cart.id} </b>| {formatearFecha(m.cart.date)}
+                    </h3>
 
-                <hr />
+                    <b style={{ display: "flex", alignItems: "center" }}>
+                      <VerifiedUser sx={{ m: 0, p: 0 }} /> | {user.username}
+                    </b>
+                  </div>
+                  <hr />
+                  <h3>Libros:</h3>
+
+                  {m.booksData.map((b) => (
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 3fr 1fr",
+                      }}
+                    >
+                      <img
+                        src={b.image}
+                        alt={b.title}
+                        style={{
+                          objectFit: "contain",
+                          width: "60px",
+                          borderRadius: "10px",
+                          boxShadow: "1px 1px 1px #000",
+                        }}
+                      />
+                      <p>- {b.title}</p>
+                      <b>${b.price}</b>
+                    </div>
+                  ))}
+                </div>
+
                 <div
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
+                    borderTop: "1px solid #0001",
+                    padding: "1em 0",
                   }}
                 >
                   <h1>TOTAL</h1>
