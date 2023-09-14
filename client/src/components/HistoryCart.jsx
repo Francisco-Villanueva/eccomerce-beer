@@ -90,6 +90,8 @@ export default function HistoryCart() {
                       style={{
                         display: "grid",
                         gridTemplateColumns: "1fr 3fr 1fr",
+
+                        marginTop: "20px",
                       }}
                     >
                       <img
