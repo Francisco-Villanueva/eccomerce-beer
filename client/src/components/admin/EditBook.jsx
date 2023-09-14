@@ -52,6 +52,7 @@ export default function EditBook() {
         year: year,
       })
       .then((editBook) => {
+        console.log(editBook.data);
         message.success("Libro Editado!");
         setTitle("");
         setAuthor("");

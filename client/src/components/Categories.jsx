@@ -42,9 +42,7 @@ function Categories({ setSelectedCategories }) {
       target: { value },
     } = event;
 
-
     setSelectedCategoriesLocal(value);
-    
 
     setSelectedCategories(value);
   };
@@ -59,7 +57,7 @@ function Categories({ setSelectedCategories }) {
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
-          value={selectedCategories} 
+          value={selectedCategories}
           onChange={handleChange}
           input={<OutlinedInput label="Tag" />}
           renderValue={(selected) => selected.join(", ")}
