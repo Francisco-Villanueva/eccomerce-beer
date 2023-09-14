@@ -127,7 +127,7 @@ export const OneProduct = () => {
                 </p>
                 {/* <p>
                 <span className="title is-6">Number of pages:</span>{" "}
-                {book.volumeInfo.pageCount || "Unknown"}
+                {book.pageCount || "Unknown"}
               </p> */}
                 {/* <p>
                 <span className="title is-6">Publisher:</span>{" "}
@@ -193,7 +193,6 @@ export const OneProduct = () => {
                   </button>
                 </>
               </div>
-                
               </div>
             </div>
           )}
