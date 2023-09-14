@@ -6,7 +6,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { AddressContext } from '../contexts/CheckoutContext';
+import { CheckoutContext } from '../contexts/CheckoutContext';
 
 // {
 //   name: 'Product 1',
@@ -26,7 +26,7 @@ const payments = [
 
 export default function Review() {
   const { carrito } = useContext(AuthContext);
-  const { addresses } = useContext(AddressContext);
+  const { addresses } = useContext(CheckoutContext);
   const userId = localStorage.getItem("userId");
   // const [addresses, setAddresses] = useState([]);
   

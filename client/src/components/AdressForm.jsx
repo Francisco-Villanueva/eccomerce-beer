@@ -5,10 +5,10 @@ import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { useState, useContext } from "react";
-// import { CheckoutContext } from "../contexts/CheckoutContext";
+import { CheckoutContext } from "../contexts/CheckoutContext";
 
 export default function AddressForm() {
-  const { addresses, setAddresses } = useContext(AddressContext);
+  const { addresses, setAddresses } = useContext(CheckoutContext);
   
   const [formData, setFormData] = useState({
     address1: "",
