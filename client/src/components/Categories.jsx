@@ -49,7 +49,6 @@ function Categories({ setSelectedCategories }) {
     setSelectedCategories(value);
   };
 
-  // ...
 
   return (
     <div>

@@ -37,7 +37,16 @@ export const AllProducts = ({ selectedCategories }) => {
           );
         })
       ) : (
-        <p>Not Found</p>
+        <h1
+        className="title is-4"
+        style={{
+          fontFamily: "'Hanken Grotesk', sans-serif",
+          color: "white",
+          fontSize: "50px"
+        }}
+      >
+        Not Found
+      </h1>
       )}
     </div>
   );
