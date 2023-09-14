@@ -8,8 +8,10 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../commons/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export const OneProduct = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(true);
@@ -17,11 +19,10 @@ export const OneProduct = () => {
   const [deleteBook, setDeleteBook] = useState(true);
   const { cartBooks, addToCart, removeFromCart } = useContext(CartBooksContext);
   const { carrito } = useContext(AuthContext);
-  // const [adminUser, setAdminUser] = useState(false)
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/user/products/${id}`) // esta URL es de los libros de la API
+      .get(`http://localhost:4000/user/products/${id}`)
       .then((res) => {
         setBook(res.data);
         setLoading(false);
@@ -47,6 +48,8 @@ export const OneProduct = () => {
       .delete(`http://localhost:4000/admin/books/${id}`)
       .then(() => {
         setDeleteBook(true);
+        navigate("/home");
+        getAllBooks();
 
         console.log("Libro eliminado exitosamente");
       })
