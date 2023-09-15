@@ -47,15 +47,19 @@ const getAllCategories = async () => {
     console.log(error);
   }
 };
-const deleteCategory = async (categoryId) => {
+const deleteCategory = async (category) => {
   try {
-    const category = await Category.findByPk(categoryId);
+    const cat = await Category.findOne({
+      where: {
+        category,
+      },
+    });
 
-    if (!category) return "this category not exist!";
+    if (!cat) return "this category not exist!";
 
     const deletedCategory = await Category.destroy({
       where: {
-        id: categoryId,
+        category,
       },
     });
 
