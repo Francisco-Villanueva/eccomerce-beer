@@ -30,7 +30,7 @@ const getAllBooks = async () => {
       categories: m.categories ? m.categories : ["Robotics", "Education"],
       rating: m.volumeInfo.averageRating,
       price: Math.trunc(m.saleInfo.listPrice.amount) < 900 ? 2398 : Math.trunc(m.saleInfo.listPrice.amount),
-      image: m.volumeInfo.imageLinks
+      img: m.volumeInfo.imageLinks
         ? m.volumeInfo.imageLinks.thumbnail
         : "https://libribook.com/images/manual-forensic-taphonomy-2nd-edition-pdf.jpg",
       lenguage: m.volumeInfo.lenguage,
@@ -62,7 +62,7 @@ const getBookById = async (product_id) => {
       date: book.data.volumeInfo.publishedDate,
       categories: book.data.categories,
       rating: book.data.volumeInfo.averageRating,
-      image: book.data.volumeInfo.imageLinks
+      img: book.data.volumeInfo.imageLinks
         ? book.data.volumeInfo.imageLinks.thumbnail
         : "https://libribook.com/images/manual-forensic-taphonomy-2nd-edition-pdf.jpg",
       lenguage: book.data.volumeInfo.lenguage,

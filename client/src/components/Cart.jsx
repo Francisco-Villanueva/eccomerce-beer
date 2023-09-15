@@ -73,7 +73,7 @@ export const Cart = () => {
                         component="img"
                         alt={book.title}
                         height="140"
-                        image={book.image}
+                        image={book.img}
                       />
                     </Grid>
                     <Grid item xs={6}>

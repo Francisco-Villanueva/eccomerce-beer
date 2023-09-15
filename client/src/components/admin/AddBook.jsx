@@ -15,6 +15,10 @@ export default function AddBook() {
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
   const [year, setYear] = useState("");
+  const [categories, setCategories] = useState("");
+  const [date, setDate] = useState("");
+  const [price, setPrice] = useState("");
+  const [img, setImg] = useState("")
 
   const { createBook } = useContext(AuthContext);
   const handleTitleChange = (e) => {
@@ -32,6 +36,26 @@ export default function AddBook() {
     setAuthor(value);
   };
 
+  const handleCategoriesChange = (e) => {
+    const value = e.target.value;
+    setCategories(value);
+  };
+
+    const handleDateChange = (e) => {
+    const value = e.target.value;
+    setDate(value);
+  };
+
+  const handlePriceChange = (e) => {
+    const value = e.target.value;
+    setPrice(parseInt(value));
+  };
+
+  const handleImgChange = (e) => {
+    const value = e.target.value;
+    setImg(value);
+  };
+
   const handleGenreChange = (e) => {
     const value = e.target.value;
     setGenre(value);
@@ -42,6 +66,8 @@ export default function AddBook() {
     setYear(value);
   };
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -49,14 +75,23 @@ export default function AddBook() {
       title: title,
       description: description,
       author: author,
+      categories: categories,
+      date: date,
+      price: price,
+      img: img,
       genre: genre,
       year: year,
     };
     createBook(newBook, navigate);
     setTitle("");
     setAuthor("");
+    setCategories("");
+    setDate("");
+    setPrice("");
+    setImg("");
     setGenre("");
     setYear("");
+
     // axios
     //   .post("http://localhost:4000/admin/books/createBook", {
     //     title: title,
@@ -75,7 +110,6 @@ export default function AddBook() {
     // setYear("");
     //   })
     //   .catch((err) => console.log(err));
-
   };
 
   return (
@@ -113,6 +147,50 @@ export default function AddBook() {
                 value={author}
                 onChange={handleAuthorChange}
                 autoComplete="Autor"
+                autoFocus
+                required
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Categories"
+                margin="normal"
+                value={categories}
+                onChange={handleCategoriesChange}
+                autoComplete="Categories"
+                autoFocus
+                required
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Date"
+                margin="normal"
+                value={date}
+                onChange={handleDateChange}
+                autoComplete="Date"
+                autoFocus
+                required
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Price"
+                margin="normal"
+                value={price}
+                onChange={handlePriceChange}
+                autoComplete="Price"
+                autoFocus
+                required
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Img"
+                margin="normal"
+                value={img}
+                onChange={handleImgChange}
+                autoComplete="Img"
                 autoFocus
                 required
               />
