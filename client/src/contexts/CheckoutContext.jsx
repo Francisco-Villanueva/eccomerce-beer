@@ -6,6 +6,7 @@ export const CheckoutContext = createContext();
 
 export const CheckoutContextProvider = ({ children }) => {
   const [addresses, setAddresses] = useState([]);
+  const [payment,  setPayment] = useState([]);
 
   const checkOut = async (userId) => {
     try {
@@ -20,7 +21,7 @@ export const CheckoutContextProvider = ({ children }) => {
   };
 
   return (
-    <CheckoutContext.Provider value={{ addresses, setAddresses, checkOut }}>
+    <CheckoutContext.Provider value={{ addresses, setAddresses, payment, setPayment, checkOut }}>
       {children}
     </CheckoutContext.Provider>
   );

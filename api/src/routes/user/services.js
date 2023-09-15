@@ -52,7 +52,7 @@ const login = async (req, res) => {
     const pwCheck = await userToCheck.validatePassword(password);
 
     if (!pwCheck) {
-      return res.sendStatus(401);
+      return res.status(401).send("Wrong password! Please try again");
     } else {
       const payload = {
         id: userToCheck.id,

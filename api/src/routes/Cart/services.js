@@ -1,7 +1,7 @@
 //CONTROLLERS FOR CART
 
 const { Cart_buy, User, Cart } = require("../../db/models");
-const { data } = require("../../utils/Data");
+const { data, getUser } = require("../../utils/Data");
 //ADD PRODUCTS
 const getCart = async (req, res) => {
   try {
@@ -10,7 +10,6 @@ const getCart = async (req, res) => {
     if (!cartData) {
       return res.status(200).json({ price, cartBuy, lastCart, cartData: [] });
     }
-    // const price = cartData.reduce((a, b) => a + b.price, 0);
     const cart = await Cart.findOne({ where: { id: lastCart.id } });
     await cart.update({ price });
     res.status(200).json({ aux, price, cartBuy, lastCart, cartData });
@@ -27,7 +26,7 @@ const add = async (req, res) => {
     if (!userId)
       return res.status(400).json({ message: "User ID not provided." });
 
-    const { user, lastCart } = await data(userId);
+    const { lastCart, user } = await data(userId);
 
     if (!user) {
       return res.status(400).json({ message: "User not found." });
@@ -37,7 +36,7 @@ const add = async (req, res) => {
       return res.send("Crear carrito nuevo");
     }
 
-    let actualCartBuy = await Cart_buy.findOrCreate({
+    await Cart_buy.findOrCreate({
       where: {
         bookId,
         userId,
@@ -51,7 +50,8 @@ const add = async (req, res) => {
 
     return res.status(200).json(user);
   } catch (error) {
-    res.status(401).send(error);
+    console.log(error);
+    res.status(401).json(error);
   }
 };
 
@@ -62,30 +62,19 @@ const remove = async (req, res) => {
   try {
     if (!userId)
       return res.status(400).json({ message: "User ID not provided." });
-    const { user, lastCart } = await data(userId);
+    // const { user, lastCart } = await data(userId);
 
+    const user = await getUser(userId);
     if (!user) return res.status(400).json({ message: "User not found." });
 
     let actualCartBuy = await Cart_buy.findOne({
-      where: { userId, bookId },
+      where: { userId, bookId, cartId: parseInt(user.currentCart) },
     });
 
     if (!actualCartBuy)
       return res.status(404).json({ message: "error trying to remove book" });
 
-    if (actualCartBuy.count > 1) {
-      actualCartBuy.count -= 1;
-      await actualCartBuy.save();
-    } else {
-      await actualCartBuy.destroy();
-    }
-
-    // const cart = await Cart.findOne({ where: { userId } });
-
-    // if (cart) {
-    //   cart.cart_buys = await Cart_buy.findAll({ where: { cartId: userId } });
-    //   await cart.save();
-    // }
+    await actualCartBuy.destroy();
 
     return res.status(200).json(user);
   } catch (error) {
