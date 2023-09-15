@@ -228,7 +228,7 @@ const AuthContextProvider = ({ children }) => {
 
       setState((s) => ({ ...s, history: history.data }));
     } catch (error) {
-      console.log(err);
+      console.log(error);
     }
   };
 

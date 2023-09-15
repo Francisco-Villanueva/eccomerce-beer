@@ -38,7 +38,7 @@ Book.init(
       allowNull: true,
     },
     categories: {
-      type: S.STRING,
+      type: S.ARRAY(S.STRING),
       allowNull: true,
     },
     averageRating: {
