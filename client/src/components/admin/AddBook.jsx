@@ -13,7 +13,7 @@ export default function AddBook() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [author, setAuthor] = useState("");
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState("");
   const [date, setDate] = useState("");
   const [price, setPrice] = useState("");
   const [img, setImg] = useState("");
@@ -37,8 +37,7 @@ export default function AddBook() {
 
   const handleCategoriesChange = (e) => {
     const value = e.target.value;
-    const categoriesArray = value.split(',').map(category => category.trim());
-    setCategories(categoriesArray);
+    setCategories(value);
   };
 
   const handleDateChange = (e) => {
@@ -71,7 +70,7 @@ export default function AddBook() {
     createBook(newBook, navigate);
     setTitle("");
     setAuthor("");
-    setCategories([]);
+    setCategories("");
     setDate("");
     setPrice("");
     setImg("");
@@ -120,7 +119,7 @@ export default function AddBook() {
               <TextField
                 label="Categories"
                 margin="normal"
-                value={categories} // Join the categories for display
+                value={categories}
                 onChange={handleCategoriesChange}
                 autoComplete="Categories"
                 autoFocus
