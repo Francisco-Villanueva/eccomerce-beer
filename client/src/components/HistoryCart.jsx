@@ -4,9 +4,10 @@ import { AuthContext } from "../contexts/AuthContext";
 import Loading from "../commons/Cards/Loading";
 import { VerifiedUser } from "@mui/icons-material";
 import Navbar from "../commons/Navbar";
+
 export default function HistoryCart() {
   const { user, history } = useContext(AuthContext);
-  console.log(history);
+  // console.log(history);
   function formatearFecha(fecha) {
     // Convierte la cadena de fecha en un objeto Date
     const fechaObjeto = new Date(fecha);
@@ -42,7 +43,7 @@ export default function HistoryCart() {
           margin: "20px auto",
         }}
       >
-        <h1 style={{ color: "#fff", fontSize: "20px" }}>HISTORY</h1>
+        <h1 style={{ color: "#fff", fontSize: "20px", fontFamily: "'Hanken Grotesk', sans-serif"}}>HISTORY</h1>
         <div
           style={{
             display: "grid",
@@ -123,7 +124,10 @@ export default function HistoryCart() {
               </div>
             ))
           ) : (
-            <Loading />
+            <div style={{marginLeft: "90px", width: "100vw"}}>
+              <Loading />
+            </div>
+            
           )}
         </div>
       </div>

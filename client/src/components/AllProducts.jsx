@@ -41,7 +41,7 @@ export const AllProducts = ({ selectedCategories }) => {
           fontSize: "50px"
         }}
       >
-        Not Found
+        <Loading/>
       </h1>
       )}
     </div>

@@ -120,7 +120,7 @@ const AuthContextProvider = ({ children }) => {
             categories: book.categories ?? [],
           };
         });
-        console.log(customBooks);
+        // console.log(customBooks);
         setState((s) => ({ ...s, books: customBooks }));
       })
       .catch((error) => {
