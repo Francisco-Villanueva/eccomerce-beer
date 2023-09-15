@@ -16,6 +16,6 @@ router.put("/users/:userId/admin", switchAdmin);
 router.delete("/users/:userId", deleteUser);
 
 router.post("/category", newCategory);
-router.delete("/category/:categoryId", destoryCategory);
+router.delete("/category/:category", destoryCategory);
 
 module.exports = router;

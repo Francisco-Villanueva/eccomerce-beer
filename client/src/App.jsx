@@ -15,13 +15,21 @@ import { Checkout } from "./components/Checkout";
 import HistoryCart from "./components/HistoryCart";
 import Page404 from "./commons/404";
 import AddCategory from "./components/admin/AddCategory";
+import { useCategories } from "./contexts/CategoriesContext";
+import { AdminContext } from "./contexts/AdminContext";
+// import { all } from "../../api/src/routes";
 
 function App() {
   const { setUser, setCarrito, getAllBooks, userId, setHistory } =
     useContext(AuthContext);
 
+  const { allUsers, getAllUsers } = useContext(AdminContext);
+  const { getCategories } = useCategories();
+
   useEffect(() => {
+    getAllUsers();
     getAllBooks();
+    getCategories();
     if (userId) {
       axios
         .get(`http://localhost:4000/admin/users/${userId}`)
@@ -36,14 +44,15 @@ function App() {
         });
     }
   }, [userId]);
+  // console.log({ allUsers });
 
   return (
     <>
       <Routes>
+        <Route path="/" element={<Welcome />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/" element={<Welcome />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/user/products/:id" element={<OneProduct />} />
         <Route path="/cart" element={<Cart />} />
@@ -52,7 +61,7 @@ function App() {
         <Route path="/admin/books/:id" element={<EditBook />} />
         <Route path="/history" element={<HistoryCart />} />
         <Route path="*" element={<Navigate to="404" />} />
-        <Route path="/404" element={<Page404/>}></Route>
+        <Route path="/404" element={<Page404 />}></Route>
       </Routes>
     </>
   );

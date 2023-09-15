@@ -7,17 +7,20 @@ import AuthContextProvider from "./contexts/AuthContext";
 import { CartBooksProvider } from "./contexts/CartBookContext.jsx";
 import { CategoriesProvider } from "./contexts/CategoriesContext.jsx";
 import { CheckoutContextProvider } from "./contexts/CheckoutContext";
-
+import { AdminProvider } from "./contexts/AdminContext.jsx";
+// import {AdminProvider} frpm "./"
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <CategoriesProvider>
-      <CheckoutContextProvider>
-        <CartBooksProvider>
-          <AuthContextProvider>
-            <App />
-          </AuthContextProvider>
-        </CartBooksProvider>
-      </CheckoutContextProvider>
-    </CategoriesProvider>
+    <AdminProvider>
+      <CategoriesProvider>
+        <CheckoutContextProvider>
+          <CartBooksProvider>
+            <AuthContextProvider>
+              <App />
+            </AuthContextProvider>
+          </CartBooksProvider>
+        </CheckoutContextProvider>
+      </CategoriesProvider>
+    </AdminProvider>
   </BrowserRouter>
 );
