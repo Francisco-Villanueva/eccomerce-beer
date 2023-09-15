@@ -41,7 +41,7 @@ export default function Cards({ book }) {
     >
       <CardMedia
         component="img"
-        src={book.image}
+        src={book.img}
         alt="Paella dish"
         sx={{ objectFit: "contain", height: "280px", borderRadius: "5px" }}
       />

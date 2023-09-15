@@ -2,9 +2,11 @@ const { Cart, Book } = require("../../../db/models");
 
 const createBook = async (req, res) => {
   try {
-    const { title, description, author } = req.body;
+    const { title, description, author, categories, date, price, img } = req.body;
 
-    const newBook = await Book.create({ title, description, author });
+    console.log(req.body);
+
+    const newBook = await Book.create({ title, description, author, categories, date, price, img });
 
     res.status(201).json({ msg: "Book created!", Book: newBook });
   } catch (error) {

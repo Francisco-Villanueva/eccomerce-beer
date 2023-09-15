@@ -114,7 +114,7 @@ const AuthContextProvider = ({ children }) => {
             bookId: book.bookId ?? book.id,
             title: book.title,
             description: book.description,
-            image: book.image ?? "",
+            img: book.img ?? "",
             rating: book.rating ?? 1,
             price: book.price ?? 0,
             date: book.date ?? "",

@@ -96,7 +96,7 @@ export default function HistoryCart() {
                       }}
                     >
                       <img
-                        src={b.image}
+                        src={b.img}
                         alt={b.title}
                         style={{
                           objectFit: "contain",

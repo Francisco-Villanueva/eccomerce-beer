@@ -76,7 +76,7 @@ export const OneProduct = () => {
   // }
 
   // console.log(cartBooks);
-  // console.log(book);
+  console.log(book);
 
   return (
     <div
@@ -111,7 +111,7 @@ export const OneProduct = () => {
             <div className="columns">
               <div className="column is-one-third">
                 <img
-                  src={book.image}
+                  src={book.img}
                   alt={book.title}
                   style={{ height: "366px" }}
                 />
@@ -139,7 +139,9 @@ export const OneProduct = () => {
               </p> */}
                 <p>
                   <span className="title is-6">Categories:</span>{" "}
-                  {book.categories?.join(", ") || "Not Categories"}
+                  {Array.isArray(book.categories)
+                    ? book.categories.join(", ")
+                    : book.categories || "Not Categories"}
                 </p>
                 {/* <p>
                 <span className="title is-6">Language:</span>{" "}
@@ -189,8 +191,23 @@ export const OneProduct = () => {
                     </button>
                   )}
                   {/* {adminUser ? ( */}
-                  <>
-                    <Link to={`/admin/books/${id}`}>
+                  {!book.bookId && (
+                    <>
+                      <Link to={`/admin/books/${id}`}>
+                        <button
+                          className="button"
+                          style={{
+                            margin: "10px 0px",
+                            borderRadius: "8px",
+                            border: "none",
+                            fontFamily: "'Hanken Grotesk', sans-serif",
+                          }}
+                          // onClick={handleEditBook}
+                        >
+                          <i style={{ marginRight: "5px" }} />
+                          Edit Book
+                        </button>
+                      </Link>
                       <button
                         className="button"
                         style={{
@@ -199,26 +216,13 @@ export const OneProduct = () => {
                           border: "none",
                           fontFamily: "'Hanken Grotesk', sans-serif",
                         }}
-                        // onClick={handleEditBook}
+                        onClick={handleDeleteBook}
                       >
                         <i style={{ marginRight: "5px" }} />
-                        Edit Book
+                        Delete Book
                       </button>
-                    </Link>
-                    <button
-                      className="button"
-                      style={{
-                        margin: "10px 0px",
-                        borderRadius: "8px",
-                        border: "none",
-                        fontFamily: "'Hanken Grotesk', sans-serif",
-                      }}
-                      onClick={handleDeleteBook}
-                    >
-                      <i style={{ marginRight: "5px" }} />
-                      Delete Book
-                    </button>
-                  </>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
