@@ -119,6 +119,60 @@ const getHistory = async (user_cart) => {
   return history;
 };
 
+// const mail = `
+//   <html>
+//     <head>
+//       <style>
+//         body {
+//           font-family: Arial, sans-serif;
+//           background-color: #f0f0f0;
+//           padding: 20px;
+//         }
+//         .container {
+//           width: 80%;
+//           margin: 0 auto;
+//           padding: 20px;
+//           background-color: #fff;
+//           border-radius: 10px;
+//           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+//         }
+//         h1 {
+//           color: #333;
+//         }
+//         p {
+//           color: #555;
+//         }
+//         .total {
+//           font-weight: bold;
+//           font-size: 1.2em;
+//           color: #FF5733;
+//         }
+//         .books {
+//           margin-left: 20px;
+//         }
+//         .book {
+//           margin-bottom: 10px;
+//         }
+//       </style>
+//     </head>
+//     <body>
+//       <div class="container">
+//         <h1>Tu compra fue realizada con éxito</h1>
+//         <p class="total">TOTAL: $${lastCart.price}</p>
+//         <p>Cantidad de libros: ${cartData.length}</p>
+//         <div class="books">
+//           <p>Libros comprados:</p>
+//           <ul>
+//             ${cartData.map((m) => `<li class="book">${m.title}</li>`).join("")}
+//           </ul>
+//         </div>
+//       </div>
+//     </body>
+//   </html>
+// `;
+
+// Resto del código para enviar el correo...
+
 module.exports = {
   data,
   getUser,

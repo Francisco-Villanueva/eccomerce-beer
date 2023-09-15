@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+      }
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        background-image: url("../../assets/images/devBookLogo.png");
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .logo_container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .devBooksLogo {
+        width: 30%;
+        border-radius: 20px;
+      }
+      h1 {
+        color: #333;
+      }
+      p {
+        color: #555;
+      }
+      .total {
+        font-weight: bold;
+        font-size: 1.2em;
+        color: green;
+      }
+      .books {
+        margin-left: 20px;
+      }
+      .book {
+        margin-bottom: 10px;
+        list-style: none;
+      }
+      .book-content {
+        display: flex;
+        align-items: center;
+        background-color: #cecece6b;
+        border-radius: 5px;
+        /* padding: 1em; */
+      }
+
+      .book-image {
+        max-width: 100px;
+        margin-right: 10px;
+      }
+
+      .book-details {
+        flex-grow: 1;
+        margin: 10px;
+      }
+
+      .book-title {
+        font-size: 1.1em;
+        margin: 0;
+      }
+
+      .book-price {
+        /* font-size: 0.9em; */
+        margin: 0;
+        color: #125202;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Tu compra fue realizada con éxito</h1>
+      <div class="logo_container">
+        <img
+          src="../../../client/src/assets/images/devBookLogo.png"
+          alt="devBooks"
+          class="devBooksLogo"
+        />
+      </div>
+      <h3 class="total">TOTAL: $ 1000</h3>
+      <b>Cantidad de libros: 1</b>
+      <div class="books">
+        <p>Libros comprados:</p>
+        <ul>
+          <li class="book">
+            <div class="book-content">
+              <img
+                src="https://ci5.googleusercontent.com/proxy/srii1aPP2XCSa5ORwvvopyEd57ADyclMnYSLVIM9Bo80xNXoQh0OV--7DMJNoCDOaBUDbwgfOSRKidTPJehbRWt4oTf5j-h9ZhyQaWGgpYpY-iLQ0NFJDZw2bnFuVGnlurIFwhjdATwPH96qohDeDKWv9mfTQMz8oVEroczwUWKEKpidD00PE30Oz-38JoFygc1dg9QyUiloelt_e32Tzs5RkbzDD36sIrez0zrmINP1bbuZY3PFCpEJ079HfD6teMulOX7Qz4F8tEf-BRVdKYp89NGRWRYiIxUQzCWHnQMGQ1hchlq9CXd1cZnMLNbrG0bAiWXlpHlVMCTolTCOSDShGDNGM7JBHSxI5tZa3nQnauJfIQ7qfSd92zkM7sFW=s0-d-e1-ft#http://books.google.com/books/publisher/content?id=B3lYEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE71PYTbkzySv1yOec6GbXWxajcFED6TKZAfHtFGRVBoHLitKpHQ9ThcApcvHhs97QWv9KcaAMT0xFD79_0kQTvAW92a3aexAnUvimX-kGXpuAYXdtG242_lklSl9Um-KtWDIttyw&source=gbs_api"
+                alt="${m.title}"
+                class="book-image"
+              />
+              <div class="book-details">
+                <h3 class="book-title">Programación Java: JDBC y Swing</h3>
+                <h3 class="book-price">$2607</h3>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
