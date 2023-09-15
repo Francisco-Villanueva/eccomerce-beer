@@ -23,7 +23,12 @@ export default function Search() {
   return (
     <form onSubmit={handleBookSelect}>
       <input
-        className="search"
+        className="button is-ghost has-text-white"
+        style={{
+          textDecoration: "none",
+          maxHeight: "35px",
+          maxWidth: "150px",
+        }}
         type="text"
         placeholder="Search Book"
         onChange={handleInputChange}

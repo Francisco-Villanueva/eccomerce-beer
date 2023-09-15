@@ -55,6 +55,8 @@ export default function AddBook() {
     setImg(value);
   };
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -74,6 +76,25 @@ export default function AddBook() {
     setDate("");
     setPrice("");
     setImg("");
+
+    // axios
+    //   .post("http://localhost:4000/admin/books/createBook", {
+    //     title: title,
+    //     description: description,
+    //     author: author,
+    //     genre: genre,
+    //     year: year,
+    //   })
+    //   .then((newBook) => {
+    //     message.success("Libro Creado!");
+    //     navigate("/home");
+    //     getAllBooks();
+    // setTitle("");
+    // setAuthor("");
+    // setGenre("");
+    // setYear("");
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   return (

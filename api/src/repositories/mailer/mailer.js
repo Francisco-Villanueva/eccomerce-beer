@@ -4,18 +4,18 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "Gmail", // Cambia esto al servicio de correo que estés utilizando
   auth: {
-    user: "panchovillanueva99@gmail.com", // Cambia esto a tu dirección de correo electrónico
-    pass: "zarivmfbiupnapes", // Cambia esto a tu contraseña
+    user: "p5devbooks@gmail.com", // Cambia esto a tu dirección de correo electrónico
+    pass: "vdazdjajfpnrxidt", // Cambia esto a tu contraseña
   },
 });
 
 // Función para enviar el correo electrónico
 function enviarCorreo(message, email) {
   const mailOptions = {
-    from: "panchovillanueva99@gmail.com", // Cambia esto a tu dirección de correo electrónico
+    from: "p5devbooks@gmail.com", // Cambia esto a tu dirección de correo electrónico
     to: email, // Usar la dirección de correo proporcionada en la data
     subject: "Compra realizada!",
-    text: message,
+    html: message,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {

@@ -3,6 +3,8 @@ const { Cart_buy, Cart } = require("../../db/models");
 const User = require("../../db/models/User");
 const { data } = require("../../utils/Data");
 
+// const logo = require("../../assets/images/devBookLogo.png");
+
 const { enviarCorreo } = require("../../repositories/mailer/mailer");
 
 const register = async (req, res) => {
@@ -133,11 +135,126 @@ const checkout = async (req, res) => {
       currentCart: newCart.id,
     });
 
-    const mail = `tu compra fue realizada con exito! \n TOTAL: $ ${
-      lastCart.price
-    } \n Canditda de libros: ${cartData.length} \n Libros comprados: ${cartData
-      .map((m) => `\n\t => ${m.title}`)
-      .join("")}`;
+    // const mail = `tu compra fue realizada con exito! \n TOTAL: $ ${
+    //   lastCart.price
+    // } \n Canditda de libros: ${cartData.length} \n Libros comprados: ${cartData
+    //   .map((m) => `\n\t => ${m.title}`)
+    //   .join("")}`;
+    const mail = `
+      <html>
+        <head>
+          <style>
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+          }
+          .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          }
+          .logo_container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+          }
+          .devBooksLogo {
+            width: 10%;
+            border-radius: 20px;
+          }
+          h1 {
+            color: #333;
+          }
+          p {
+            color: #555;
+          }
+          .total {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: green;
+          }
+          .books {
+            margin-left: 20px;
+          }
+          .book {
+            margin-bottom: 10px;
+            list-style: none;
+          }
+          .book-content {
+            display: flex;
+            align-items: center;
+            background-color: #cecece6b;
+            border-radius: 5px;
+            /* padding: 1em; */
+          }
+    
+          .book-image {
+            max-width: 100px;
+            margin-right: 10px;
+          }
+    
+          .book-details {
+            flex-grow: 1;
+            margin: 10px;
+          }
+    
+          .book-title {
+            font-size: 1.1em;
+            margin: 0;
+          }
+    
+          .book-price {
+            /* font-size: 0.9em; */
+            margin: 0;
+            color: #125202;
+          }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+          <div class="logo_container">
+          <img
+            src="https://modalab.co/wp-content/uploads/2020/05/MODALAB_Iconos-14.png"
+            alt="devBooks"
+            class="devBooksLogo"
+          />
+          <h1>Dev Books</h1>
+        </div>
+            <h1>Tu compra fue realizada con éxito</h1>
+           
+            <h3 class="total">TOTAL: $${lastCart.price}</h3>
+            <b>Cantidad de libros: ${cartData.length}</b>
+            <div class="books">
+              <ul>
+              
+                ${cartData
+                  .map(
+                    (m) =>
+                      ` <li class="book">
+                    <div class="book-content">
+                      <img src="${m.img}" alt="${m.title}" class="book-image" />
+                      <div class="book-details">
+                        <h3 class="book-title">${m.title}</h3>
+                        <p class="book-price">$${m.price}</p>
+                      </div>
+                    </div>
+                  </li>`
+                  )
+                  .join("")}
+              </ul>
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+
+    // Resto del código para enviar el correo...
 
     enviarCorreo(mail, user.email);
 
