@@ -17,7 +17,6 @@ function Navbar() {
     navigate("/login");
   };
 
-  // console.log({ user });
   return (
     <nav
       className="navbar-style navbar has-background-black-ter "
@@ -82,12 +81,29 @@ function Navbar() {
             className="button is-ghost has-text-white"
             style={{
               textDecoration: "none",
+              margin: "5px",
               maxHeight: "35px",
               maxWidth: "70px",
               fontFamily: "'Hanken Grotesk', sans-serif",
             }}
           >
             Add Book
+          </button>
+        </Link>
+      </div>
+      <div>
+        <Link to="/admin/addCategory">
+          <button
+            className="button is-ghost has-text-white"
+            style={{
+              textDecoration: "none",
+              margin: "5px",
+              maxHeight: "35px",
+              maxWidth: "110px",
+              fontFamily: "'Hanken Grotesk', sans-serif",
+            }}
+          >
+            Add Category
           </button>
         </Link>
       </div>

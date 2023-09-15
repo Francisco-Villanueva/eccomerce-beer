@@ -23,7 +23,6 @@ export const AllProducts = ({ selectedCategories }) => {
 
   const booksToShow = searchedBooks.length > 0 ? searchedBooks : filteredBooks;
 
-  // console.log(booksToShow);
   return (
     <div className="grilla_libros">
       {booksToShow.length ? (
