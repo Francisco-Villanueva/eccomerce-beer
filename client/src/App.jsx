@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "bulma/css/bulma.min.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { OneProduct } from "./components/OneProduct";
 import Login from "./components/Login";
 import axios from "axios";
@@ -51,6 +51,7 @@ function App() {
         <Route path="/admin/addCategory" element={<AddCategory />} />
         <Route path="/admin/books/:id" element={<EditBook />} />
         <Route path="/history" element={<HistoryCart />} />
+        <Route path="*" element={<Navigate to="404" />} />
         <Route path="/404" element={<Page404/>}></Route>
       </Routes>
     </>
