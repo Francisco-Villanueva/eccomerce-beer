@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function AddBook() {
   const navigate = useNavigate();
@@ -54,6 +55,7 @@ export default function AddBook() {
       .then((newBook) => {
         message.success("Libro Creado!");
         navigate("/home");
+        getAllBooks();
         setTitle("");
         setAuthor("");
         setGenre("");

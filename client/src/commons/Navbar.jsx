@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { Avatar, Box } from "@mui/material";
-import { BookSharp, ShoppingCart } from "@mui/icons-material";
+import { BookSharp, ShoppingCart, HistorySharp } from "@mui/icons-material";
 import Search from "../components/Search";
 import devBookLogo from "../assets/imgs/devbooks-circulo.png";
 // import devBookLogo from "../assets/images/image.png";
@@ -85,6 +85,7 @@ function Navbar() {
               maxHeight: "35px",
               maxWidth: "70px",
               fontFamily: "'Hanken Grotesk', sans-serif",
+              marginLeft: "1vw"
             }}
           >
             Add Book
@@ -110,6 +111,9 @@ function Navbar() {
       <div className="navbar-item navbar-end">
         <div className="navbar-item">
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <Link to={"/history"}>
+              <HistorySharp />
+            </Link>
             {isAuthenticated && (
               <Avatar
                 style={{

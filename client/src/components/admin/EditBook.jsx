@@ -6,8 +6,11 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { message } from "antd";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function EditBook() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -58,6 +61,8 @@ export default function EditBook() {
         setAuthor("");
         setGenre("");
         setYear("");
+        navigate("/home");
+        getAllBooks();
       })
       .catch((err) => console.log(err));
   };

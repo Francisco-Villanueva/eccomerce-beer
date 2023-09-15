@@ -34,9 +34,31 @@ function Categories({setSelectedCategories}) {
   };
 
   return (
-    <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-checkbox-label">Categories</InputLabel>
+    <div style={{ backgroundColor: "#535353" }}>
+      <FormControl
+        sx={{ m: 0, width: 300 }}
+        style={{ backgroundColor: "#535353", padding: 0, display: "flex"}}
+      >
+        <InputLabel
+          id="demo-multiple-checkbox-label"
+          style={{
+            backgroundColor: "transparent",
+            color: "#fff",
+            fontFamily: "'Hanken Grotesk', sans-serif",
+            padding: 0,
+            margin: 0,
+            textAlign: "center",
+            alignItems: "center",
+            display: "flex",
+            lineHeight: "normal",
+            zIndex: 2,
+            // maxHeight: "6vh",
+            // bottom: "20%", 
+            // position: "absolute"
+          }}
+        >
+          Categories
+        </InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"

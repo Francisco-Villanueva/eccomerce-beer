@@ -1,35 +1,39 @@
-import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Toolbar from '@mui/material/Toolbar';
-import Paper from '@mui/material/Paper';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
+import * as React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Toolbar from "@mui/material/Toolbar";
+import Paper from "@mui/material/Paper";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
 import AddressForm from "./AdressForm.jsx";
 import PaymentForm from "./PaymentForm.jsx";
 import Review from "./Review.jsx";
-import devBookLogo from "../assets/imgs/devbooks-circulo.png"
+import devBookLogo from "../assets/imgs/devbooks-circulo.png";
+import ProgressButton from "../commons/Progress_button/ProgessBotton.jsx";
+import { CheckoutContext } from "../contexts/CheckoutContext.jsx";
+import { AuthContext } from "../contexts/AuthContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
         DevBooks
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ["Shipping address", "Payment details", "Review your order"];
 
 function getStepContent(step) {
   switch (step) {
@@ -40,11 +44,15 @@ function getStepContent(step) {
     case 2:
       return <Review />;
     default:
-      throw new Error('Unknown step');
+      throw new Error("Unknown step");
   }
 }
 
-export const Checkout=()=> {
+export const Checkout = () => {
+  const { checkOut } = React.useContext(CheckoutContext);
+  const { user } = React.useContext(AuthContext);
+  const nav = useNavigate();
+
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -63,22 +71,30 @@ export const Checkout=()=> {
         color="default"
         elevation={0}
         sx={{
-          position: 'relative',
+          position: "relative",
           borderBottom: (t) => `1px solid ${t.palette.divider}`,
         }}
       >
         <Toolbar>
           <Typography color="inherit" noWrap display={"flex"}>
-          <img
-            style={{height: "50px", width: "50px", margin: "auto", padding: "auto"}}
-            src={devBookLogo}
-            alt="devbooks"
-          />
+            <img
+              style={{
+                height: "50px",
+                width: "50px",
+                margin: "auto",
+                padding: "auto",
+              }}
+              src={devBookLogo}
+              alt="devbooks"
+            />
           </Typography>
         </Toolbar>
       </AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4}}>
-        <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+        <Paper
+          variant="outlined"
+          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+        >
           <Typography component="h1" variant="h4" align="center">
             Checkout
           </Typography>
@@ -99,11 +115,14 @@ export const Checkout=()=> {
                 confirmation, and will send you an update when your order has
                 shipped.
               </Typography>
+              <Button onClick={() => nav("/home")} sx={{ bgcolor: "#cecece" }}>
+                HOME
+              </Button>
             </React.Fragment>
           ) : (
             <React.Fragment>
               {getStepContent(activeStep)}
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                 {activeStep !== 0 && (
                   <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
                     Back
@@ -112,10 +131,25 @@ export const Checkout=()=> {
 
                 <Button
                   variant="contained"
-                  onClick={handleNext}
+                  onClick={
+                    !(activeStep === steps.length - 1)
+                      ? handleNext
+                      : () => {
+                          console.log();
+                        }
+                  }
                   sx={{ mt: 3, ml: 1 }}
                 >
-                  {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                  {activeStep === steps.length - 1 ? (
+                    <ProgressButton
+                      handle={() => {
+                        handleNext();
+                        checkOut(user.id);
+                      }}
+                    />
+                  ) : (
+                    "Next"
+                  )}
                 </Button>
               </Box>
             </React.Fragment>
@@ -125,4 +159,4 @@ export const Checkout=()=> {
       </Container>
     </React.Fragment>
   );
-}
+};
