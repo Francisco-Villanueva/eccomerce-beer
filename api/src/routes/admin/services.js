@@ -37,7 +37,17 @@ const switchAdmin = async (req, res) => {
       isAdmin: !adminState,
     });
 
-    res.status(200).json(user);
+    const users = await User.findAll({
+      include: {
+        model: Cart,
+        as: "user_cart",
+        include: {
+          model: Cart_buy,
+          as: "cart_cartBuy",
+        },
+      },
+    });
+    res.status(200).json(users);
   } catch (error) {
     res.status(401).send(error);
   }

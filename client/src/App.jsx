@@ -17,6 +17,7 @@ import Page404 from "./commons/404";
 import AddCategory from "./components/admin/AddCategory";
 import { useCategories } from "./contexts/CategoriesContext";
 import { AdminContext } from "./contexts/AdminContext";
+import UserList from "./components/admin/UserList";
 // import { all } from "../../api/src/routes";
 
 function App() {
@@ -60,6 +61,8 @@ function App() {
         <Route path="/admin/addCategory" element={<AddCategory />} />
         <Route path="/admin/books/:id" element={<EditBook />} />
         <Route path="/history" element={<HistoryCart />} />
+        <Route path="/users" element={<UserList />} />
+
         <Route path="*" element={<Navigate to="404" />} />
         <Route path="/404" element={<Page404 />}></Route>
       </Routes>
