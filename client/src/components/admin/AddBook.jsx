@@ -56,6 +56,8 @@ export default function AddBook() {
     setImg(value);
   };
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -75,11 +77,31 @@ export default function AddBook() {
     setDate("");
     setPrice("");
     setImg("");
+
+    // axios
+    //   .post("http://localhost:4000/admin/books/createBook", {
+    //     title: title,
+    //     description: description,
+    //     author: author,
+    //     genre: genre,
+    //     year: year,
+    //   })
+    //   .then((newBook) => {
+    //     message.success("Libro Creado!");
+    //     navigate("/home");
+    //     getAllBooks();
+    // setTitle("");
+    // setAuthor("");
+    // setGenre("");
+    // setYear("");
+    //   })
+    //   .catch((err) => console.log(err));
+
   };
 
   return (
     <div className="container">
-      <div className="form">
+      <div className="form" style={{backgroundColor: "#fff", color: "black"}}>
         <Typography variant="h4" className="form-title">
           Add New Book
         </Typography>
@@ -120,7 +142,7 @@ export default function AddBook() {
               <TextField
                 label="Categories"
                 margin="normal"
-                value={categories} // Join the categories for display
+                value={categories}
                 onChange={handleCategoriesChange}
                 autoComplete="Categories"
                 autoFocus
