@@ -15,6 +15,32 @@ const createCategory = async (category) => {
 };
 const getAllCategories = async () => {
   try {
+    const arrCategories = [
+      "Computers",
+      "Algorithms",
+      "Theory",
+      "Engineering",
+      "Software",
+      "Business & Economics",
+      "Collectibles",
+      "Robotics",
+      "Databases",
+      "Education",
+      "Games",
+      "Accouting",
+    ];
+
+    const check = await Category.findOne({
+      where: {
+        category: arrCategories[0],
+      },
+    });
+
+    const data = arrCategories.map((m) => ({ category: m }));
+
+    if (!check) {
+      await Category.bulkCreate(data, { returning: true });
+    }
     const allCategories = await Category.findAll();
     return allCategories;
   } catch (error) {
