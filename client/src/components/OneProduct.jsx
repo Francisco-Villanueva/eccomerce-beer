@@ -17,9 +17,9 @@ export const OneProduct = () => {
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(true);
   const [isCart, setIsCart] = useState(false);
-  const [deleteBook, setDeleteBook] = useState(true);
+  // const [deleteBook, setDeleteBook] = useState(true);
   const { cartBooks, addToCart, removeFromCart } = useContext(CartBooksContext);
-  const { carrito, getAllBooks } = useContext(AuthContext);
+  const { carrito, getAllBooks, deleteBook } = useContext(AuthContext);
 
   useEffect(() => {
     axios
@@ -49,18 +49,19 @@ export const OneProduct = () => {
   }
 
   function handleDeleteBook() {
-    axios
-      .delete(`http://localhost:4000/admin/books/${id}`)
-      .then(() => {
-        setDeleteBook(true);
-        message.success("Libro Eliminado!");
-        navigate("/home");
+    deleteBook(id, navigate);
+    // axios
+    //   .delete(`http://localhost:4000/admin/books/${id}`)
+    //   .then(() => {
+    //     setDeleteBook(true);
+    //     message.success("Libro Eliminado!");
+    //     navigate("/home");
 
-        console.log("Libro eliminado exitosamente");
-      })
-      .catch((error) => {
-        console.error("Error al eliminar el libro:", error);
-      });
+    //     console.log("Libro eliminado exitosamente");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error al eliminar el libro:", error);
+    //   });
   }
 
   // VERIFICAR SI EXISTE LA ID EN EL CARRITO :

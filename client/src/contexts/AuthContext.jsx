@@ -242,6 +242,20 @@ const AuthContextProvider = ({ children }) => {
       })
       .catch((err) => console.log(err));
   };
+
+  const deleteBook = (id, navigate) => {
+    axios
+      .delete(`http://localhost:4000/admin/books/${id}`)
+      .then(() => {
+        getAllBooks();
+        message.success("Libro Eliminado!");
+        navigate("/home");
+      })
+      .catch((error) => {
+        console.error("Error al eliminar el libro:", error);
+      });
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -260,6 +274,7 @@ const AuthContextProvider = ({ children }) => {
         setCount,
         setHistory,
         createBook,
+        deleteBook,
       }}
     >
       {children}

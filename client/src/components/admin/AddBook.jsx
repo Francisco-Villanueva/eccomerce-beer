@@ -4,102 +4,63 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { ArrowBack } from "@mui/icons-material";
+
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function AddBook() {
   const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [author, setAuthor] = useState("");
-  const [categories, setCategories] = useState("");
-  const [date, setDate] = useState("");
-  const [price, setPrice] = useState("");
-  const [img, setImg] = useState("");
-
   const { createBook } = useContext(AuthContext);
 
-  const handleTitleChange = (e) => {
-    const value = e.target.value;
-    setTitle(value);
+  const [data, setData] = useState({
+    title: "",
+    description: "",
+    author: "",
+    categories: "",
+    date: "",
+    price: "",
+    img: "",
+  });
+
+  const handleInputChange = (e) => {
+    setData((s) => ({ ...s, [e.target.name]: e.target.value }));
   };
-
-  const handleDescriptionChange = (e) => {
-    const value = e.target.value;
-    setDescription(value);
-  };
-
-  const handleAuthorChange = (e) => {
-    const value = e.target.value;
-    setAuthor(value);
-  };
-
-  const handleCategoriesChange = (e) => {
-    const value = e.target.value;
-    setCategories(value);
-  };
-
-  const handleDateChange = (e) => {
-    const value = e.target.value;
-    setDate(value);
-  };
-
-  const handlePriceChange = (e) => {
-    const value = e.target.value;
-    setPrice(parseInt(value));
-  };
-
-  const handleImgChange = (e) => {
-    const value = e.target.value;
-    setImg(value);
-  };
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newBook = {
-      title: title,
-      description: description,
-      author: author,
-      categories: categories,
-      date: date,
-      price: price,
-      img: img,
-    };
-    createBook(newBook, navigate);
-    setTitle("");
-    setAuthor("");
-    setCategories("");
-    setDate("");
-    setPrice("");
-    setImg("");
-
-    // axios
-    //   .post("http://localhost:4000/admin/books/createBook", {
-    //     title: title,
-    //     description: description,
-    //     author: author,
-    //     genre: genre,
-    //     year: year,
-    //   })
-    //   .then((newBook) => {
-    //     message.success("Libro Creado!");
-    //     navigate("/home");
-    //     getAllBooks();
-    // setTitle("");
-    // setAuthor("");
-    // setGenre("");
-    // setYear("");
-    //   })
-    //   .catch((err) => console.log(err));
+    createBook(data, navigate);
+    setData({
+      title: "",
+      description: "",
+      author: "",
+      categories: "",
+      date: "",
+      price: "",
+      img: "",
+    });
   };
 
+  const nav = useNavigate();
   return (
     <div className="container">
-      <div className="form" style={{backgroundColor: "#fff", color: "black"}}>
+      <button
+        onClick={() => {
+          nav("/home");
+        }}
+        style={{
+          background: "#fff",
+          border: "none",
+          position: "absolute",
+          top: 0,
+          lerft: 0,
+          margin: "10px",
+        }}
+      >
+        <ArrowBack />
+      </button>
+      <div className="form" style={{ backgroundColor: "#fff", color: "black" }}>
         <Typography variant="h4" className="form-title">
           Add New Book
         </Typography>
@@ -109,10 +70,11 @@ export default function AddBook() {
               <TextField
                 margin="normal"
                 required
-                value={title}
-                onChange={handleTitleChange}
+                value={data.title}
+                onChange={handleInputChange}
                 label="Title"
                 autoComplete="title"
+                name="title"
                 autoFocus
               />
             </Grid>
@@ -120,8 +82,9 @@ export default function AddBook() {
               <TextField
                 label="Descripción"
                 margin="normal"
-                value={description}
-                onChange={handleDescriptionChange}
+                name="description"
+                value={data.description}
+                onChange={handleInputChange}
                 required
               />
             </Grid>
@@ -129,9 +92,10 @@ export default function AddBook() {
               <TextField
                 label="Autor"
                 margin="normal"
-                value={author}
-                onChange={handleAuthorChange}
+                value={data.author}
+                onChange={handleInputChange}
                 autoComplete="Autor"
+                name="author"
                 autoFocus
                 required
               />
@@ -140,20 +104,23 @@ export default function AddBook() {
               <TextField
                 label="Categories"
                 margin="normal"
-                value={categories}
-                onChange={handleCategoriesChange}
+                value={data.categories}
+                onChange={handleInputChange}
                 autoComplete="Categories"
+                name="categories"
                 autoFocus
                 required
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label="Date"
+                // label="Date"
                 margin="normal"
-                value={date}
-                onChange={handleDateChange}
+                value={data.date}
+                onChange={handleInputChange}
                 autoComplete="Date"
+                name="date"
+                type="date"
                 autoFocus
                 required
               />
@@ -162,9 +129,10 @@ export default function AddBook() {
               <TextField
                 label="Price"
                 margin="normal"
-                value={price}
-                onChange={handlePriceChange}
+                value={data.price}
+                onChange={handleInputChange}
                 autoComplete="Price"
+                name="price"
                 autoFocus
                 required
               />
@@ -172,9 +140,10 @@ export default function AddBook() {
             <Grid item xs={12}>
               <TextField
                 label="Img"
+                name="img"
                 margin="normal"
-                value={img}
-                onChange={handleImgChange}
+                value={data.img}
+                onChange={handleInputChange}
                 autoComplete="Img"
                 autoFocus
                 required
