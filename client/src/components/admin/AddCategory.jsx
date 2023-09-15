@@ -30,12 +30,13 @@ function AddCategory() {
   };
 
   return (
-    <div>
+    <div style={{}}>
       <TextField
         label="Add Category"
         value={newCategory}
         onChange={handleNewCategoryChange}
         sx={{ m: 1, width: 300 }}
+        style={{backgroundColor: "#fff", color: "black", borderRadius: "14px", border: "none"}}
       />
       <Button variant="contained" onClick={handleAddCategory}>
         Add
