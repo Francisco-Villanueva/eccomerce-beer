@@ -1,57 +1,34 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import { useContext } from 'react';
-import { CheckoutContext } from '../contexts/CheckoutContext';
+import * as React from "react";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import { useContext } from "react";
+import { CheckoutContext } from "../contexts/CheckoutContext";
 
 export default function PaymentForm() {
-  const { payment, setPayment} = useContext(CheckoutContext);
+  const { payment, setPayment } = useContext(CheckoutContext);
 
-  // const [formData, setFormData] = useState({
-  //   cardName: "",
-  //   cardNumber: "",
-  //   expDate: "",
-  //   cvv: "",
-  // });
-console.log("payment 1----", payment);
   const updatePayment = (name, value) => {
-console.log("payment 2----", payment);
-
     setPayment((prevPayment) => {
-console.log("payment 3----", payment);
+      const updatedPayment = [...prevPayment];
 
-      if (Array.isArray(prevPayment)) {
-        const updatedPayment = prevPayment.map((paymentField) => {
-          console.log("paymentField.name:", paymentField.name);
-          console.log("name:", name);
-      
-          if (paymentField.name === name) {
-            return { name, detail: value };
-          }
-          return paymentField;
-        });
+      const existingPaymentField = updatedPayment.find(
+        (field) => field.name === name
+      );
+      if (existingPaymentField) {
+        existingPaymentField.detail = value;
       } else {
-        console.log("prevPayment is not an array:", prevPayment);
-console.log("payment 4----", payment);
-
+        updatedPayment.push({ name: name, detail: value });
       }
-      // console.log("updatedPayment-----", updatedPayment);
-      // return updatedPayment;
+      return updatedPayment;
     });
   };
 
-
   const handleInputChange = (e) => {
-console.log("payment 5----", payment);
-
     const { name, value } = e.target;
-    console.log("Input change:------", name, value);
     updatePayment(name, value);
-console.log("payment 6----", payment);
-
   };
 
   return (
@@ -68,10 +45,8 @@ console.log("payment 6----", payment);
             fullWidth
             autoComplete="cc-name"
             variant="standard"
-            name="cardName"
-            // value={payment.cardName}
+            name="Card type"
             onChange={handleInputChange}
-            style={{color: "black"}}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -82,8 +57,7 @@ console.log("payment 6----", payment);
             fullWidth
             autoComplete="cc-number"
             variant="standard"
-            name="card Number"
-            // value={payment.cardNumber}
+            name="Card number"
             onChange={handleInputChange}
           />
         </Grid>
@@ -96,7 +70,6 @@ console.log("payment 6----", payment);
             autoComplete="cc-exp"
             variant="standard"
             name="Expiry date"
-            // value={payment.expDate}
             onChange={handleInputChange}
           />
         </Grid>
@@ -110,7 +83,6 @@ console.log("payment 6----", payment);
             autoComplete="cc-csc"
             variant="standard"
             name="CVV"
-            // value={payment.cvv}
             onChange={handleInputChange}
           />
         </Grid>
