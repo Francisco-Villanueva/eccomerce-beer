@@ -55,7 +55,6 @@ export default function AddBook() {
       .then((newBook) => {
         message.success("Libro Creado!");
         navigate("/home");
-        getAllBooks();
         setTitle("");
         setAuthor("");
         setGenre("");
