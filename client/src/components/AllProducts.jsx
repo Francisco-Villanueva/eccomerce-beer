@@ -5,7 +5,6 @@ import { AuthContext } from "../contexts/AuthContext";
 
 export const AllProducts = ({ selectedCategories }) => {
   const { books, searchedBooks, carrito } = useContext(AuthContext);
-
   
   const filteredBooks = books.filter((book) => {
     if (selectedCategories.length === 0) {

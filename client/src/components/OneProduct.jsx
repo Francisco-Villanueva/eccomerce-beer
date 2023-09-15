@@ -127,10 +127,10 @@ export const OneProduct = () => {
                 <span className="title is-6">Publisher:</span>{" "}
                 {book.volumeInfo.publisher || "Unknown"}
               </p> */}
-                <p>
-                  <span className="title is-6">Categories:</span>{" "}
-                  {book.categories?.join(", ") || "Not Categories"}
-                </p>
+              <p>
+                <span className="title is-6">Categories:</span>{" "}
+                {book.categories?.join(", ") || "Not Categories"}
+              </p>
                 {/* <p>
                 <span className="title is-6">Language:</span>{" "}
                 {book.volumeInfo.language || "Unknown"}
