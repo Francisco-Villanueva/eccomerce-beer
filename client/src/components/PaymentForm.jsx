@@ -33,7 +33,7 @@ export default function PaymentForm() {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom style={{fontFamily: "'Hanken Grotesk', sans-serif"}}>
         Payment method
       </Typography>
       <Grid container spacing={3}>
@@ -47,6 +47,7 @@ export default function PaymentForm() {
             variant="standard"
             name="Card type"
             onChange={handleInputChange}
+            style={{fontFamily: "'Hanken Grotesk', sans-serif"}}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -59,6 +60,7 @@ export default function PaymentForm() {
             variant="standard"
             name="Card number"
             onChange={handleInputChange}
+            style={{fontFamily: "'Hanken Grotesk', sans-serif"}}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -71,6 +73,7 @@ export default function PaymentForm() {
             variant="standard"
             name="Expiry date"
             onChange={handleInputChange}
+            style={{fontFamily: "'Hanken Grotesk', sans-serif"}}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -84,11 +87,12 @@ export default function PaymentForm() {
             variant="standard"
             name="CVV"
             onChange={handleInputChange}
+            style={{fontFamily: "'Hanken Grotesk', sans-serif"}}
           />
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox color="secondary" name="saveCard" value="yes" />}
+            control={<Checkbox color="secondary" name="saveCard" value="yes" style={{fontFamily: "'Hanken Grotesk', sans-serif"}}/>}
             label="Remember credit card details for next time"
           />
         </Grid>
