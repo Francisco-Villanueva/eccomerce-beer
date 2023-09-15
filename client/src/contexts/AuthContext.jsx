@@ -74,12 +74,13 @@ const AuthContextProvider = ({ children }) => {
       });
   };
 
-  const registerUser = (name, email, password, navigate) => {
+  const registerUser = (name, email, password, adminKey, navigate) => {
     axios
       .post("http://localhost:4000/user/register", {
         name,
         email,
         password,
+        adminKey,
       })
       .then((res) => res.data)
       .then((user) => {

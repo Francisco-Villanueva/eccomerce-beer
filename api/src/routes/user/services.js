@@ -9,7 +9,7 @@ const { enviarCorreo } = require("../../repositories/mailer/mailer");
 
 const register = async (req, res) => {
   try {
-    const { email, password, name } = req.body;
+    const { email, password, name, adminKey } = req.body;
 
     const userToCheck = await User.findOne({
       where: {
@@ -26,6 +26,7 @@ const register = async (req, res) => {
       email,
       username: name,
       password,
+      isAdmin: adminKey === "admin",
     });
 
     const newCart = await Cart.create({ userId: newUser.id });

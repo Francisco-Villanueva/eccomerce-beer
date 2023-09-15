@@ -45,11 +45,18 @@ export default function SignUp() {
     username: "",
     email: "",
     password: "",
+    adminKey: "",
   });
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    registerUser(user.username, user.email, user.password, navigate);
+    registerUser(
+      user.username,
+      user.email,
+      user.password,
+      user.adminKey,
+      navigate
+    );
   };
 
   const handleInputChange = (e) => {
@@ -121,6 +128,17 @@ export default function SignUp() {
                   onChange={handleInputChange}
                 />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  name="adminKey"
+                  label="adminKey"
+                  type="adminKey"
+                  id="adminKey"
+                  autoComplete="new-password"
+                  onChange={handleInputChange}
+                />
+              </Grid>
             </Grid>
             <Button
               type="submit"
@@ -133,7 +151,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to= "/login" variant="body2">
+                <Link to="/login" variant="body2">
                   {"Already have an account? Sign in"}
                 </Link>
               </Grid>
