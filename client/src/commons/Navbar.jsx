@@ -112,7 +112,7 @@ function Navbar() {
         <div className="navbar-item">
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <Link to={"/history"}>
-              <HistorySharp />
+              <HistorySharp style={{color: "#fff", marginTop: "5px"}}/>
             </Link>
             {isAuthenticated && (
               <Avatar
