@@ -75,44 +75,50 @@ function Navbar() {
       <div>
         <Search />
       </div>
-      <div>
-        <Link to="/admin/addBook">
-          <button
-            className="button is-ghost has-text-white"
-            style={{
-              textDecoration: "none",
-              margin: "5px",
-              maxHeight: "35px",
-              maxWidth: "70px",
-              fontFamily: "'Hanken Grotesk', sans-serif",
-              marginLeft: "1vw"
-            }}
-          >
-            Add Book
-          </button>
-        </Link>
-      </div>
-      <div>
-        <Link to="/admin/addCategory">
-          <button
-            className="button is-ghost has-text-white"
-            style={{
-              textDecoration: "none",
-              margin: "5px",
-              maxHeight: "35px",
-              maxWidth: "110px",
-              fontFamily: "'Hanken Grotesk', sans-serif",
-            }}
-          >
-            Add Category
-          </button>
-        </Link>
-      </div>
+      {user && user.isAdmin ? (
+        <>
+          <div>
+            <Link to="/admin/addBook">
+              <button
+                className="button is-ghost has-text-white"
+                style={{
+                  textDecoration: "none",
+                  margin: "5px",
+                  maxHeight: "35px",
+                  maxWidth: "70px",
+                  fontFamily: "'Hanken Grotesk', sans-serif",
+                  marginLeft: "1vw",
+                }}
+              >
+                Add Book
+              </button>
+            </Link>
+          </div>
+          <div>
+            <Link to="/admin/addCategory">
+              <button
+                className="button is-ghost has-text-white"
+                style={{
+                  textDecoration: "none",
+                  margin: "5px",
+                  maxHeight: "35px",
+                  maxWidth: "110px",
+                  fontFamily: "'Hanken Grotesk', sans-serif",
+                }}
+              >
+                Add Category
+              </button>
+            </Link>
+          </div>
+        </>
+      ) : (
+        ""
+      )}
       <div className="navbar-item navbar-end">
         <div className="navbar-item">
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <Link to={"/history"}>
-              <HistorySharp style={{color: "#fff", marginTop: "5px"}}/>
+              <HistorySharp style={{ color: "#fff", marginTop: "5px" }} />
             </Link>
             {isAuthenticated && (
               <Avatar
