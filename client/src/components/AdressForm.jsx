@@ -9,7 +9,7 @@ import { CheckoutContext } from "../contexts/CheckoutContext";
 
 export default function AddressForm() {
   const { addresses, setAddresses } = useContext(CheckoutContext);
-  
+
   const [formData, setFormData] = useState({
     address1: "",
     lastName: "",
@@ -27,17 +27,19 @@ export default function AddressForm() {
     }));
   };
 
-  const handleSaveAddress =()=>{
+  const handleSaveAddress = () => {
     setAddresses([...addresses, formData]);
 
-    setFormData({
-      address1: "",
-      lastName: "",
-      city: "",
-      state: "",
-      zip: "",
-      country: "",
-    });
+    setTimeout(() => {
+      setFormData({
+        address1: "",
+        lastName: "",
+        city: "",
+        state: "",
+        zip: "",
+        country: "",
+      });
+    }, 3000);
   };
 
   return (
@@ -210,7 +212,6 @@ export default function AddressForm() {
               />
             }
             label="Use this address for payment details"
-            style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
             onChange={(e) => e.target.checked && handleSaveAddress()}
           />
         </Grid>

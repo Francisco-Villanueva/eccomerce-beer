@@ -73,6 +73,7 @@ export const Checkout = () => {
         sx={{
           position: "relative",
           borderBottom: (t) => `1px solid ${t.palette.divider}`,
+          fontFamily: "'Hanken Grotesk', sans-serif",
         }}
       >
         <Toolbar>
@@ -83,6 +84,7 @@ export const Checkout = () => {
                 width: "50px",
                 margin: "auto",
                 padding: "auto",
+                fontFamily: "'Hanken Grotesk', sans-serif",
               }}
               src={devBookLogo}
               alt="devbooks"
@@ -93,12 +95,12 @@ export const Checkout = () => {
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper
           variant="outlined"
-          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 }, fontFamily: "'Hanken Grotesk', sans-serif" }}
         >
-          <Typography component="h1" variant="h4" align="center">
+          <Typography component="h1" variant="h4" align="center" style={{fontFamily: "'Hanken Grotesk', sans-serif"}}>
             Checkout
           </Typography>
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5, }} style={{fontFamily: "'Hanken Grotesk', sans-serif"}}>
             {steps.map((label) => (
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
@@ -107,10 +109,10 @@ export const Checkout = () => {
           </Stepper>
           {activeStep === steps.length ? (
             <React.Fragment>
-              <Typography variant="h5" gutterBottom>
+              <Typography variant="h5" gutterBottom style={{fontFamily: "'Hanken Grotesk', sans-serif"}}>
                 Thank you for your order.
               </Typography>
-              <Typography variant="subtitle1">
+              <Typography variant="subtitle1" style={{fontFamily: "'Hanken Grotesk', sans-serif"}}>
                 Your order number is #2001539. We have emailed your order
                 confirmation, and will send you an update when your order has
                 shipped.
@@ -118,7 +120,7 @@ export const Checkout = () => {
               <Button onClick={() => {
                 nav("/home")
                 window.location.reload()}
-              } sx={{ backgroundColor: "#1565c0", color: "#fff" }}>
+              } sx={{marginTop: "15px" ,backgroundColor: "#1565c0", color: "#fff", fontFamily: "'Hanken Grotesk', sans-serif"}}>
                 HOME
               </Button>
             </React.Fragment>
@@ -127,7 +129,7 @@ export const Checkout = () => {
               {getStepContent(activeStep)}
               <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                 {activeStep !== 0 && (
-                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1, fontFamily: "'Hanken Grotesk', sans-serif" }}>
                     Back
                   </Button>
                 )}
@@ -141,7 +143,7 @@ export const Checkout = () => {
                           console.log();
                         }
                   }
-                  sx={{ mt: 3, ml: 1 }}
+                  sx={{ mt: 3, ml: 1, fontFamily: "'Hanken Grotesk', sans-serif" }}
                 >
                   {activeStep === steps.length - 1 ? (
                     <ProgressButton
