@@ -13,6 +13,7 @@ import AddBook from "./components/admin/AddBook";
 import EditBook from "./components/admin/EditBook";
 import { Checkout } from "./components/Checkout";
 import HistoryCart from "./components/HistoryCart";
+import AddCategory from "./components/admin/AddCategory";
 
 function App() {
   const { setUser, setCarrito, getAllBooks, userId, setHistory } =
@@ -46,6 +47,7 @@ function App() {
         <Route path="/user/products/:id" element={<OneProduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/admin/addBook" element={<AddBook />} />
+        <Route path="/admin/addCategory" element={<AddCategory />} />
         <Route path="/admin/books/:id" element={<EditBook />} />
         <Route path="/history" element={<HistoryCart />} />
       </Routes>
