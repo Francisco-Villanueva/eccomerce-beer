@@ -18,7 +18,7 @@ export const OneProduct = () => {
   const [isCart, setIsCart] = useState(false);
   const [deleteBook, setDeleteBook] = useState(true);
   const { cartBooks, addToCart, removeFromCart } = useContext(CartBooksContext);
-  const { carrito } = useContext(AuthContext);
+  const { carrito, getAllBooks } = useContext(AuthContext);
 
   useEffect(() => {
     axios
@@ -71,7 +71,7 @@ export const OneProduct = () => {
   // }
 
   // console.log(cartBooks);
-  console.log(book);
+  // console.log(book);
 
   return (
     <div

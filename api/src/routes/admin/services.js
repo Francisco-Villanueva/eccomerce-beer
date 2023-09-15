@@ -1,5 +1,6 @@
 const { Cart_buy, User, Cart, Category } = require("../../db/models");
 const { createCategory, deleteCategory } = require("../../utils/CategoriesDb");
+const { getUser } = require("../../utils/Data");
 
 const getAllUsers = async (req, res) => {
   try {
@@ -21,18 +22,19 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-const makeAdmin = async (req, res) => {
+const switchAdmin = async (req, res) => {
   try {
     const { userId } = req.params;
 
-    const user = await User.findByPk(userId);
-
+    const user = await getUser(userId);
     if (!user) {
       return res.status(401).send(`user not found! \n id: ${userId}`);
     }
 
+    const adminState = user.isAdmin;
+
     await user.update({
-      isAdmin: true,
+      isAdmin: !adminState,
     });
 
     res.status(200).json(user);
@@ -107,7 +109,7 @@ const destoryCategory = async (req, res) => {
 
 module.exports = {
   getAllUsers,
-  makeAdmin,
+  switchAdmin,
   deleteUser,
   getUserById,
   newCategory,

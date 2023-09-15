@@ -15,8 +15,8 @@ export default function PaymentForm() {
       const updatedPayment = [...prevPayment];
 
       const existingPaymentField = updatedPayment.find(
-        (field) => field.name === name
-      );
+        (field) => field.name === name);
+        
       if (existingPaymentField) {
         existingPaymentField.detail = value;
       } else {
