@@ -33,7 +33,7 @@ const getAllBooks = async () => {
       }
     }
 
-    console.log(allBooks);
+    // console.log(allBooks);
     const response = allBooks.map((m) => ({
       bookId: m.id,
       title: m.volumeInfo.title,
@@ -68,7 +68,7 @@ const getBookById = async (product_id) => {
     let book = {};
     book.data = books.items.filter((e) => e.id === product_id)[0];
 
-    console.log(book.data);
+    // console.log(book.data);
     const categories_index = categories.findIndex(
       (e) => e.idBook === book.data.id
     );

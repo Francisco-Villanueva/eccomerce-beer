@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { Avatar, Box } from "@mui/material";
-import { BookSharp, ShoppingCart, HistorySharp } from "@mui/icons-material";
+import {
+  BookSharp,
+  ShoppingCart,
+  HistorySharp,
+  Settings,
+} from "@mui/icons-material";
 import Search from "../components/Search";
 import devBookLogo from "../assets/imgs/devbooks-circulo.png";
 // import devBookLogo from "../assets/images/image.png";
@@ -121,17 +126,27 @@ function Navbar() {
               <HistorySharp style={{ color: "#fff", marginTop: "5px" }} />
             </Link>
             {isAuthenticated && (
-              <Avatar
-                style={{
-                  maxHeight: "35px",
-                  maxWidth: "35px",
-                  backgroundColor: "black",
-                  margin: "1px",
-                  paddingTop: "3px",
-                }}
-              >
-                {user.username.slice(0, 1).toUpperCase()}{" "}
-              </Avatar>
+              <>
+                <Avatar
+                  style={{
+                    maxHeight: "35px",
+                    maxWidth: "35px",
+                    backgroundColor: "black",
+                    margin: "1px",
+                    paddingTop: "3px",
+                  }}
+                >
+                  {user.username.slice(0, 1).toUpperCase()}{" "}
+                </Avatar>
+
+                {user.isAdmin ? (
+                  <button onClick={() => navigate("/users")}>
+                    <Settings />
+                  </button>
+                ) : (
+                  "  "
+                )}
+              </>
             )}
             <button
               className="button is-light is-hovered"
