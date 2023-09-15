@@ -79,7 +79,7 @@ export default function AddBook() {
 
   return (
     <div className="container">
-      <div className="form">
+      <div className="form" style={{backgroundColor: "#fff", color: "black"}}>
         <Typography variant="h4" className="form-title">
           Add New Book
         </Typography>
