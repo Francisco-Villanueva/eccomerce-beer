@@ -31,6 +31,7 @@ function Categories({setSelectedCategories}) {
     setSelectedCategories(value);
 
     setSelectedCategoriesLocal(value)
+    console.log(selectedCategories);
   };
 
   return (
