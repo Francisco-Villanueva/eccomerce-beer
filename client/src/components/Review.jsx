@@ -26,11 +26,6 @@ export default function Review() {
   const { addresses } = useContext(CheckoutContext);
   const userId = localStorage.getItem("userId");
   const { payment } = useContext(CheckoutContext);
-  
-  console.log("PAYMENT-----------", payment);
-// console.log("carrito---------", carrito);
-// console.log("userId--------------", userId);
-// console.log("ADDRESSES--------------", addresses);
 
 const products = [
   carrito.books.map(e=> ({
@@ -40,7 +35,6 @@ const products = [
   })),
   // { name: 'Shipping', desc: '', price: 'Free' },
 ];
-// console.log("products---------", products);
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -85,7 +79,7 @@ const products = [
 
 
 
-            {/* {payment.map((pay) => (
+            {payment.map((pay) => (
               <React.Fragment key={pay.name}>
                 <Grid item xs={6}>
                   <Typography gutterBottom>{pay.name}</Typography>
@@ -94,7 +88,7 @@ const products = [
                   <Typography gutterBottom>{pay.detail}</Typography>
                 </Grid>
               </React.Fragment>
-            ))} */}
+            ))}
 
 
 
