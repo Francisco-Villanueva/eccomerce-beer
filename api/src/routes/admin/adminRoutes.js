@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {
   getAllUsers,
-  makeAdmin,
+  switchAdmin,
   deleteUser,
   getUserById,
   newCategory,
@@ -12,7 +12,7 @@ const {
 
 router.get("/users", getAllUsers);
 router.get("/users/:userId", getUserById);
-router.put("/users/:userId", makeAdmin);
+router.put("/users/:userId/admin", switchAdmin);
 router.delete("/users/:userId", deleteUser);
 
 router.post("/category", newCategory);

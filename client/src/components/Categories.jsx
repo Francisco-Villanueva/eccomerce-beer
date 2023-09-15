@@ -1,12 +1,12 @@
 import React from "react";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import ListItemText from "@mui/material/ListItemText";
+import InputLabel from "@mui/material/InputLabel";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
-import { useState } from "react";
+import MenuItem from "@mui/material/MenuItem";
+import ListItemText from "@mui/material/ListItemText";
+import { useCategories } from "../contexts/CategoriesContext";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -19,32 +19,18 @@ const MenuProps = {
   },
 };
 
-const arrCategories = [
-  "Computers",
-  "Algorithms",
-  "Theory",
-  "Engineering",
-  "Software",
-  "Business & Economics",
-  "Collectibles",
-  "Robotics",
-  "Databases",
-  "Education",
-  "Games",
-  "Accouting",
-];
-
-function Categories({ setSelectedCategories }) {
-  const [selectedCategories, setSelectedCategoriesLocal] = useState([]);
+function Categories({setSelectedCategories}) {
+  const { categoriesList } = useCategories();
+  const [selectedCategories, setSelectedCategoriesLocal] = React.useState([]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
 
-    setSelectedCategoriesLocal(value);
-    
     setSelectedCategories(value);
+
+    setSelectedCategoriesLocal(value)
   };
 
   return (
@@ -79,23 +65,11 @@ function Categories({ setSelectedCategories }) {
           multiple
           value={selectedCategories}
           onChange={handleChange}
-          input={<OutlinedInput label="Categories" />}
+          input={<OutlinedInput label="Tag" />}
           renderValue={(selected) => selected.join(", ")}
           MenuProps={MenuProps}
-          style={{ 
-            backgroundColor: "#535353",
-            alignItems: "center",
-            padding: 0,
-            margin: 0,
-            marginLeft: 5,
-            maxHeight: "8vh",
-            zIndex: 1,
-          }}
         >
-          {/* <InputLabel style={{color: "#fff"}}>
-          Categories
-          </InputLabel> */}
-          {arrCategories.map((name) => (
+          {categoriesList.map((name) => (
             <MenuItem key={name} value={name}>
               <Checkbox checked={selectedCategories.indexOf(name) > -1} />
               <ListItemText primary={name} />

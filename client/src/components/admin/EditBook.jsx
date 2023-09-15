@@ -18,6 +18,7 @@ export default function EditBook() {
   const [genre, setGenre] = useState("");
   const [year, setYear] = useState("");
 
+  const { getAllBooks } = useContext(AuthContext);
   const handleTitleChange = (e) => {
     const value = e.target.value;
     setTitle(value);
