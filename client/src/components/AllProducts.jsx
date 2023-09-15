@@ -7,25 +7,31 @@ export const AllProducts = ({ selectedCategories }) => {
   const { books, searchedBooks, carrito } = useContext(AuthContext);
 
   const filteredBooks = !books
-    ? []
-    : books.filter((book) => {
-        if (selectedCategories.length === 0) {
-          return true;
+  ? []
+  : books.filter((book) => {
+      if (selectedCategories.length === 0) {
+        return true;
+      }
+
+      if (book.categories) {
+        if (typeof book.categories === "string") {
+          book.categories = book.categories.split(",").map((category) => category.trim());
         }
 
-        if (book.categories && Array.isArray(book.categories)) {
+        if (Array.isArray(book.categories)) {
           return selectedCategories.every((selectedCategory) =>
             book.categories.includes(selectedCategory)
           );
         }
+      }
 
-        return true;
-      });
+      return true;
+    });
+
+      console.log(filteredBooks);
 
   const booksToShow =
     searchedBooks && searchedBooks.length > 0 ? searchedBooks : filteredBooks;
-
-      console.log(booksToShow);
 
   return (
     <div className="grilla_libros">
