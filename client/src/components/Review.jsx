@@ -4,13 +4,9 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import AddressForm from "./AdressForm.jsx";
-import PaymentForm from "./PaymentForm.jsx";
-import { useState } from 'react';
-
-console.log("adressform-------", AddressForm);
+import { CheckoutContext } from '../contexts/CheckoutContext';
 
 // {
 //   name: 'Product 1',
@@ -18,23 +14,23 @@ console.log("adressform-------", AddressForm);
 //   price: '$9.99',
 // },
 
-// const addresses = [
-//   '1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'
-// ];
 const payments = [
-  // { name: 'Card type', detail: 'Visa' },
-  // { name: 'Card holder', detail: 'Mr John Smith' },
-  // { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  // { name: 'Expiry date', detail: '04/2024' },
+  { name: 'Card type', detail: 'Visa' },
+  { name: 'Card holder', detail: 'Mr John Smith' },
+  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
+  { name: 'Expiry date', detail: '04/2024' },
 ];
 
 export default function Review() {
   const { carrito } = useContext(AuthContext);
+  const { addresses } = useContext(CheckoutContext);
   const userId = localStorage.getItem("userId");
-  const [addresses, setAddresses] = useState([]);
+  const { payment } = useContext(CheckoutContext);
   
-console.log("carrito---------", carrito);
-console.log("userId--------------", userId);
+  console.log("PAYMENT-----------", payment);
+// console.log("carrito---------", carrito);
+// console.log("userId--------------", userId);
+// console.log("ADDRESSES--------------", addresses);
 
 const products = [
   carrito.books.map(e=> ({
@@ -44,7 +40,7 @@ const products = [
   })),
   // { name: 'Shipping', desc: '', price: 'Free' },
 ];
-console.log("products---------", products);
+// console.log("products---------", products);
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -70,7 +66,6 @@ console.log("products---------", products);
             Shipping
           </Typography>
           <Typography gutterBottom>Andreani</Typography>
-          {/* <Typography gutterBottom>{addresses.join(', ')}</Typography> */}
           <ul>
             {addresses.map((address, index) => (
               <li key={index}>
@@ -79,24 +74,30 @@ console.log("products---------", products);
             ))}
           </ul>
         </Grid>
+
+
+        
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Payment details
           </Typography>
-          
-          {/* <AddressForm setAddresses={setAddresses} /> */}
-
           <Grid container>
-            {payments.map((payment) => (
-              <React.Fragment key={payment.name}>
+
+
+
+            {/* {payment.map((pay) => (
+              <React.Fragment key={pay.name}>
                 <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
+                  <Typography gutterBottom>{pay.name}</Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
+                  <Typography gutterBottom>{pay.detail}</Typography>
                 </Grid>
               </React.Fragment>
-            ))}
+            ))} */}
+
+
+
           </Grid>
         </Grid>
       </Grid>

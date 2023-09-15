@@ -3,18 +3,18 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
-import AuthContextProvider, { AuthContext } from "./contexts/AuthContext";
+import AuthContextProvider from "./contexts/AuthContext";
 import { CartBooksProvider } from "./contexts/CartBookContext.jsx";
-import CheckoutContextProvider from "./contexts/CheckoutContext.jsx";
+import { CheckoutContextProvider } from "./contexts/CheckoutContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    {/* <CheckoutContextProvider> */}
+    <CheckoutContextProvider>
     <CartBooksProvider>
       <AuthContextProvider>
         <App />
       </AuthContextProvider>
     </CartBooksProvider>
-    {/* </CheckoutContextProvider> */}
+    </CheckoutContextProvider>
   </BrowserRouter>
 );
