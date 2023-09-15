@@ -44,14 +44,15 @@ const AuthContextProvider = ({ children }) => {
             //   userId: localStorage.setItem("userId", user.id),
             //   isAuthenticated: true,
             // }));
-            message.success("Login succesfully", 1);
+            message.success(`Welcome ${user.username}`, 1);
             setTimeout(() => {
               navigate("/home");
             }, 1000);
           });
       })
       .catch((error) => {
-        console.error("Error en el login:", error);
+        // console.error("Error en el login:", error.response.data);
+        message.error(` ${error.response.data}`);
       });
   };
 
