@@ -143,7 +143,9 @@ const AuthContextProvider = ({ children }) => {
             setState((s) => ({ ...s, user: user.data }));
           });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(`error al agregar ${id}`);
+      });
   };
 
   const removeFromCart = (id) => {

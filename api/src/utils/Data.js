@@ -22,25 +22,30 @@ const getUser = async (userId) => {
 const data = async (userId) => {
   const user = await getUser(userId);
   const { user_cart, currentCart } = user;
-  const lastCart = user_cart.filter((e) => e.id === parseInt(currentCart))[0];
 
-  // console.log(lastCart.length);
+  const lastCart = user.user_cart.filter(
+    (e) => e.id === parseInt(currentCart)
+  )[0];
+
+  // console.log({ lastCart: lastCart.cart_cartBuy });
+  console.log("--------------", lastCart.cart_cartBuy);
   const arrayOfBooksId = lastCart
     ? lastCart.cart_cartBuy
         .sort((a, b) => a.createdAt - b.createdAt)
         .map((m) => m.bookId)
     : [];
 
+  console.log({ arrayOfBooksId: lastCart.cart_cartBuy.map((m) => m.bookId) });
   let cartData;
   let price;
   let cart;
   if (arrayOfBooksId.length > 0) {
     cartData = await getCartData(arrayOfBooksId);
 
+    // console.log(cartData);
     price = arrayOfBooksId.length
       ? cartData.reduce(
-          (a, b) =>
-            a + Math.trunc(b.price) * getCount(lastCart.cart_cartBuy, b.bookId),
+          (a, b) => a + b.price * getCount(lastCart.cart_cartBuy, b.bookId),
           0
         )
       : 0;
@@ -57,7 +62,7 @@ const data = async (userId) => {
     arrayOfBooksId,
     cartData,
     price,
-    cartBuy: lastCart.cart_cartBuy || [],
+    cartBuy: lastCart.cart_cartBuy,
   };
 };
 
@@ -73,23 +78,21 @@ const getCount = (cartBuy, bookId) => {
 };
 
 async function getCartData(arrayOfBooksId) {
-  const fetchBookDetail = async (bookId) => {
-    try {
-      const response = await getBookById(bookId);
+  const fetchBookDetail = (bookId) => {
+    const response = getBookById(bookId);
 
-      return response;
-    } catch (error) {
-      console.error("Error al obtener detalles de la película:");
-      // return null;
-    }
+    console.log({ response });
+    return response;
   };
-  const fetchAllBooksDetails = async () => {
+  const fetchAllBooksDetails = () => {
     try {
       const detailsPromises_Books = arrayOfBooksId.map((idBook) =>
         fetchBookDetail(idBook)
       );
 
-      const books_Details = await Promise.all(detailsPromises_Books);
+      // const books_Details = await Promise.all(detailsPromises_Books);
+
+      const books_Details = detailsPromises_Books;
       // console.log({ books_Details });
 
       return books_Details;
@@ -118,60 +121,6 @@ const getHistory = async (user_cart) => {
 
   return history;
 };
-
-// const mail = `
-//   <html>
-//     <head>
-//       <style>
-//         body {
-//           font-family: Arial, sans-serif;
-//           background-color: #f0f0f0;
-//           padding: 20px;
-//         }
-//         .container {
-//           width: 80%;
-//           margin: 0 auto;
-//           padding: 20px;
-//           background-color: #fff;
-//           border-radius: 10px;
-//           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-//         }
-//         h1 {
-//           color: #333;
-//         }
-//         p {
-//           color: #555;
-//         }
-//         .total {
-//           font-weight: bold;
-//           font-size: 1.2em;
-//           color: #FF5733;
-//         }
-//         .books {
-//           margin-left: 20px;
-//         }
-//         .book {
-//           margin-bottom: 10px;
-//         }
-//       </style>
-//     </head>
-//     <body>
-//       <div class="container">
-//         <h1>Tu compra fue realizada con éxito</h1>
-//         <p class="total">TOTAL: $${lastCart.price}</p>
-//         <p>Cantidad de libros: ${cartData.length}</p>
-//         <div class="books">
-//           <p>Libros comprados:</p>
-//           <ul>
-//             ${cartData.map((m) => `<li class="book">${m.title}</li>`).join("")}
-//           </ul>
-//         </div>
-//       </div>
-//     </body>
-//   </html>
-// `;
-
-// Resto del código para enviar el correo...
 
 module.exports = {
   data,
