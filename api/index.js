@@ -6,7 +6,7 @@ const { validateUser } = require("./src/middleware/auth");
 const db = require("./src/db/db");
 const cors = require("cors");
 const corsOptions = {
-  origin: "http://127.0.0.1:5173",
+  origin: "http://localhost:5173",
   // Agrega otras opciones de configuración si es necesario.
 };
 app.use(cors(corsOptions));
