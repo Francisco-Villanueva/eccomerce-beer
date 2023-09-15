@@ -162,9 +162,11 @@ const checkout = async (req, res) => {
             width: 100%;
             display: flex;
             justify-content: center;
+            align-items: center;
+            font-size: 30px;
           }
           .devBooksLogo {
-            width: 30%;
+            width: 10%;
             border-radius: 20px;
           }
           h1 {
@@ -217,15 +219,16 @@ const checkout = async (req, res) => {
         </head>
         <body>
           <div class="container">
+          <div class="logo_container">
+          <img
+            src="https://modalab.co/wp-content/uploads/2020/05/MODALAB_Iconos-14.png"
+            alt="devBooks"
+            class="devBooksLogo"
+          />
+          <h1>Dev Books</h1>
+        </div>
             <h1>Tu compra fue realizada con éxito</h1>
-            <div class="logo_container">
-            <img
-                src= "../../assets/images/devBookLogo.png"
-                alt="logo"
-                class="book-image"
-              />
-
-              </div>
+           
             <h3 class="total">TOTAL: $${lastCart.price}</h3>
             <b>Cantidad de libros: ${cartData.length}</b>
             <div class="books">
