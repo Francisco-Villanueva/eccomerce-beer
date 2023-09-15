@@ -96,7 +96,6 @@ export default function AddBook() {
     // setYear("");
     //   })
     //   .catch((err) => console.log(err));
-
   };
 
   return (
