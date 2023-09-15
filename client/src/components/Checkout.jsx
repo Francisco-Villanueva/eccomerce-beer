@@ -115,7 +115,10 @@ export const Checkout = () => {
                 confirmation, and will send you an update when your order has
                 shipped.
               </Typography>
-              <Button onClick={() => nav("/home")} sx={{ bgcolor: "#cecece" }}>
+              <Button onClick={() => {
+                nav("/home")
+                window.location.reload()}
+              } sx={{ backgroundColor: "#1565c0", color: "#fff" }}>
                 HOME
               </Button>
             </React.Fragment>
