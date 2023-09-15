@@ -52,7 +52,7 @@ const AuthContextProvider = ({ children }) => {
       })
       .catch((error) => {
         // console.error("Error en el login:", error.response.data);
-        message.error(` ${error.response.data}`);
+        message.error(` ${error.response?.data}`);
       });
   };
 
@@ -88,7 +88,7 @@ const AuthContextProvider = ({ children }) => {
         navigate("/login");
       })
       .catch((error) => {
-        message.error(error.response.data);
+        // message.error(error.response?.data);
         console.error("Error en el registro:", { error });
         // setIsRegistered(false);
       });
