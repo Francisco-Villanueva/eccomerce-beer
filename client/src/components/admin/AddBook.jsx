@@ -13,14 +13,13 @@ export default function AddBook() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [author, setAuthor] = useState("");
-  const [genre, setGenre] = useState("");
-  const [year, setYear] = useState("");
-  const [categories, setCategories] = useState("");
+  const [categories, setCategories] = useState([]);
   const [date, setDate] = useState("");
   const [price, setPrice] = useState("");
-  const [img, setImg] = useState("")
+  const [img, setImg] = useState("");
 
   const { createBook } = useContext(AuthContext);
+
   const handleTitleChange = (e) => {
     const value = e.target.value;
     setTitle(value);
@@ -38,10 +37,11 @@ export default function AddBook() {
 
   const handleCategoriesChange = (e) => {
     const value = e.target.value;
-    setCategories(value);
+    const categoriesArray = value.split(',').map(category => category.trim());
+    setCategories(categoriesArray);
   };
 
-    const handleDateChange = (e) => {
+  const handleDateChange = (e) => {
     const value = e.target.value;
     setDate(value);
   };
@@ -54,16 +54,6 @@ export default function AddBook() {
   const handleImgChange = (e) => {
     const value = e.target.value;
     setImg(value);
-  };
-
-  const handleGenreChange = (e) => {
-    const value = e.target.value;
-    setGenre(value);
-  };
-
-  const handleYearChange = (e) => {
-    const value = e.target.value;
-    setYear(value);
   };
 
 
@@ -79,18 +69,14 @@ export default function AddBook() {
       date: date,
       price: price,
       img: img,
-      genre: genre,
-      year: year,
     };
     createBook(newBook, navigate);
     setTitle("");
     setAuthor("");
-    setCategories("");
+    setCategories([]);
     setDate("");
     setPrice("");
     setImg("");
-    setGenre("");
-    setYear("");
 
     // axios
     //   .post("http://localhost:4000/admin/books/createBook", {
@@ -114,7 +100,7 @@ export default function AddBook() {
 
   return (
     <div className="container">
-      <div className="form">
+      <div className="form" style={{backgroundColor: "#fff", color: "black"}}>
         <Typography variant="h4" className="form-title">
           Add New Book
         </Typography>
@@ -191,28 +177,6 @@ export default function AddBook() {
                 value={img}
                 onChange={handleImgChange}
                 autoComplete="Img"
-                autoFocus
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Género"
-                margin="normal"
-                value={genre}
-                onChange={handleGenreChange}
-                autoComplete="Genero"
-                autoFocus
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Año de Publicación"
-                margin="normal"
-                value={year}
-                onChange={handleYearChange}
-                autoComplete="Año de publicacion"
                 autoFocus
                 required
               />
