@@ -25,8 +25,12 @@ export const OneProduct = () => {
     axios
       .get(`http://localhost:4000/user/products/${id}`)
       .then((res) => {
-        setBook(res.data);
-        setLoading(false);
+        if (res.data) {
+          setBook(res.data);
+          setLoading(false);
+        } else {
+          navigate("/404");
+        }
       })
       .catch((error) => {
         console.log(error);
