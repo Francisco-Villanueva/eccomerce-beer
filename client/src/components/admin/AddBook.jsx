@@ -44,6 +44,7 @@ export default function AddBook() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const newBook = {
       title: title,
       description: description,
@@ -74,6 +75,7 @@ export default function AddBook() {
     // setYear("");
     //   })
     //   .catch((err) => console.log(err));
+
   };
 
   return (

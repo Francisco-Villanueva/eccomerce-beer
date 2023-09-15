@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../commons/Navbar";
 import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 
 export const OneProduct = () => {
   const navigate = useNavigate();
@@ -48,8 +49,8 @@ export const OneProduct = () => {
       .delete(`http://localhost:4000/admin/books/${id}`)
       .then(() => {
         setDeleteBook(true);
+        message.success("Libro Eliminado!");
         navigate("/home");
-        getAllBooks();
 
         console.log("Libro eliminado exitosamente");
       })
