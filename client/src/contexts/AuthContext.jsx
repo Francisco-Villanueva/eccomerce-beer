@@ -160,7 +160,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const isOnCart = (bookId) => {
-    const arrayOfBooksId = state.carrito
+    const arrayOfBooksId = state.carrito.books
       ? state.carrito.books.map((m) => m.bookId)
       : [];
 
