@@ -231,6 +231,17 @@ const AuthContextProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  const createBook = (newBook, navigate) => {
+    axios
+      .post("http://localhost:4000/admin/books/createBook", newBook)
+      .then((newBook) => {
+        message.success("Libro Creado!");
+        navigate("/home");
+        getAllBooks();
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <AuthContext.Provider
       value={{
@@ -248,6 +259,7 @@ const AuthContextProvider = ({ children }) => {
         setSearch,
         setCount,
         setHistory,
+        createBook,
       }}
     >
       {children}
