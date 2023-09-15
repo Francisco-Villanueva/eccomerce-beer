@@ -22,7 +22,7 @@ import ProgressButton from "../commons/Progress_button/ProgessBotton";
 export const Cart = () => {
   const { carrito, setCarrito, totalPrice, user, setCount } =
     useContext(AuthContext);
-  console.log("EN CART COMPONENT: ", carrito, totalPrice);
+  // console.log("EN CART COMPONENT: ", carrito, totalPrice);
   const [bookQuantities, setBookQuantities] = useState({});
   const [totalProducts, setTotalProducts] = useState(0);
 

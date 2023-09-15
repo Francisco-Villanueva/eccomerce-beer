@@ -71,7 +71,7 @@ export const OneProduct = () => {
   // }
 
   // console.log(cartBooks);
-  console.log(book);
+  // console.log(book);
 
   return (
     <div
