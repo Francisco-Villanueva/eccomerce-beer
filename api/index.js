@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use("/", routes);
 // app.get("/api/secret", validateUser);
 
-db.sync({ alter: true }).then(() => {
+db.sync({ force: true }).then(() => {
   app.listen(4000, () => {
     console.log(`Server listening at port ${4000}`);
   });

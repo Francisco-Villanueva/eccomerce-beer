@@ -16,6 +16,7 @@ const getCategories = async (req, res) => {
     //   "Games",
     //   "Accouting",
     // ];
+
     const cat = await getAllCategories();
 
     res.status(200).json(cat);

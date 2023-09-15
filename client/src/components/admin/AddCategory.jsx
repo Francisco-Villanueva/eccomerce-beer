@@ -6,7 +6,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useCategories } from "../../contexts/CategoriesContext";
 
 function AddCategory() {
-  const { categoriesList, setCategoriesList } = useCategories();
+  const { categoriesList, setCategoriesList, addCategory, deleteCategory } =
+    useCategories();
   const [newCategory, setNewCategory] = useState("");
 
   const handleNewCategoryChange = (event) => {
@@ -15,13 +16,17 @@ function AddCategory() {
 
   const handleAddCategory = () => {
     if (newCategory.trim() !== "") {
-      setCategoriesList([...categoriesList, newCategory]);
+      addCategory(newCategory);
+      // setCategoriesList([...categoriesList, newCategory]);
       setNewCategory("");
     }
   };
 
   const handleDeleteCategory = (categoryToDelete) => {
-    setCategoriesList(categoriesList.filter((category) => category !== categoryToDelete));
+    deleteCategory(categoryToDelete);
+    // setCategoriesList(
+    //   categoriesList.filter((category) => category !== categoryToDelete)
+    // );
   };
 
   return (

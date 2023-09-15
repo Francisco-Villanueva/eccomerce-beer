@@ -98,8 +98,8 @@ const newCategory = async (req, res) => {
 
 const destoryCategory = async (req, res) => {
   try {
-    const { categoryId } = req.params;
-    const response = await deleteCategory(categoryId);
+    const { category } = req.params;
+    const response = await deleteCategory(category);
 
     res.status(201).json(response);
   } catch (error) {
