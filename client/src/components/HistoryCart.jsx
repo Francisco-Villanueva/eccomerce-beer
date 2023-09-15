@@ -27,13 +27,14 @@ export default function HistoryCart() {
   return (
     <div
       style={{
-        height: "100vh",
+        minHeight: "100%",
+        // background: "red",
       }}
     >
       <Navbar />
       <div
         style={{
-          height: "90vh",
+          minHeight: "100%",
           // background: "#fff",
           verticalAlign: "center",
           display: "flex",
@@ -51,7 +52,7 @@ export default function HistoryCart() {
             gap: "30px",
             // justifyContent: "space-between",
             // background: "#fff",
-            height: "100%",
+            minHeight: "100%",
           }}
         >
           {history.length > 0 ? (
@@ -61,8 +62,6 @@ export default function HistoryCart() {
                   background: "#fff",
                   padding: "1em",
                   borderRadius: "10px",
-                  // width: "40%",
-                  height: "80%",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -92,6 +91,8 @@ export default function HistoryCart() {
                       style={{
                         display: "grid",
                         gridTemplateColumns: "1fr 3fr 1fr",
+
+                        marginTop: "20px",
                       }}
                     >
                       <img
