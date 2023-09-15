@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import axios from "axios";
@@ -16,6 +16,7 @@ export default function AddBook() {
   const [genre, setGenre] = useState("");
   const [year, setYear] = useState("");
 
+  const { createBook } = useContext(AuthContext);
   const handleTitleChange = (e) => {
     const value = e.target.value;
     setTitle(value);
@@ -44,23 +45,37 @@ export default function AddBook() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios
-      .post("http://localhost:4000/admin/books/createBook", {
-        title: title,
-        description: description,
-        author: author,
-        genre: genre,
-        year: year,
-      })
-      .then((newBook) => {
-        message.success("Libro Creado!");
-        navigate("/home");
-        setTitle("");
-        setAuthor("");
-        setGenre("");
-        setYear("");
-      })
-      .catch((err) => console.log(err));
+    const newBook = {
+      title: title,
+      description: description,
+      author: author,
+      genre: genre,
+      year: year,
+    };
+    createBook(newBook, navigate);
+    setTitle("");
+    setAuthor("");
+    setGenre("");
+    setYear("");
+    // axios
+    //   .post("http://localhost:4000/admin/books/createBook", {
+    //     title: title,
+    //     description: description,
+    //     author: author,
+    //     genre: genre,
+    //     year: year,
+    //   })
+    //   .then((newBook) => {
+    //     message.success("Libro Creado!");
+    //     navigate("/home");
+    //     getAllBooks();
+    // setTitle("");
+    // setAuthor("");
+    // setGenre("");
+    // setYear("");
+    //   })
+    //   .catch((err) => console.log(err));
+
   };
 
   return (

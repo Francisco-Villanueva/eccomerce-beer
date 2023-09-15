@@ -6,41 +6,29 @@ import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { CheckoutContext } from '../contexts/CheckoutContext';
+import { CheckoutContext } from "../contexts/CheckoutContext";
 
-// {
-//   name: 'Product 1',
-//   desc: 'A nice thing',
-//   price: '$9.99',
-// },
-
-const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
-];
+// const payments = [
+//   { name: 'Card type', detail: 'Visa' },
+//   { name: 'Card holder', detail: 'Mr John Smith' },
+//   { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
+//   { name: 'Expiry date', detail: '04/2024' },
+// ];
 
 export default function Review() {
   const { carrito } = useContext(AuthContext);
   const { addresses } = useContext(CheckoutContext);
   const userId = localStorage.getItem("userId");
   const { payment } = useContext(CheckoutContext);
-  
-  console.log("PAYMENT-----------", payment);
-// console.log("carrito---------", carrito);
-// console.log("userId--------------", userId);
-// console.log("ADDRESSES--------------", addresses);
 
-const products = [
-  carrito.books.map(e=> ({
-    name: e.title.slice(0, 35) + "...",
-    desc: e.description ? e.description.slice(0, 20) + "..." : "",
-    price: e.price
-  })),
-  // { name: 'Shipping', desc: '', price: 'Free' },
-];
-// console.log("products---------", products);
+  const products = [
+    carrito.books.map((e) => ({
+      name: e.title.slice(0, 35) + "...",
+      desc: e.description ? e.description.slice(0, 20) + "..." : "",
+      price: e.price,
+    })),
+    // { name: 'Shipping', desc: '', price: 'Free' },
+  ];
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -56,7 +44,7 @@ const products = [
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-              {"$" + carrito.cart.price}
+            {"$" + carrito.cart.price}
           </Typography>
         </ListItem>
       </List>
@@ -69,23 +57,18 @@ const products = [
           <ul>
             {addresses.map((address, index) => (
               <li key={index}>
-                {address.address1}, {address.city}, {address.state}, {address.zip}, {address.country}
+                {address.address1}, {address.city}, {address.state},{" "}
+                {address.zip}, {address.country}
               </li>
             ))}
           </ul>
         </Grid>
-
-
-        
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Payment details
           </Typography>
           <Grid container>
-
-
-
-            {/* {payment.map((pay) => (
+            {payment.map((pay) => (
               <React.Fragment key={pay.name}>
                 <Grid item xs={6}>
                   <Typography gutterBottom>{pay.name}</Typography>
@@ -94,10 +77,7 @@ const products = [
                   <Typography gutterBottom>{pay.detail}</Typography>
                 </Grid>
               </React.Fragment>
-            ))} */}
-
-
-
+            ))}
           </Grid>
         </Grid>
       </Grid>
