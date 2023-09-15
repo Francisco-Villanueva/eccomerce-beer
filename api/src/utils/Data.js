@@ -2,6 +2,7 @@ const { User, Cart, Cart_buy } = require("../db/models");
 const {
   getBookById,
 } = require("../repositories/google_books_API/booksApi_eccomerce");
+const { getAllCategories } = require("./CategoriesDb");
 
 const getUser = async (userId) => {
   const user = await User.findOne({
@@ -117,7 +118,9 @@ const getHistory = async (user_cart) => {
 
   return history;
 };
+
 module.exports = {
   data,
   getUser,
+  getHistory,
 };

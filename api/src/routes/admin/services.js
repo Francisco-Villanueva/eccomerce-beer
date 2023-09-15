@@ -1,4 +1,5 @@
-const { Cart_buy, User, Cart } = require("../../db/models");
+const { Cart_buy, User, Cart, Category } = require("../../db/models");
+const { createCategory, deleteCategory } = require("../../utils/CategoriesDb");
 
 const getAllUsers = async (req, res) => {
   try {
@@ -81,9 +82,34 @@ const getUserById = async (req, res) => {
     res.status(401).send(error);
   }
 };
+
+const newCategory = async (req, res) => {
+  try {
+    const { category } = req.body;
+    const response = await createCategory(category);
+
+    res.status(201).json(response);
+  } catch (error) {
+    res.status(401).json(error);
+  }
+};
+
+const destoryCategory = async (req, res) => {
+  try {
+    const { categoryId } = req.params;
+    const response = await deleteCategory(categoryId);
+
+    res.status(201).json(response);
+  } catch (error) {
+    res.status(401).json(error);
+  }
+};
+
 module.exports = {
   getAllUsers,
   makeAdmin,
   deleteUser,
   getUserById,
+  newCategory,
+  destoryCategory,
 };
